@@ -1,0 +1,212 @@
+# File Naming
+
+Now that we have covered how to write lines, we can start writing lines about the data! Actually there is one more small subject to discuss before we do that. In the Preface I said, 
+
+>> "Messy files require more messy code which then can lead to more errors."
+
+Let's do our best to make sure any files we have are not messy.
+
+~*Please note that the below information is useful even if you only have one file of data. At some point, you will have multiple files, and you may want them all organized in the same folder. Data can always be updated, at which time you may have the original file as well as the new file with updated data.*~
+
+**Definitions:**
+
+1. `_` is called underscore.
+2. `-` is called dash.
+
+
+## Consistency
+
+Use `_` as a separator, that is, to separate different characteristics of the file. Use `-` to separate parts within characteristics. For example,
+
+    lesson-1_on-rmd_2022-02-18.rmd
+
+If you have related files that you want to systematically process, then be systematic with the order of characteristics. For example,
+
+    lesson-1_on-rmd_2022-02-18.rmd
+    lesson-2_on-rmd_2022-02-19.rmd
+    lesson-3_on-rmd_2022-02-20.rmd
+    lesson-1_on-python_2022-02-20.rmd
+
+Consider how these files will look when ordered alphabetically in your operating system's file manager (File Explorer on Window's or Finder on Mac) if that is important to you. The above files will be ordered like so:
+   
+    lesson-1_on-rmd_2022-02-18.rmd
+    lesson-1_on-ruby_2022-02-20.rmd
+    lesson-2_on-rmd_2022-02-19.rmd
+    lesson-3_on-rmd_2022-02-20.rmd
+
+If the order of characteristics start with the most general, then the alphabetic ordering will be more appropriate:
+
+    on-rmd_lesson-1_2022-02-18.rmd
+    on-rmd_lesson-2_2022-02-19.rmd
+    on-rmd_lesson-3_2022-02-20.rmd
+    on-ruby_lesson-1_2022-02-20.rmd
+    
+## Why Consistency Matters
+
+Consistency helps you visually process the files you see on your file explorer. It also helps when telling your computer how to process the files. We named the files using separators so that numeric information can be represented. That is, the phrase before the first `_` is the first characteristic, the phrase before the second `_` is the second characteristic and so on.
+
+To process the file names in a way that splits these characteristics, we can use a function `str_split` from an R package called stringr. File names are strings. Strings are character elements that cannot directly be treated numerically (they need to be converted into numeric elements first for that). 
+
+To use a function from a package, we first install the package by running
+
+```{r install-stringr, eval = FALSE}
+install.packages("stringr")
+```
+
+Delete this line once you are done, as you will have no need to rerun (re-process) it.
+
+We use a colon (the symbol `:`) twice to use a function from a package. If you write
+
+```{r show-stringr::, eval = FALSE}
+stringr::
+
+```
+
+you will see a drop-down menu of all the functions from stringr. `str` stands for string. Many function names start with `str_`. The drop-down menu from writing `stringr::` adjusts when you add `str_`. For every function whose name starts with `str_`, the general purpose is the processing of strings. Similar to our file names above, the general part of the name comes first, then the `_`, and then the more specific purpose. 
+
+There are a few exceptions; some functions in stringr do not start with `str_`. But most start with `str_` because `str_` makes it clear what the function will process. This is important as we can avoid the need to write out `stringr::`. We avoid this by _loading the package_: making the function names in the package available. To load the package, run the following
+
+```{r show-library}
+library(stringr)
+```
+
+Now when we only write `str_`, we still get a drop-down menu. 
+
+## Finding and Organizing Our Files
+
+To use an `str_` function, we need some strings. Let's get our consistent file names into R. We will use a function called `file.choose`. This function causes a pop-up that allows you to interactively search your computer files. If you are using Windows, this pop-up may unfortunately pop-up behind RStudio. You will need to Alt-Tab to find the pop-up. Once you see the pop-up, find the folder with your files and double click on (any) one of the files. The function will print the file path (the computer's representation of where the file exists). Below we assign the file path to the object `file_path`.
+
+```{r file-paths, eval = FALSE}
+file_path <- file.choose()
+```
+
+```{r here, echo = FALSE}
+file_path <- here::here("data", "raw")
+```
+
+We will now use a function `path_dir` from the package fs. `path_dir` will get the path of the directory from the file path. We will assign the result to the object `directory_path`.
+
+```{r dir-path}
+library(fs)
+directory_path <- path_dir(file_path)
+```
+
+To get a list of .csv files in this directory, we will use a `list.files` function. This function has what are called two arguments. The first is the path to the folder that contains our files. The second is the pattern that is unique to the files we want.
+
+```{r files}
+files <- list.files(directory_path, pattern = "csv")
+files
+```
+
+Now we use `str_split` which will split our strings. For example,
+
+```{r split-files}
+str_split(files, "_")
+```
+
+This result is what is called a list. A list can contain anything. The [[1]] and [[2]] represent the first and second element of the list. The [1] indicates that the element to its very right is the first element.
+
+To also separate the file type (.rmd) at the end, preceded by the period, we can adjust our function to separate by `_` as well as `.`.
+
+```{r split-files-wrong}
+str_split(files, "_.")
+
+```
+
+What happened? This is not what we want, and it is because `.` is a special (i.e. meta) character. Special characters mean more to R than the literal symbol itself. The special character `.` represents any character. Hence we told `str_split` to use `_.` as a separator which meant that `_A` was used as the first separator, and `_2` as the second separator. We need to use different special characters to overcome this challenge: `[` and `]`. These square brackets can be used to surround the distinct characters that `str_split` will use as separators: `[_.]` will tell `str_split` to use either a `_` or a literal `.` as the separator.
+
+
+```{r split-files-right}
+str_split(files, "[_.]")
+```
+
+We can have a cleaner result using `str_split_fixed`. It is called "fixed" as we can fix the number of splits or pieces. We will split our strings into 4 pieces.
+
+```{r split-files-fixed}
+str_split_fixed(files, "[_.]", 4)
+```
+
+This result is what is called a matrix. Let's assign it to the object m.
+
+```{r as-matrix}
+m <- str_split_fixed(files, "[_.]", 4)
+```
+
+Now we can see the matrix just by processing
+
+```{r print-matrix}
+m
+```
+
+Let's add informative names to the columns of the matrix. To do this, we use a function called `colnames`. This function will be placed on the left of `<-` as it is a replacement function. We replace the null (i.e. undefined) column names of our matrix with our list of characteristics.
+
+```{r assign-names}
+colnames(m) <- c("source", "country", "date", "file_type")
+m
+```
+
+Let's create an object named df with a function called `as_tibble` from the package `tibble`. What is a tibble? It is an R word for table. Remember to install tibble before running
+
+```{r tibble}
+library(tibble)
+df <- as_tibble(m)
+df
+```
+<!-- Let's add a column called `file_path` that is a combination of our directory path, a forward slash (the symbol `\`), and the original strings (the object `files`). We create this combination using a function called `glue` from the package `glue`. Inside `glue`'s quotation marks, objects can be referenced when placed inside curly brackets like so `{object_name}`. -->
+
+<!-- ```{r glue} -->
+<!-- library(glue) -->
+<!-- file_paths <- glue("{directory_path}/{files}") -->
+<!-- file_paths -->
+<!-- ``` -->
+
+We now need the file path for each of our files. To list the files in our directory, use the function `dir_ls`. Assign the result to object `file_path`.
+
+```{r}
+file_paths <- dir_ls(directory_path)
+```
+
+We will now change our tibble so that there is a new column called `file_path` that contains our `file_paths`. To do this, we will use a function from the package `dplyr` (pronounced "data plier"). The function we will use is named after another word for change: `mutate`. This function has two arguments. The first is the tibble. The second is the name of the new column, an equal sign, and the values we want in that column.
+
+```{r}
+library(dplyr)
+df <- mutate(df, file_path = file_paths)
+```
+
+### Reading in Data
+
+We can read in the data related to each file with the help of the `file_path` column. Not only that, we can read in the data so that it is organized inside our tibble. In each row of our tibble, we will add each file's data hidden in a little box or "nest". These nests will go under a column called `data`. 
+
+To change our tibble so that there is a new column, we will again use `mutate`. The first argument is the tibble, just like above. The second is the name of the new column (`data`), an equal sign, and the values we want in that column. 
+
+Since the values in this column will be data sets, we need to put these data sets in containers. Where we see `"csv"` `r nrow(df)` times under `file_type` in our tibble, we will see `"<S3: spec_tbl_df>"` `r nrow(df)` times under `data`. The `<` and `>` mean container. The `S3: spec_tbl_df` means data frame (another word for data set).
+
+We need to use a special function inside `mutate` when creating our `data` column so that the values of the `data` column are containers. This special function is called `map` from the package `purrr`. `purrr` is pronounced like a cat's purr (the low vibrating sound of happiness) and it refers to purposeful programming with R.
+
+The result of `map` will always be containers. The number of containers will always be the same as the length of the first argument to `map`. The second argument of `map` is the function that will be applied to the first argument. To create the `data` column, the first argument will be the `file_path`, and the second argument will be a custom read function. 
+
+The read function below `read_csv_c` uses a function called `read_csv` from the package `readr`. `read_csv` reads .csv files and determines what kind of columns are in the data (e.g. numeric or character). We will decide the kind of columns ourselves, so we need to prevent the function from doing so. `col_types` is the argument inside of `read_csv` with a `.default`. We need to set the `.default` to be `"c"`. `"c"` stands for character. Character is a safe default as it is the original format of the .csv data.
+
+```{r read-custom}
+library(readr)
+
+read_csv_c <- function(csv_file_path) read_csv(csv_file_path, col_types = c(.default = "c"))
+```
+
+Now we use our new function to read in our data.
+
+```{r read, message = FALSE}
+df <- mutate(df, data = map(file_path, read_csv_c))
+df
+```
+
+We no longer need the `file_path` column so we will select it to be removed by using the `select` function.
+
+```{r select-remove}
+df <- select(df, - file_path)
+```
+
+```{r export, echo = FALSE}
+write_rds(df, here::here("df.rds"))
+```
+

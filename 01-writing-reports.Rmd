@@ -1,0 +1,208 @@
+# Writing Reports
+
+Data work will involve the preparation of data and data reports. In fact, you may want to report on the preparation of data. Since the code that prepares a report can also prepare the data, you could work in a way that both gets the job done and reports on getting it done. That's a win-win!
+
+Reports are great client-facing examples of your work (and how you work if you report on data preparation). Before employment, they can be presented to potential employers. After employment, they can be presented to your collaborators during data preparation; maybe there will be decisions that need to be made about the data, and the best way to show why decisions are needed will be through a report.
+
+For these reasons, this book starts with the fundamentals of writing reports. The files that make reports are called .Rmd files. To start a .Rmd file, open RStudio. In the top menu, click File then New File and finally "R Markdown...". When you see the pop-up, name the file what you like. Then, in the file, select all (shortcut Cmd-A or Cntrl-A) and hit delete. Knit (i.e. prepare) the document by the shortcut Cmd-Shift-K (or Cntrl-Shift-K). You will see a document that is empty. That is because we have no lines. Let's get started by writing lines then!
+
+## Lines and Lists
+
+On your left in Rstudio (what is called the code source), you have numbers like below that represent lines of text or code:
+
+    1   Some text
+    2
+    3
+    4
+    5
+
+A list in text can be made by first skipping a line, and then starting the next line with numbers followed by a period (.) which is then followed by a space, or by using a hyphen (-) followed by a space:
+
+    1   Some text
+    2
+    3   1. Start of my list
+    4
+    5
+
+~*Lines 1 to 5 will show in your document as:*~
+
+Some text
+
+1. Start of my list
+
+--
+
+To create a list within a list, indent twice before using -. Hit tab to indent.
+
+    1   Some text
+    2
+    3   1. Start of my list
+    4           - List within my list
+    5
+
+~*Lines 1 to 5 will show in your document as:*~
+
+Some text
+
+1. Start of my list
+    - List within my list
+
+--
+
+A list is broken if there is an empty line and a subsequent line that is not indented twice.
+
+    1   Some text
+    2
+    3   1. Start of my list
+    4           - List within my list
+    5
+    6   This line breaks the list
+    7           - Some line indented twice in my code source
+
+~*Lines 1 to 7 will show in your document as:*~
+
+Some text
+
+1. Start of my list
+    - List within my list
+
+This line breaks the list
+    - Some line indented twice in my code source
+
+## Code
+
+Code cannot be written on lines like text. For example
+
+    1   some_code
+    2   
+    3
+
+will not work. Code has to be declared in one of two ways.
+
+### Declaring With Single Back-Ticks
+
+You can insert code into your document using a single back-tick (the `r "\u0060"` symbol) before and after:
+
+    1   Some text and `r "\u0060some_code\u0060"` to be processed.
+    2   `r "\u0060some_more_code\u0060"` and some more text.
+    3   `r "\u0060some_lonely_code\u0060"`
+
+R code needs an `r` after the first back-tick:
+
+    1   Some text and `r "\u0060r some_code\u0060"` to be processed.
+    2   `r "\u0060r some_more_code\u0060"` and some more text.
+    3   `r "\u0060r some_lonely_code\u0060"`
+
+For example, the date can be added to a line of your document using
+
+    1   Some text. Did you know today's date is `r "\u0060r Sys.Date()\u0060"`?
+    2
+    3
+
+~*Lines 1 to 3 will show in your document as:*~
+
+Some text. Did you know today's date is `r Sys.Date()`?
+
+
+-- 
+ 
+<!-- To see this document within R, go to R's menu: Tools - Global Options; select R Markdown from the left, find the line "Show output preview in: " and select Viewer -->
+<!-- Explain why this is not greyed out: `r "\u0060"` -->
+
+### Declaring With Multiple Back-Ticks
+
+You can insert multiple lines of code into your document using multiple back-ticks before and after:
+
+    10    ```{r}
+    11    some_code
+    12    some_more_code
+    14    ```
+
+The `` `r "\u0060\u0060\u0060{r}"` `` starts the R code chunk and the `` `r "\u0060\u0060\u0060"` `` ends the chunk.
+
+The primary purpose of a code chunk is to contain multiple lines of code. We will get an error when preparing our document if we try to declare with single back-ticks like here:
+
+    10    `r "\u0060"`r  
+    11  
+    12    Sys.Date()
+    13
+    14    Sys.Date()
+    15
+    16    `
+
+Instead we must write this as:
+
+    10    ```{r}
+    11    Sys.Date()
+    12    Sys.Date()
+    13    ```
+    
+The following will be the result of the above chunk in our document:
+
+```{r}
+Sys.Date()
+Sys.Date()
+```
+
+When declaring code with chunks (multiple back-ticks), the document will show both the code and the result of the code and this can be customized. When declaring code with single back-ticks, the document will show only the result of the code and this cannot be customized. 
+
+Since the back-ticks take effort to write, there is a shortcut to writing an empty code chunk: command-Shift-I on Mac or ctrl-Shift-I on Windows. 
+
+### Summary 
+
+To summarize, compared to declaring code with single back-ticks,
+
+- Chunks can contain multiple lines.
+- Chunks can show both the code and the result of the code. This is great for showing your work or explaining your code to readers. This flexible property lets you decide whether the chunk shows the code and the result, only one of the two, or neither.
+
+## Errors
+
+When code is not written correctly, errors and probably some frustration will follow. R errors are not known for being _friendly_; they are not kind enough to tell you what is wrong in a way that is easy to understand. When there is an error, you will see it in red text within the Console, which is a box on the bottom left quarter of RStudio (its default layout). The Console is where the code is processed and the result printed. 
+
+There are symbols we need to know to understand the Console:
+
+    > means the line of code processed
+    + means a line of code continuing from the last line
+    [1] means the first element of the result of the processed code
+    [n] means the n'th element of the result of the processed code
+    [[1]]
+    [1] means the first element in the first container of the result of the processed code
+
+When first learning R, the best way to understand errors is usually not through R's error message. The best way is by paying close attention to the code and every little detail: misspelling, capitalization, and punctuation.
+
+For this reason we want to practice good strategies of writing code. Writing involves naming our own objects and functions. But before that, we should also name our files using a good strategy. For a quick guide on naming files, [click here](https://style.tidyverse.org/files.html).
+
+
+<!-- ## Explain to look at Render box for knit errors -->
+
+## Links 
+
+To add a clickable link that sends the user to a website, place the website address within inequality symbols < ... >. For example: ``<http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf``> gives us
+   <http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf>
+
+To make this a hyperlink, that is, a shorter, clickable link, write the clickable text (the text you want to the reader to see) in square brackets and the website address in round brackets like so  `[text-seen-by-reader](link)`. For example
+
+    1   [File Naming Presentation by Jenny Bryan](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
+    2
+    3
+    
+~*Lines 1 to 3 will show as:*~
+
+[File Naming Presentation by Jenny Bryan](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
+
+
+## Keyboard Shortcuts
+
+Remember, if you are using Windows, use 
+
+- `ctrl` instead of `command`
+- `alt` instead of `option`
+
+**Shortcuts:**
+
+- `command-Z`: Undo (go back)
+- `command-shift-Z`: Redo (go forward)
+- `command-Enter`: Process line of code where `|` is blinking (consistently appearing and disappearing)
+- `command-option-C`: Process current chunk
+- `option-shift-arrow_key`: Highlight all to the direction of the arrow
+- ....

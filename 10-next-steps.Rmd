@@ -1,0 +1,6 @@
+# Next Steps for This Guide
+
+- How to make your work reproducible using "R projects"
+- How to mask or randomize data in order ot make it public
+- How to build your own website
+- How to build tables (gt) and plots (ggplot)

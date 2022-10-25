@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Opening the Data | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</title>
+  <meta name="description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Opening the Data | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/images/bob-ross.jpg" />
+  <meta property="og:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="github-repo" content="asadow/how-to-be-an-Rtist" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Opening the Data | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  
+  <meta name="twitter:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="twitter:image" content="/images/bob-ross.jpg" />
+
+<meta name="author" content="Adam Sadowski" />
+
+
+<meta name="date" content="2022-10-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="file-naming.html"/>
+<link rel="next" href="understanding-tidyverse-functions.html"/>
+<script src="libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html#preface" id="toc-preface"><span class="toc-section-number">1</span> Preface<span></span></a></li>
+<li><a href="writing-reports.html#writing-reports" id="toc-writing-reports"><span class="toc-section-number">2</span> Writing Reports<span></span></a>
+<ul>
+<li><a href="writing-reports.html#lines-and-lists" id="toc-lines-and-lists"><span class="toc-section-number">2.1</span> Lines and Lists<span></span></a></li>
+<li><a href="writing-reports.html#code" id="toc-code"><span class="toc-section-number">2.2</span> Code<span></span></a>
+<ul>
+<li><a href="writing-reports.html#declaring-with-single-back-ticks" id="toc-declaring-with-single-back-ticks"><span class="toc-section-number">2.2.1</span> Declaring With Single Back-Ticks<span></span></a></li>
+<li><a href="writing-reports.html#declaring-with-multiple-back-ticks" id="toc-declaring-with-multiple-back-ticks"><span class="toc-section-number">2.2.2</span> Declaring With Multiple Back-Ticks<span></span></a></li>
+<li><a href="writing-reports.html#summary" id="toc-summary"><span class="toc-section-number">2.2.3</span> Summary<span></span></a></li>
+</ul></li>
+<li><a href="writing-reports.html#errors" id="toc-errors"><span class="toc-section-number">2.3</span> Errors<span></span></a></li>
+<li><a href="writing-reports.html#links" id="toc-links"><span class="toc-section-number">2.4</span> Links<span></span></a></li>
+<li><a href="writing-reports.html#keyboard-shortcuts" id="toc-keyboard-shortcuts"><span class="toc-section-number">2.5</span> Keyboard Shortcuts<span></span></a></li>
+</ul></li>
+<li><a href="file-naming.html#file-naming" id="toc-file-naming"><span class="toc-section-number">3</span> File Naming<span></span></a>
+<ul>
+<li><a href="file-naming.html#consistency" id="toc-consistency"><span class="toc-section-number">3.1</span> Consistency<span></span></a></li>
+<li><a href="file-naming.html#why-consistency-matters" id="toc-why-consistency-matters"><span class="toc-section-number">3.2</span> Why Consistency Matters<span></span></a></li>
+<li><a href="file-naming.html#finding-and-organizing-our-files" id="toc-finding-and-organizing-our-files"><span class="toc-section-number">3.3</span> Finding and Organizing Our Files<span></span></a>
+<ul>
+<li><a href="file-naming.html#reading-in-data" id="toc-reading-in-data"><span class="toc-section-number">3.3.1</span> Reading in Data<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="opening-the-data.html#opening-the-data" id="toc-opening-the-data"><span class="toc-section-number">4</span> Opening the Data<span></span></a>
+<ul>
+<li><a href="opening-the-data.html#checking-data" id="toc-checking-data"><span class="toc-section-number">4.1</span> Checking Data<span></span></a></li>
+<li><a href="opening-the-data.html#finding-functions" id="toc-finding-functions"><span class="toc-section-number">4.2</span> Finding Functions<span></span></a>
+<ul>
+<li><a href="opening-the-data.html#google" id="toc-google"><span class="toc-section-number">4.2.1</span> Google<span></span></a></li>
+<li><a href="opening-the-data.html#stack-overflow" id="toc-stack-overflow"><span class="toc-section-number">4.2.2</span> Stack Overflow<span></span></a></li>
+</ul></li>
+<li><a href="opening-the-data.html#finding-function-documentation-for-understanding-functions" id="toc-finding-function-documentation-for-understanding-functions"><span class="toc-section-number">4.3</span> Finding Function Documentation for Understanding Functions<span></span></a>
+<ul>
+<li><a href="opening-the-data.html#google-1" id="toc-google-1"><span class="toc-section-number">4.3.1</span> Google<span></span></a></li>
+<li><a href="opening-the-data.html#stack-overflow-1" id="toc-stack-overflow-1"><span class="toc-section-number">4.3.2</span> Stack Overflow<span></span></a></li>
+<li><a href="opening-the-data.html#books" id="toc-books"><span class="toc-section-number">4.3.3</span> Books<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="understanding-tidyverse-functions.html#understanding-tidyverse-functions" id="toc-understanding-tidyverse-functions"><span class="toc-section-number">5</span> Understanding Tidyverse Functions<span></span></a>
+<ul>
+<li><a href="understanding-tidyverse-functions.html#mutate" id="toc-mutate"><span class="toc-section-number">5.1</span> <code>mutate</code><span></span></a></li>
+<li><a href="understanding-tidyverse-functions.html#pumping-with" id="toc-pumping-with"><span class="toc-section-number">5.2</span> Pumping with <code>%&gt;%</code><span></span></a></li>
+<li><a href="understanding-tidyverse-functions.html#grouping-with-group" id="toc-grouping-with-group"><span class="toc-section-number">5.3</span> Grouping with <code>group</code><span></span></a></li>
+</ul></li>
+<li><a href="strings.html#strings" id="toc-strings"><span class="toc-section-number">6</span> Strings<span></span></a>
+<ul>
+<li><a href="strings.html#patterns-and-regular-expressions-regexes" id="toc-patterns-and-regular-expressions-regexes"><span class="toc-section-number">6.1</span> Patterns and Regular Expressions (regexes)<span></span></a></li>
+<li><a href="strings.html#motivation" id="toc-motivation"><span class="toc-section-number">6.2</span> Motivation<span></span></a></li>
+<li><a href="strings.html#understanding-representations" id="toc-understanding-representations"><span class="toc-section-number">6.3</span> Understanding Representations<span></span></a></li>
+</ul></li>
+<li><a href="avoiding-repetition.html#avoiding-repetition" id="toc-avoiding-repetition"><span class="toc-section-number">7</span> Avoiding Repetition<span></span></a></li>
+<li><a href="next-steps-for-this-guide.html#next-steps-for-this-guide" id="toc-next-steps-for-this-guide"><span class="toc-section-number">8</span> Next Steps for This Guide<span></span></a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="opening-the-data" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Opening the Data<a href="opening-the-data.html#opening-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We can open our containers or “nests” in <code>data</code> using the function <code>unnest</code> from the package <code>tidyr</code>.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="opening-the-data.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb50-2"><a href="opening-the-data.html#cb50-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">unnest</span>(df, data)</span>
+<span id="cb50-3"><a href="opening-the-data.html#cb50-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>&gt;&gt; # A tibble: 24 × 9
+&gt;&gt;    source   country date  file_…¹ conti…² year  lifeExp
+&gt;&gt;    &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;  
+&gt;&gt;  1 gapmind… afghan… 2022… csv     Asia    1952  28.801 
+&gt;&gt;  2 gapmind… afghan… 2022… csv     Asia    1957  30.332 
+&gt;&gt;  3 gapmind… afghan… 2022… csv     Asia    1962  31.997 
+&gt;&gt;  4 gapmind… afghan… 2022… csv     Asia    1967  34.02  
+&gt;&gt;  5 gapmind… afghan… 2022… csv     Asia    1972  36.088 
+&gt;&gt;  6 gapmind… afghan… 2022… csv     Asia    1977  38.438 
+&gt;&gt;  7 gapmind… afghan… 2022… csv     Asia    1982  39.854 
+&gt;&gt;  8 gapmind… afghan… 2022… csv     Asia    1987  40.822 
+&gt;&gt;  9 gapmind… afghan… 2022… csv     Asia    1992  41.674 
+&gt;&gt; 10 gapmind… afghan… 2022… csv     Asia    1997  41.763 
+&gt;&gt; # … with 14 more rows, 2 more variables: pop &lt;chr&gt;,
+&gt;&gt; #   gdpPercap &lt;chr&gt;, and abbreviated variable names
+&gt;&gt; #   ¹​file_type, ²​continent</code></pre>
+<p>This data looks clean but looks can be deceiving. Remember that we set the <code>df</code> object to be <code>as_tibble</code>? A tibble is not only a table in R, but a cleaner kind of table. It shows only 10 rows, and as many columns that can comfortably be displayed. The sizing of the table surrounds the data, like the header (top line) <code># A tibble: 24 x 9</code> tells you how many rows (24) and columns (9) there are. The footer (bottom line) <code># ... with 14 more rows and 6 more variables</code> tells you what is missing from the display.</p>
+<p>Even though this data is small (24 rows by 9 columns can be evaluated using our eyes), it is always best to practice techniques that are generalizable to both small and large data.</p>
+<div id="checking-data" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Checking Data<a href="opening-the-data.html#checking-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The simplest way to start evaluating data is to check that the values under each column meet expectations. Since we created the first 4 columns using our file names, we can be sure that these 4 columns are clean.</p>
+<p>For the next column, <code>continent</code>, we expect values to be continents, capitalized, and spelled correctly. Instead of reading each line with our eyes, we can read each line with our computers. Or a combination of the two. That is exactly how we will start. We will check all unique (i.e. distinct) values under the continent column using <code>distinct</code>. It produces a tibble with only the distinct rows for the column(s) you choose.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="opening-the-data.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(df, continent)</span></code></pre></div>
+<pre><code>&gt;&gt; # A tibble: 2 × 1
+&gt;&gt;   continent
+&gt;&gt;   &lt;chr&gt;    
+&gt;&gt; 1 Asia     
+&gt;&gt; 2 Americas</code></pre>
+<p>These unique values are perfect. Which means every value is perfect, as these unique values represent them. But what if they were not capitalized, for example? That is in fact the case with our country column: the values are not capitalized because the values came from our file-naming, and it is good practice not to capitalize when file-naming. To capitalize the values in a column, you can use a function called <code>str_to_title</code>.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="opening-the-data.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_title</span>(df<span class="sc">$</span>country)</span></code></pre></div>
+<pre><code>&gt;&gt;  [1] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot;
+&gt;&gt;  [4] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot;
+&gt;&gt;  [7] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot;
+&gt;&gt; [10] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot;
+&gt;&gt; [13] &quot;Canada&quot;      &quot;Canada&quot;      &quot;Canada&quot;     
+&gt;&gt; [16] &quot;Canada&quot;      &quot;Canada&quot;      &quot;Canada&quot;     
+&gt;&gt; [19] &quot;Canada&quot;      &quot;Canada&quot;      &quot;Canada&quot;     
+&gt;&gt; [22] &quot;Canada&quot;      &quot;Canada&quot;      &quot;Canada&quot;</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="opening-the-data.html#cb56-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>&gt;&gt; # A tibble: 24 × 9
+&gt;&gt;    source   country date  file_…¹ conti…² year  lifeExp
+&gt;&gt;    &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;  
+&gt;&gt;  1 gapmind… afghan… 2022… csv     Asia    1952  28.801 
+&gt;&gt;  2 gapmind… afghan… 2022… csv     Asia    1957  30.332 
+&gt;&gt;  3 gapmind… afghan… 2022… csv     Asia    1962  31.997 
+&gt;&gt;  4 gapmind… afghan… 2022… csv     Asia    1967  34.02  
+&gt;&gt;  5 gapmind… afghan… 2022… csv     Asia    1972  36.088 
+&gt;&gt;  6 gapmind… afghan… 2022… csv     Asia    1977  38.438 
+&gt;&gt;  7 gapmind… afghan… 2022… csv     Asia    1982  39.854 
+&gt;&gt;  8 gapmind… afghan… 2022… csv     Asia    1987  40.822 
+&gt;&gt;  9 gapmind… afghan… 2022… csv     Asia    1992  41.674 
+&gt;&gt; 10 gapmind… afghan… 2022… csv     Asia    1997  41.763 
+&gt;&gt; # … with 14 more rows, 2 more variables: pop &lt;chr&gt;,
+&gt;&gt; #   gdpPercap &lt;chr&gt;, and abbreviated variable names
+&gt;&gt; #   ¹​file_type, ²​continent</code></pre>
+</div>
+<div id="finding-functions" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Finding Functions<a href="opening-the-data.html#finding-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>How would you know which function to use if I did not tell you?</p>
+<div id="google" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Google<a href="opening-the-data.html#google" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Google is a great search engine that most R programmers use when learning the R language. If we search “r capitalize first letter” we see, on 2022-10-25, the following paragraph as the first result:</p>
+<blockquote>
+<blockquote>
+<p>Convert First letter of every word to Uppercase in R Programming – str_to_title() Function. str_to_title() Function in R Language is used to convert the first letter of every word of a string to Uppercase and the rest of the letters are converted to lower case.</p>
+</blockquote>
+</blockquote>
+<p>The trick is to, within Google, always write <code>r</code> before a question or the desired command, like <code>how to capitalize first letter</code> or simply <code>capitalize first letter</code>.</p>
+<p>This is a simple example. Most of the time it can be difficult to write in English what you want. This will come with time and practice. At first you may find that the Google search results have nothing to do with what you need. That is a sign to re-word your search, or, if you’ve already re-worded your search, it may be a sign that there is no dedicated function for what you need, or that a different approach is needed. It’s rare that there will be no dedicated function so long as your goal is simple. You may find that it is effective to break down what you’re doing into simple steps, and then search for how to do <em>those</em> steps, as opposed to Googling something long and complicated, involving many steps.</p>
+</div>
+<div id="stack-overflow" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Stack Overflow<a href="opening-the-data.html#stack-overflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Speaking of breaking down something complicated so that a search engine like Google can understand it, this is also necessary for others to understand it. For learning R, allowing others to understand your challenge or need is valuable as the R community is not only willing, but also quickly able to help. R users mainly help each other through <a href="stackoverflow.com">Stack Overflow</a>. It is a website that easily allows users to ask or answer questions with code, have their code formatted (look nice), and receive feedback.</p>
+<p>The main draw of Stack Overflow is that the person asking the question has one main responsibility, and that is to produce what is called a minimally reproducible example: an example that can be used (reproduced) by someone else seeing the question, and that does not have unnecessary detail irrelevant to the question (minimal).</p>
+<p>Describe example</p>
+<p><a href="https://stackoverflow.com/questions/58996293/transforming-a-dataframe-by-multiplying-a-columns-elements-by-the-names-of-th">EXAMPLE HERE</a></p>
+<p>Knowing how to make an example is the majority of the work involved in asking a question on Stack Overflow.</p>
+<div id="creating-minimally-reproducible-examples" class="section level4 hasAnchor" number="4.2.2.1">
+<h4><span class="header-section-number">4.2.2.1</span> Creating Minimally Reproducible Examples<a href="opening-the-data.html#creating-minimally-reproducible-examples" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If your question involves data frames, you need to learn how to build a data frame before asking your question on Stack Overflow. To build a data frame, you can use the <code>tibble</code> function from package <code>tibble</code>.</p>
+<p>If you have 2 numeric columns, like in</p>
+<pre><code>&gt;&gt; # A tibble: 12 × 2
+&gt;&gt;    year  lifeExp
+&gt;&gt;    &lt;chr&gt; &lt;chr&gt;  
+&gt;&gt;  1 1952  28.801 
+&gt;&gt;  2 1957  30.332 
+&gt;&gt;  3 1962  31.997 
+&gt;&gt;  4 1967  34.02  
+&gt;&gt;  5 1972  36.088 
+&gt;&gt;  6 1977  38.438 
+&gt;&gt;  7 1952  68.75  
+&gt;&gt;  8 1957  69.96  
+&gt;&gt;  9 1962  71.3   
+&gt;&gt; 10 1967  72.13  
+&gt;&gt; 11 1972  72.88  
+&gt;&gt; 12 1977  74.21</code></pre>
+<p>then the first part of your minimal example might look this:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="opening-the-data.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>&gt;&gt; # A tibble: 4 × 2
+&gt;&gt;       x     y
+&gt;&gt;   &lt;dbl&gt; &lt;dbl&gt;
+&gt;&gt; 1     1     3
+&gt;&gt; 2     2     4
+&gt;&gt; 3     1     2
+&gt;&gt; 4     2     2</code></pre>
+<p>And if what you’re trying to achieve is</p>
+<pre><code>&gt;&gt; Warning in mean.default(lifeExp): argument is not
+&gt;&gt; numeric or logical: returning NA
+
+&gt;&gt; Warning in mean.default(lifeExp): argument is not
+&gt;&gt; numeric or logical: returning NA
+
+&gt;&gt; Warning in mean.default(lifeExp): argument is not
+&gt;&gt; numeric or logical: returning NA
+
+&gt;&gt; Warning in mean.default(lifeExp): argument is not
+&gt;&gt; numeric or logical: returning NA
+
+&gt;&gt; Warning in mean.default(lifeExp): argument is not
+&gt;&gt; numeric or logical: returning NA
+
+&gt;&gt; Warning in mean.default(lifeExp): argument is not
+&gt;&gt; numeric or logical: returning NA</code></pre>
+<pre><code>&gt;&gt; # A tibble: 6 × 2
+&gt;&gt;   year  mean_lifeExp
+&gt;&gt;   &lt;chr&gt;        &lt;dbl&gt;
+&gt;&gt; 1 1952            NA
+&gt;&gt; 2 1957            NA
+&gt;&gt; 3 1962            NA
+&gt;&gt; 4 1967            NA
+&gt;&gt; 5 1972            NA
+&gt;&gt; 6 1977            NA</code></pre>
+<p>then the second part of your minimal example might look like this:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="opening-the-data.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mean_y =</span> <span class="fu">c</span>(<span class="fl">2.5</span>, <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>&gt;&gt; # A tibble: 2 × 2
+&gt;&gt;       x mean_y
+&gt;&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+&gt;&gt; 1     1    2.5
+&gt;&gt; 2     2    2</code></pre>
+<p>To summarize, your entire question on Stack Overflow could look like this:</p>
+<pre><code>How can I transform the first tibble into the second tibble with a function?
+library(tibble)
+tibble(x = c(1, 2, 1, 2), y = c(3, 4, 2, 2))
+tibble(x = c(1, 2), mean_y = c(2.5, 2))</code></pre>
+<p>To make your question even better, you can format your code by using the <code>reprex</code> function from the reprex package. The curly brackets are needed to tell reprex that you have multiple lines of code.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="opening-the-data.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reprex)</span>
+<span id="cb66-2"><a href="opening-the-data.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reprex</span>(</span>
+<span id="cb66-3"><a href="opening-the-data.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb66-4"><a href="opening-the-data.html#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(tibble)</span>
+<span id="cb66-5"><a href="opening-the-data.html#cb66-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb66-6"><a href="opening-the-data.html#cb66-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mean_y =</span> <span class="fu">c</span>(<span class="fl">2.5</span>, <span class="dv">2</span>))</span>
+<span id="cb66-7"><a href="opening-the-data.html#cb66-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb66-8"><a href="opening-the-data.html#cb66-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>&gt;&gt; ℹ Non-interactive session, setting `html_preview =
+&gt;&gt; FALSE`.</code></pre>
+<pre><code>&gt;&gt; ℹ Rendering reprex...</code></pre>
+<pre><code>&gt;&gt; ✔ Reprex output is on the clipboard.</code></pre>
+<p>Finally your question looks friendly:</p>
+<pre><code>How can I transform the first tibble into the second tibble with a function?</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="opening-the-data.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb71-2"><a href="opening-the-data.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb71-3"><a href="opening-the-data.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 × 2</span></span>
+<span id="cb71-4"><a href="opening-the-data.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y</span></span>
+<span id="cb71-5"><a href="opening-the-data.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb71-6"><a href="opening-the-data.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3</span></span>
+<span id="cb71-7"><a href="opening-the-data.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4</span></span>
+<span id="cb71-8"><a href="opening-the-data.html#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     1     2</span></span>
+<span id="cb71-9"><a href="opening-the-data.html#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2     2</span></span>
+<span id="cb71-10"><a href="opening-the-data.html#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mean_y =</span> <span class="fu">c</span>(<span class="fl">2.5</span>, <span class="dv">2</span>))</span>
+<span id="cb71-11"><a href="opening-the-data.html#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 × 2</span></span>
+<span id="cb71-12"><a href="opening-the-data.html#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x mean_y</span></span>
+<span id="cb71-13"><a href="opening-the-data.html#cb71-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb71-14"><a href="opening-the-data.html#cb71-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1    2.5</span></span>
+<span id="cb71-15"><a href="opening-the-data.html#cb71-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2    2</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="finding-function-documentation-for-understanding-functions" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Finding Function Documentation for Understanding Functions<a href="opening-the-data.html#finding-function-documentation-for-understanding-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once you’ve found a function (or usually, a set of functions) recommended to you by Google’s search results, or by R users on Stack Overflow, it would be wise to understand how the function(s) work; specifically, the inputs and outputs.</p>
+<p>Both Google and Stack Overflow can be overwhelming. Google gives a variety of websites. Which do you choose? A question on Stack Overflow can receive multiple answers, with each using different approaches and functions. Again, which do you choose?</p>
+<p>Let’s start with Google then.</p>
+<div id="google-1" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Google<a href="opening-the-data.html#google-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Remember, after searching “r capitalize first letter” we saw the following paragraph as the first result:</p>
+<blockquote>
+<blockquote>
+<p>Convert First letter of every word to Uppercase in R Programming – str_to_title() Function. str_to_title() Function in R Language is used to convert the first letter of every word of a string to Uppercase and the rest of the letters are converted to lower case.</p>
+</blockquote>
+</blockquote>
+<p>This paragraph is from a website called <a href="https://www.geeksforgeeks.org/convert-first-letter-of-every-word-to-uppercase-in-r-programming-str_to_title-function">GeeksforGeeks</a></p>
+<p>I would not recommend to use this website. That is, after searching “r capitalize first letter” and seeing the the above paragraph, I would not recommend to visit the website to understand the function. And for multiple reasons.</p>
+<ol style="list-style-type: decimal">
+<li>You are not familiar with the format of the website.</li>
+<li>You will find yourself on multiple websites when you need to discover and learn about multiple functions.</li>
+<li>You will then have to navigate the formats of these websites.</li>
+<li>Many things can get in the way of reading the instructions, like pop-ups to sign up for the website’s email list, advertisements for completely unrelated products (everything you need to learn R is FREE), and recommended articles to distract you.</li>
+</ol>
+<p>It is more effective to use a single, standardized resource when learning about functions. Thankfully, R has a few.</p>
+<p>After reading the above paragraph and learning that the function we need may be <code>str_to_title()</code>, we can now Google search “r str_to_title” instead of “r capitalize first letter”. Again, Google shows multiple websites, but we are looking for one that is standardized. <a href="tidyverse.org">tidyverse.org</a> is one of those websites, so we click the result that has “tidyverse.org” in the website address This brings us to this page: <a href="https://stringr.tidyverse.org/reference/case.html">https://stringr.tidyverse.org/reference/case.html</a></p>
+<p>As standard, there are multiple sections to the webpage describing a function: <em>Usage</em>, <em>Arguments</em> and <em>Examples.</em> <em>Usage</em> shows the format of the inputs to the function. Any input with an <code>=</code> beside it has a default value. A default value usually indicates that most users will not need to change the value.</p>
+<p>The <em>Usage</em> <code>str_to_title(string, locale = "en")</code> tells us that</p>
+<ol style="list-style-type: decimal">
+<li><code>string</code> should be an object containing some string(s) or a string itself. It has no default value; we must provide one.</li>
+<li><code>locale</code> has the default value <code>"en"</code>.</li>
+</ol>
+<p>The <em>Arguments</em> tell us more about the inputs in case the <em>Usage</em> is not enough. When first learning R, <em>Arguments</em> can be overwhelming; you might quickly find yourself not understanding the words contained therein, and having to continuously look up definitions (or more function documentation) in order to understand.</p>
+</div>
+<div id="stack-overflow-1" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Stack Overflow<a href="opening-the-data.html#stack-overflow-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Another way of understanding functions is to be presented with answers from others on Stack Overflow. These answers don’t need to be answers to the questions you have posted on Stack Overflow; they can be answers to questions posted by others.</p>
+<p>For example, here is a question dated from 2019: <a href="https://stackoverflow.com/questions/58996293/transforming-a-dataframe-by-multiplying-a-columns-elements-by-the-names-of-th" class="uri">https://stackoverflow.com/questions/58996293/transforming-a-dataframe-by-multiplying-a-columns-elements-by-the-names-of-th</a></p>
+<p>There are three separate answers that have up votes (positive feedback represented by the digit on the top left of an answer): 1 using the <code>data.table</code> package; 1 using <code>base R</code> (R without packages); and 1 using <code>tidyr</code>.</p>
+<p>Notice how the answer using <code>tidyr</code> is far more simple; it is one line of code. This word <code>tidy</code> keeps popping up, and for good reason: the functions in this package and more broadly in the <code>tidyverse</code> (the tidy universe) are designed to make coding short and simple.</p>
+<p>It is possible to add comments to the answers on Stack Overflow, with further questions about the functions if there is something you don’t understand. Fortunately the tidyverse functions are well documented because of their standardized webpages, and because of multiple, free books on using them for specific tasks.</p>
+</div>
+<div id="books" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Books<a href="opening-the-data.html#books" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are many books describing tidyverse functions. Finding a good book is a strong alternative to using Google or Stack Overflow toward understanding functions. A book can hold your hand throughout each step and provide a narrative. It can also be designed toward a specific task, just as this one is designed toward getting you started as quickly and comfortably as possible.</p>
+<!-- ```{r} -->
+<!-- df %>% pull(year) %>% unique -->
+<!-- df$lifeExp[1] <- "blah" -->
+<!-- df %>% mutate(lifeExp = as.numeric(lifeExp)) -->
+<!-- # if the string contains letters, then as.numeric will turn these strings into missing values or in other words NAs -->
+<!-- df %>% filter(is.na(as.numeric(lifeExp))) -->
+<!-- ``` -->
+<!-- This code now looks a lot more complicated due to what are called special characters. Both [ and \\ are special characters: characters that mean something to your computer program more than the literal symbol itself. The square brackets surround the characters that str_split will use as separators. The \\\\ avoids the . from being treated as a special character; we want the literal . to be used as separator by str_split. (There are two \\ because a \\ is also a special character, and we want R to run \\.). -->
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="file-naming.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="understanding-tidyverse-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

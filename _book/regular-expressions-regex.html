@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 regular expressions (regex) | fRiendly Guide to Data/Rtism/R for Artists</title>
+  <meta name="description" content="This is a book on data analysis with a focus on readability for absolute beginners. This book is inspired by STAT545 by Jenny Bryan. The output format for this book is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 regular expressions (regex) | fRiendly Guide to Data/Rtism/R for Artists" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book on data analysis with a focus on readability for absolute beginners. This book is inspired by STAT545 by Jenny Bryan. The output format for this book is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 regular expressions (regex) | fRiendly Guide to Data/Rtism/R for Artists" />
+  
+  <meta name="twitter:description" content="This is a book on data analysis with a focus on readability for absolute beginners. This book is inspired by STAT545 by Jenny Bryan. The output format for this book is bookdown::gitbook." />
+  
+
+<meta name="author" content="Adam Sadowski" />
+
+
+<meta name="date" content="2022-03-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="understanding-tidyverse-functions.html"/>
+<link rel="next" href="removing-redundancy.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="writing-reports.html"><a href="writing-reports.html"><i class="fa fa-check"></i><b>2</b> Writing Reports</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="writing-reports.html"><a href="writing-reports.html#lines-and-lists"><i class="fa fa-check"></i><b>2.1</b> Lines and Lists</a></li>
+<li class="chapter" data-level="2.2" data-path="writing-reports.html"><a href="writing-reports.html#code"><i class="fa fa-check"></i><b>2.2</b> Code</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="writing-reports.html"><a href="writing-reports.html#declaring-with-single-back-ticks"><i class="fa fa-check"></i><b>2.2.1</b> Declaring With Single Back-Ticks</a></li>
+<li class="chapter" data-level="2.2.2" data-path="writing-reports.html"><a href="writing-reports.html#declaring-with-multiple-back-ticks"><i class="fa fa-check"></i><b>2.2.2</b> Declaring With Multiple Back-Ticks</a></li>
+<li class="chapter" data-level="2.2.3" data-path="writing-reports.html"><a href="writing-reports.html#summary"><i class="fa fa-check"></i><b>2.2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="writing-reports.html"><a href="writing-reports.html#errors"><i class="fa fa-check"></i><b>2.3</b> Errors</a></li>
+<li class="chapter" data-level="2.4" data-path="writing-reports.html"><a href="writing-reports.html#links"><i class="fa fa-check"></i><b>2.4</b> Links</a></li>
+<li class="chapter" data-level="2.5" data-path="writing-reports.html"><a href="writing-reports.html#keyboard-shortcuts"><i class="fa fa-check"></i><b>2.5</b> Keyboard Shortcuts</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="file-naming.html"><a href="file-naming.html"><i class="fa fa-check"></i><b>3</b> File Naming</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="file-naming.html"><a href="file-naming.html#consistency"><i class="fa fa-check"></i><b>3.1</b> Consistency</a></li>
+<li class="chapter" data-level="3.2" data-path="file-naming.html"><a href="file-naming.html#why-consistency-matters"><i class="fa fa-check"></i><b>3.2</b> Why Consistency Matters</a></li>
+<li class="chapter" data-level="3.3" data-path="file-naming.html"><a href="file-naming.html#finding-and-organizing-our-files"><i class="fa fa-check"></i><b>3.3</b> Finding and Organizing Our Files</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="file-naming.html"><a href="file-naming.html#reading-in-data"><i class="fa fa-check"></i><b>3.3.1</b> Reading in Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="opening-the-data.html"><a href="opening-the-data.html"><i class="fa fa-check"></i><b>4</b> Opening the Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="opening-the-data.html"><a href="opening-the-data.html#checking-data"><i class="fa fa-check"></i><b>4.1</b> Checking Data</a></li>
+<li class="chapter" data-level="4.2" data-path="opening-the-data.html"><a href="opening-the-data.html#finding-functions"><i class="fa fa-check"></i><b>4.2</b> Finding Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="opening-the-data.html"><a href="opening-the-data.html#google"><i class="fa fa-check"></i><b>4.2.1</b> Google</a></li>
+<li class="chapter" data-level="4.2.2" data-path="opening-the-data.html"><a href="opening-the-data.html#stack-overflow"><i class="fa fa-check"></i><b>4.2.2</b> Stack Overflow</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="opening-the-data.html"><a href="opening-the-data.html#finding-function-documentation-for-understanding-functions"><i class="fa fa-check"></i><b>4.3</b> Finding Function Documentation for Understanding Functions</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="opening-the-data.html"><a href="opening-the-data.html#google-1"><i class="fa fa-check"></i><b>4.3.1</b> Google</a></li>
+<li class="chapter" data-level="4.3.2" data-path="opening-the-data.html"><a href="opening-the-data.html#stack-overflow-1"><i class="fa fa-check"></i><b>4.3.2</b> Stack Overflow</a></li>
+<li class="chapter" data-level="4.3.3" data-path="opening-the-data.html"><a href="opening-the-data.html#books"><i class="fa fa-check"></i><b>4.3.3</b> Books</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html"><i class="fa fa-check"></i><b>5</b> Understanding Tidyverse Functions</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#mutate"><i class="fa fa-check"></i><b>5.1</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="5.2" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#pumping-with"><i class="fa fa-check"></i><b>5.2</b> Pumping with <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="5.3" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#grouping-with-group"><i class="fa fa-check"></i><b>5.3</b> Grouping with <code>group</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regular-expressions-regex.html"><a href="regular-expressions-regex.html"><i class="fa fa-check"></i><b>6</b> <code>regular expressions (regex)</code></a></li>
+<li class="chapter" data-level="7" data-path="removing-redundancy.html"><a href="removing-redundancy.html"><i class="fa fa-check"></i><b>7</b> Removing Redundancy</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">fRiendly Guide to Data/Rtism/R for Artists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regular-expressions-regex" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> <code>regular expressions (regex)</code></h1>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="understanding-tidyverse-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="removing-redundancy.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

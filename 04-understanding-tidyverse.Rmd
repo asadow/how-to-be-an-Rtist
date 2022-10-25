@@ -1,0 +1,90 @@
+# Understanding Tidyverse Functions
+
+```{r echo = FALSE}
+library(tidyverse)
+## CODE TO READ IN DF
+df <- read_rds(here::here("df.rds")) %>% unnest(data)
+```
+
+So far we used `mutate` from `dplyr`, `unnest` from `tidyr`, `read_csv` from `readr`, `map` from `purrr`, `as_tibble` from `tibble`, and `str_to_title` from `stringr`. Since we are using so many tidyverse packages, we may as well load the tidyverse if possible. Fortunately it is possible by running `library(tidyverse)`. After doing so, all tidyverse functions are now available to us.
+
+<!-- Even by looking around the tidyverse.org website, we can easily find more  functions. [https://www.tidyverse.org/packages/](https://www.tidyverse.org/packages/) describes the most useful packages. Reading the descriptions tell us the purpose of the packages. It is not important to know the names of these packages, but it is useful to understand what they each provide.  -->
+
+## `mutate`
+
+We already went over `mutate`. This function is used to both create new columns and overwrite existing columns. 
+
+We can overwrite an existing column like so:
+
+```{r}
+df <- mutate(df, year = as.numeric(year))
+```
+
+Having a numeric year is useful if, for example, we want to filter the data by years between 1960 and 1980. This is done with `filter`.
+
+```{r}
+df <- filter(df, 1960 < year & year < 1980)
+```
+
+## Pumping with `%>%`
+
+Notice that the examples in the function documentation for `mutate` ([https://dplyr.tidyverse.org/reference/mutate.html](https://dplyr.tidyverse.org/reference/mutate.html)) and `filter` use the symbol `%>%`.
+
+The `%>%` is very simple. It simply sends the left side to the right side. The other property to remember is that `%>%` holds mathematical priority before brackets and exponents. So if you know BEDMASS, then you also know BE`%>%`DMASS.
+
+
+```{r}
+sqrt(5) 
+```
+
+is the same as
+
+```{r}
+5 %>% sqrt
+```
+
+But
+
+```{r}
+5 * 5 %>% sqrt
+```
+
+is not the same as
+
+```{r}
+(5 * 5) %>% sqrt
+```
+
+For a more relevant example,
+
+```{r}
+df <- mutate(df, year = as.numeric(year))
+```
+
+is the same as
+
+```{r}
+df <- df %>% mutate(year = as.numeric(year))
+```
+
+which is the same as
+
+```{r}
+df <- df %>% mutate(year = year %>% as.numeric)
+```
+
+## Grouping with `group`
+
+Notice that the examples in the function documentation for `filter` ([https://dplyr.tidyverse.org/reference/filter.html](https://dplyr.tidyverse.org/reference/filter.html)) use the function `group_by`.
+
+`group_by` groups the data for the function(s) that follow `group_by`. 
+
+Let us create a simple example to demonstrate... (To be continued)
+
+<!-- ```{r} -->
+<!-- ## USE A VERY SIMPLE EXAMPLE -->
+<!-- # df %>% filter(lifeExp > mean(lifeExp)) -->
+<!-- #  -->
+<!-- # df %>% group_by(country) %>% filter(year > mean(year)) -->
+<!-- ``` -->
+

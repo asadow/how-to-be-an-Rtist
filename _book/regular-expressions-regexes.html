@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 regular expressions (regexes) | fRiendly Guide to Data/Rtism/R for Artists</title>
+  <meta name="description" content="This is a book on data analysis with a focus on readability for absolute beginners. This book is inspired by STAT545 by Jenny Bryan. The output format for this book is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 regular expressions (regexes) | fRiendly Guide to Data/Rtism/R for Artists" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book on data analysis with a focus on readability for absolute beginners. This book is inspired by STAT545 by Jenny Bryan. The output format for this book is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 regular expressions (regexes) | fRiendly Guide to Data/Rtism/R for Artists" />
+  
+  <meta name="twitter:description" content="This is a book on data analysis with a focus on readability for absolute beginners. This book is inspired by STAT545 by Jenny Bryan. The output format for this book is bookdown::gitbook." />
+  
+
+<meta name="author" content="Adam Sadowski" />
+
+
+<meta name="date" content="2022-03-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="understanding-tidyverse-functions.html"/>
+<link rel="next" href="avoiding-repetition.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="writing-reports.html"><a href="writing-reports.html"><i class="fa fa-check"></i><b>2</b> Writing Reports</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="writing-reports.html"><a href="writing-reports.html#lines-and-lists"><i class="fa fa-check"></i><b>2.1</b> Lines and Lists</a></li>
+<li class="chapter" data-level="2.2" data-path="writing-reports.html"><a href="writing-reports.html#code"><i class="fa fa-check"></i><b>2.2</b> Code</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="writing-reports.html"><a href="writing-reports.html#declaring-with-single-back-ticks"><i class="fa fa-check"></i><b>2.2.1</b> Declaring With Single Back-Ticks</a></li>
+<li class="chapter" data-level="2.2.2" data-path="writing-reports.html"><a href="writing-reports.html#declaring-with-multiple-back-ticks"><i class="fa fa-check"></i><b>2.2.2</b> Declaring With Multiple Back-Ticks</a></li>
+<li class="chapter" data-level="2.2.3" data-path="writing-reports.html"><a href="writing-reports.html#summary"><i class="fa fa-check"></i><b>2.2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="writing-reports.html"><a href="writing-reports.html#errors"><i class="fa fa-check"></i><b>2.3</b> Errors</a></li>
+<li class="chapter" data-level="2.4" data-path="writing-reports.html"><a href="writing-reports.html#links"><i class="fa fa-check"></i><b>2.4</b> Links</a></li>
+<li class="chapter" data-level="2.5" data-path="writing-reports.html"><a href="writing-reports.html#keyboard-shortcuts"><i class="fa fa-check"></i><b>2.5</b> Keyboard Shortcuts</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="file-naming.html"><a href="file-naming.html"><i class="fa fa-check"></i><b>3</b> File Naming</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="file-naming.html"><a href="file-naming.html#consistency"><i class="fa fa-check"></i><b>3.1</b> Consistency</a></li>
+<li class="chapter" data-level="3.2" data-path="file-naming.html"><a href="file-naming.html#why-consistency-matters"><i class="fa fa-check"></i><b>3.2</b> Why Consistency Matters</a></li>
+<li class="chapter" data-level="3.3" data-path="file-naming.html"><a href="file-naming.html#finding-and-organizing-our-files"><i class="fa fa-check"></i><b>3.3</b> Finding and Organizing Our Files</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="file-naming.html"><a href="file-naming.html#reading-in-data"><i class="fa fa-check"></i><b>3.3.1</b> Reading in Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="opening-the-data.html"><a href="opening-the-data.html"><i class="fa fa-check"></i><b>4</b> Opening the Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="opening-the-data.html"><a href="opening-the-data.html#checking-data"><i class="fa fa-check"></i><b>4.1</b> Checking Data</a></li>
+<li class="chapter" data-level="4.2" data-path="opening-the-data.html"><a href="opening-the-data.html#finding-functions"><i class="fa fa-check"></i><b>4.2</b> Finding Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="opening-the-data.html"><a href="opening-the-data.html#google"><i class="fa fa-check"></i><b>4.2.1</b> Google</a></li>
+<li class="chapter" data-level="4.2.2" data-path="opening-the-data.html"><a href="opening-the-data.html#stack-overflow"><i class="fa fa-check"></i><b>4.2.2</b> Stack Overflow</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="opening-the-data.html"><a href="opening-the-data.html#finding-function-documentation-for-understanding-functions"><i class="fa fa-check"></i><b>4.3</b> Finding Function Documentation for Understanding Functions</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="opening-the-data.html"><a href="opening-the-data.html#google-1"><i class="fa fa-check"></i><b>4.3.1</b> Google</a></li>
+<li class="chapter" data-level="4.3.2" data-path="opening-the-data.html"><a href="opening-the-data.html#stack-overflow-1"><i class="fa fa-check"></i><b>4.3.2</b> Stack Overflow</a></li>
+<li class="chapter" data-level="4.3.3" data-path="opening-the-data.html"><a href="opening-the-data.html#books"><i class="fa fa-check"></i><b>4.3.3</b> Books</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html"><i class="fa fa-check"></i><b>5</b> Understanding Tidyverse Functions</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#mutate"><i class="fa fa-check"></i><b>5.1</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="5.2" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#pumping-with"><i class="fa fa-check"></i><b>5.2</b> Pumping with <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="5.3" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#grouping-with-group"><i class="fa fa-check"></i><b>5.3</b> Grouping with <code>group</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regular-expressions-regexes.html"><a href="regular-expressions-regexes.html"><i class="fa fa-check"></i><b>6</b> <code>regular expressions (regexes)</code></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="regular-expressions-regexes.html"><a href="regular-expressions-regexes.html#motivation"><i class="fa fa-check"></i><b>6.1</b> Motivation</a></li>
+<li class="chapter" data-level="6.2" data-path="regular-expressions-regexes.html"><a href="regular-expressions-regexes.html#and-escapes"><i class="fa fa-check"></i><b>6.2</b> <code>\\</code> and Escapes</a></li>
+<li class="chapter" data-level="6.3" data-path="regular-expressions-regexes.html"><a href="regular-expressions-regexes.html#why-you-will-sometimes-see-in-a-pattern"><i class="fa fa-check"></i><b>6.3</b> Why You Will Sometimes See <code>\\\\</code> in a Pattern</a></li>
+<li class="chapter" data-level="6.4" data-path="regular-expressions-regexes.html"><a href="regular-expressions-regexes.html#aside"><i class="fa fa-check"></i><b>6.4</b> Aside</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="avoiding-repetition.html"><a href="avoiding-repetition.html"><i class="fa fa-check"></i><b>7</b> Avoiding Repetition</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">fRiendly Guide to Data/Rtism/R for Artists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regular-expressions-regexes" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> <code>regular expressions (regexes)</code></h1>
+<p>Short for regular expressions, regexes (pronounced reg-ex’s) are a language for describing patterns in strings.</p>
+<p>Like any language, regexes will appear foreign and difficult to understand without constantly looking up definitions for symbols. A good dictionary is the regex cheat sheet; search for “Regular Expressions” in <a href="https://www.rstudio.com/resources/cheatsheets/" class="uri">https://www.rstudio.com/resources/cheatsheets/</a>. The important definitions are in the left and bottom boxes.</p>
+<p>Why learn this language? When do you need a language for describing patterns in strings?</p>
+<div id="motivation" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Motivation</h2>
+<p>The first definition under heading “Character Classes” is</p>
+<pre><code>[[:digit:]] or \\d  Digits; [0-9]</code></pre>
+<p>This tells us that to represent digits in patterns, we can write <code>"[[:digit:]]"</code> or <code>"\\d"</code>.</p>
+<p>When do we need patterns? Let’s say we want to make sure each row in the <code>date</code> column of our <code>df</code> has exactly 8 digits: 4 for the year, 2 for the month and 2 for the day. We cannot write the 8 digits directly, we need to represent them abstractly; that is the responsibility of patterns.</p>
+<p>The pattern for digits is <code>"[[:digit:]]"</code> or <code>"\\d"</code>. Now we need a pattern for “8 times”. We also cannot simply write 8, as we want to avoid representing the character 8. We now look for the abstract pattern representing “times”: or, in other words, “occurences”. On the bottom right, this pattern will be under the grey heading “Quantifiers”.</p>
+<p>The 4th defintion is</p>
+<pre><code>{n}  Matches exactly n times</code></pre>
+<p>This tells us that to match 8 times, we can write <code>"{8}"</code>.</p>
+<p>Combining what we learned about digits, we now write a pattern for digits 8 times: <code>"\\d{8}"</code>.</p>
+<p>Before using this pattern, let us try to understand each symbol. The <code>\\</code> are needed to make sure that the pattern is not for the character “d” itself. Similarly, the <code>{</code> and <code>}</code> are needed to make sure that the pattern is not for the number “8” itself.</p>
+<p>If we try to use our pattern to filter for dates with 8 digits, we get the following</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="regular-expressions-regexes.html#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(date <span class="sc">%&gt;%</span> <span class="fu">str_detect</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{8}&quot;</span>))</span></code></pre></div>
+<pre><code>&gt;&gt; # A tibble: 0 × 5
+&gt;&gt; # … with 5 variables: source &lt;chr&gt;, country &lt;chr&gt;, date &lt;chr&gt;, file_type &lt;chr&gt;,
+&gt;&gt; #   data &lt;named list&gt;</code></pre>
+<p>0 rows in our date column have digits exactly 8 times. How can that be?</p>
+<p>Looking back at our date column, what do we see?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="regular-expressions-regexes.html#cb5-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>&gt;&gt; # A tibble: 3 × 5
+&gt;&gt;   source    country     date       file_type data                  
+&gt;&gt;   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;     &lt;named list&gt;          
+&gt;&gt; 1 gapminder afganistan  2022-02-21 csv       &lt;spec_tbl_df [0 × 5]&gt; 
+&gt;&gt; 2 gapminder afghanistan 2022-02-21 csv       &lt;spec_tbl_df [12 × 5]&gt;
+&gt;&gt; 3 gapminder canada      2022-02-21 csv       &lt;spec_tbl_df [12 × 5]&gt;</code></pre>
+<p><code>date</code> has 4 digits, followed by a <em>hyphen</em>, followed by 2 digits, followed by a <em>hyphen</em>, followed by 2 digits. Our pattern simply represents 8 digits, one after the other with nothing in between.</p>
+<p>If we alter our pattern to <code>"\\d{4}-\\d{2}-\\d{2}"</code>, we get the expected result:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="regular-expressions-regexes.html#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(date <span class="sc">%&gt;%</span> <span class="fu">str_detect</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-</span><span class="sc">\\</span><span class="st">d{2}-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>))</span></code></pre></div>
+<pre><code>&gt;&gt; # A tibble: 3 × 5
+&gt;&gt;   source    country     date       file_type data                  
+&gt;&gt;   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;     &lt;named list&gt;          
+&gt;&gt; 1 gapminder afganistan  2022-02-21 csv       &lt;spec_tbl_df [0 × 5]&gt; 
+&gt;&gt; 2 gapminder afghanistan 2022-02-21 csv       &lt;spec_tbl_df [12 × 5]&gt;
+&gt;&gt; 3 gapminder canada      2022-02-21 csv       &lt;spec_tbl_df [12 × 5]&gt;</code></pre>
+<p>Now we not only checked that each row in <code>date</code> has 8 digits, but that theses digits are separated by hyphens in a XXXX-XX-XX format.</p>
+<p>We still have not confirmed that the <code>date</code> column is in YYYY-MM-DD format (year-month-day format). This is unfortunately impossible for some cases. We cannot determine whether 02-04 is February 4nd or April 2nd unless we know whether the date was entered as MM-DD or DD-MM. Fortunately we can check cases where the day is greater than the 12th. We do so by checking whether the month in YYYY-MM-DD is between 01 and 12.</p>
+<p>To do so we will adjust our pattern slightly so that month becomes a reference. To make a reference in a pattern, we surround the part we want to reference with round brackets: <code>(</code> and <code>)</code>.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="regular-expressions-regexes.html#cb9-1" aria-hidden="true" tabindex="-1"></a>pattern <span class="ot">&lt;-</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-(</span><span class="sc">\\</span><span class="st">d{2})-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span></span></code></pre></div>
+<p>To extract the reference, we must refer to it by number. We need to use a number, as it is possible to have more than one reference group. Again we use <code>\\</code> to make sure the pattern is not for the number “1” itself.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="regular-expressions-regexes.html#cb10-1" aria-hidden="true" tabindex="-1"></a>replacement <span class="ot">&lt;-</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span></span></code></pre></div>
+<p>We now use our pattern and replacement in the function <code>str_replace</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="regular-expressions-regexes.html#cb11-1" aria-hidden="true" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="st">&quot;2022-13-01&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(pattern, replacement)</span>
+<span id="cb11-2"><a href="regular-expressions-regexes.html#cb11-2" aria-hidden="true" tabindex="-1"></a>month</span></code></pre></div>
+<pre><code>&gt;&gt; [1] &quot;13&quot;</code></pre>
+<p>We can treat this as numeric.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="regular-expressions-regexes.html#cb13-1" aria-hidden="true" tabindex="-1"></a>month <span class="sc">%&gt;%</span> as.numeric</span></code></pre></div>
+<pre><code>&gt;&gt; [1] 13</code></pre>
+<p>And then check whether it is above 12.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="regular-expressions-regexes.html#cb15-1" aria-hidden="true" tabindex="-1"></a>month <span class="sc">%&gt;%</span> as.numeric <span class="sc">&gt;</span> <span class="dv">12</span></span></code></pre></div>
+<pre><code>&gt;&gt; [1] TRUE</code></pre>
+<p>To do this for every row of our data frame, we will create a month column, treat it as numeric, and filter by values greater than 12:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="regular-expressions-regexes.html#cb17-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="regular-expressions-regexes.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-(</span><span class="sc">\\</span><span class="st">d{2})-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>) <span class="sc">%&gt;%</span> as.numeric)</span>
+<span id="cb17-3"><a href="regular-expressions-regexes.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="regular-expressions-regexes.html#cb17-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(month <span class="sc">&gt;</span> <span class="dv">12</span>)</span></code></pre></div>
+<pre><code>&gt;&gt; # A tibble: 0 × 6
+&gt;&gt; # … with 6 variables: source &lt;chr&gt;, country &lt;chr&gt;, date &lt;chr&gt;, file_type &lt;chr&gt;,
+&gt;&gt; #   data &lt;named list&gt;, month &lt;dbl&gt;</code></pre>
+<p>There are no rows where month is greater than 12. Notice how the <code>mutate</code> is on a separate line after the pump <code>%&gt;%</code>. This is so that the <code>mutate</code> can fit on one line as opposed to the less easily readable version below.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="regular-expressions-regexes.html#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-(</span><span class="sc">\\</span><span class="st">d{2})-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>) <span class="sc">%&gt;%</span> as.numeric)</span></code></pre></div>
+</div>
+<div id="and-escapes" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> <code>\\</code> and Escapes</h2>
+<p><code>\</code> is a “meta-character”; it has a symbolic meaning and a behaviour that is beyond (another word for meta) the literal contents of the character. From now on I will use these definitions:</p>
+<ol style="list-style-type: decimal">
+<li><code>\</code> is the meta-character slash</li>
+<li>\ is the literal slash</li>
+</ol>
+<p>R will read in data with a \ like “Adam \Sadowski” as <code>"Adam \\Sadowski"</code> because it needs to make sure the \ in “Adam \Sadowski” is literal rather than symbolic. We can see what happens when we try to print a version with only one <code>\</code>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="regular-expressions-regexes.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Adam \Sadowski&quot;</span></span></code></pre></div>
+<pre><code>&gt;&gt; Error: &#39;\S&#39; is an unrecognized escape in character string starting &quot;&quot;Adam \S&quot;</code></pre>
+<p>This error occurs because</p>
+<ol style="list-style-type: decimal">
+<li><p>We told R that we want <code>\S</code>, which is called an escape (specifically, an escaped S), rather than a literal \ followed by a literal S.</p></li>
+<li><p>An escaped S is not recognized.</p></li>
+</ol>
+<p>There are only a few escaped letters that will be recognized by R. The letters are n, r, t, v and f. For example</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="regular-expressions-regexes.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Adam </span><span class="sc">\n</span><span class="st">adowski&quot;</span></span></code></pre></div>
+<pre><code>&gt;&gt; [1] &quot;Adam \nadowski&quot;</code></pre>
+<p>prints just fine. Since <code>\n</code> represents a new line, the string here represents literally</p>
+<p>“Adam adowski”</p>
+<p>These escaped letters can be found in the Special Metacharacters section of the cheatsheet.</p>
+</div>
+<div id="why-you-will-sometimes-see-in-a-pattern" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Why You Will Sometimes See <code>\\\\</code> in a Pattern</h2>
+<p>\ in characters is written by R as <code>"\\"</code>. What happens if we want to use a pattern to represent and match <code>"\\"</code>? Since a pattern treats the input as literal, the pattern needs to match two literal \’s.
+To express one literal \, we need <code>\\</code>. To express another \, we need another <code>\\</code>. The final pattern is then <code>\\\\</code>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="regular-expressions-regexes.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">str_detect</span>(<span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>&gt;&gt; [1] TRUE</code></pre>
+</div>
+<div id="aside" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Aside</h2>
+<p>In the cheatsheet you may notice that the use of only one slash is reserved for Special Metacharacters like <code>\n</code> and <code>\t</code>, whereas two slashes are used for Character Classes and Anchors.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="understanding-tidyverse-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="avoiding-repetition.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

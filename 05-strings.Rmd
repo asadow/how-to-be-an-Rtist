@@ -1,0 +1,270 @@
+# Strings
+
+## Patterns and Regular Expressions (regexes)
+
+```{r echo = FALSE}
+library(tidyverse)
+## CODE TO READ IN DF
+df <- read_rds(here::here("df.rds"))
+```
+
+Short for regular expressions, regex (pronounced reg-ex) is a language for describing patterns in strings. 
+
+Like any language, regex will appear foreign and difficult to understand without constantly looking up definitions for symbols. A good dictionary is the regex cheat sheet; search for "Regular Expressions" in https://www.rstudio.com/resources/cheatsheets/. The important definitions are in the left and bottom boxes.
+
+Why learn this language? When do you need a language for describing patterns in strings?
+
+## Motivation
+
+The first definition under heading "Character Classes" is 
+
+    [[:digit:]] or \\d  Digits; [0-9]
+
+This tells us that to represent digits in patterns, we can write `"[[:digit:]]"` or `"\\d"`. 
+
+When do we need patterns? Let's say we want to make sure each row in the `date` column of our `df` has exactly 8 digits: 4 for the year, 2 for the month and 2 for the day. We cannot write the 8 digits directly, we need to represent them abstractly; that is the responsibility of patterns.
+
+The pattern for digits is `"[[:digit:]]"` or `"\\d"`. Now we need a pattern for "8 times". We also cannot simply write 8, as we want to avoid representing the character 8. We now look for the abstract pattern representing "times": or, in other words, "occurences". On the bottom right, this pattern will be under the grey heading "Quantifiers".
+
+The 4th defintion is 
+
+    {n}  Matches exactly n times
+
+This tells us that to match 8 times, we can write `"{8}"`.
+
+Combining what we learned about digits, we now write a pattern for digits 8 times: `"\\d{8}"`.
+
+Before using this pattern, let us try to understand each symbol. The `\\` are needed to make sure that the pattern is not for the character "d" itself. Similarly, the `{` and `}` are needed to make sure that the pattern is not for the number "8" itself.
+
+If we try to use our pattern to filter for dates with 8 digits, we get the following
+
+```{r}
+df %>% filter(date %>% str_detect("\\d{8}"))
+```
+
+0 rows in our date column have digits exactly 8 times. How can that be?
+
+Looking back at our date column, what do we see?
+
+```{r}
+df
+```
+
+`date` has 4 digits, followed by a _hyphen_, followed by 2 digits, followed by a _hyphen_, followed by 2 digits. Our pattern simply represents 8 digits, one after the other with nothing in between.
+
+If we alter our pattern to `"\\d{4}-\\d{2}-\\d{2}"`, we get the expected result:
+
+```{r}
+df %>% filter(date %>% str_detect("\\d{4}-\\d{2}-\\d{2}"))
+```
+Now we not only checked that each row in `date` has 8 digits, but that theses digits are separated by hyphens in a XXXX-XX-XX format.
+
+We still have not confirmed that the `date` column is in YYYY-MM-DD format (year-month-day format). This is unfortunately impossible for some cases. We cannot determine whether 02-04 is February 4nd or April 2nd unless we know whether the date was entered as MM-DD or DD-MM. Fortunately we can check cases where the day is greater than the 12th. We do so by checking whether the month in YYYY-MM-DD is between 01 and 12.
+
+To do so we will adjust our pattern slightly so that month becomes a reference. To make a reference in a pattern, we surround the part we want to reference with round brackets: `(` and `)`.
+
+```{r}
+pattern <- "\\d{4}-(\\d{2})-\\d{2}"
+```
+
+To extract the reference, we must refer to it by number. We need to use a number, as it is possible to have more than one reference group. Again we use `\\` to make sure the pattern is not for the number "1" itself.
+
+```{r}
+replacement <- "\\1"
+```
+
+We now use our pattern and replacement in the function `str_replace`:
+
+```{r}
+month <- "2022-13-01" %>% str_replace(pattern, replacement)
+month
+```
+We can treat this as numeric.
+
+```{r}
+month %>% as.numeric
+```
+
+And then check whether it is above 12.
+
+```{r}
+month %>% as.numeric > 12
+```
+
+To do this for every row of our data frame, we will create a month column, treat it as numeric, and filter by values greater than 12:
+
+
+```{r}
+
+df <- df %>% 
+  mutate(month = date %>% str_replace("\\d{4}-(\\d{2})-\\d{2}", "\\1") %>% as.numeric)
+
+df %>% filter(month > 12)
+
+```
+
+There are no rows where month is greater than 12. Notice how the `mutate` is on a separate line after the pump `%>%`. This is so that the `mutate` can fit on one line as opposed to the less easily readable version below.
+
+```{r}
+df <- df %>% mutate(month = date %>% str_replace("\\d{4}-(\\d{2})-\\d{2}", "\\1") %>% as.numeric)
+
+```
+
+
+## Understanding Representations
+
+If data contains characters like quotes and backslashes, R cannot directly represent them in a string. We can try to write each of these directly in a string and see what happens. 
+
+*Quotes:*
+
+```{r error = TRUE}
+"""
+```
+
+R reads the first two set of quotes `""` as an empty string, and considers the third set to be starting a second, incomplete string.
+
+*Backslash:*
+
+```{r error = TRUE}
+"\"
+```
+
+The backslash has a special behaviour, preventing the second `"` from ending the string.
+
+*Solution:*
+
+Since R cannot represent quotes and backslash directly, it must instead represent them indirectly with special sequences of characters. For quotes, the representative sequence in R is `\"`. For a backslash, the sequence is `\\`. 
+
+When we place these sequences in strings, the output is not an error.
+
+```{r}
+"\"" 
+```
+
+```{r}
+"\\"
+```
+
+Further, we can see what each sequence represents by using the function `writeLines`:
+
+```{r}
+"\"" %>% writeLines
+```
+
+```{r}
+"\\" %>% writeLines
+```
+
+Sequences `\"` and `\\` start with a backslash because a backslash has a specific behaviour: it prevents the normal interpretation of the next character. The backslash in the string`"\""` prevents the second quotes from being interpreted as the end of the string. As for the string `"\\"`, because of the first backslash the second backslash is not normally interpreted as "preventing the normal interpretation of the next character". Yes you will likely have to re-read that.
+
+`\"` and `\\` are called special characters. Special characters are called special because they hold a special property: they each represent *one* thing (a unique character that cannot be represented directly). `\"` represents quotes, and `\\` represents backslash. Scan the following list of special characters and what they represent.
+
+Special Characters | Represents 
+----------| ------
+\\n      |      newline
+\\r      |      carriage return
+\\t      |      tab
+\\b      |      backspace
+\\a      |      alert (bell)
+\\f      |      form feed
+\\v      |      vertical tab
+\\\      |      backslash \\
+\\'      |      ASCII apostrophe '
+\\"      |      ASCII quotation mark "
+\\\`     |      ASCII grave accent (backtick) `
+
+Notice how each has *one* backslash except for the case of `\\`. Again these special characters represent *one* thing. Representations of *multiple* things, however, have *multiple* backslashes (two to be exact). As an example, `\\d` represents multiple things because it represents any of the multiple digits from 0 to 9.
+
+`\\` is a strange case. It is the only special character representing *one* thing with *multiple* backslashes. It is an even stranger case when used inside a pattern. We get an error:
+
+
+```{r error = TRUE}
+pattern <- "\\"
+"\\" %>% str_detect("\\")
+```
+
+An error does not happen with any of the other special characters used in this way. The reason is that `\\` is already used in patterns like `\\d`. If the pattern to match the string `"\\"` was simply `"\\"`, representations like `\\d` would lose their meaning. For example, instead of matching digits, `\\d` would just match `\\` followed by a `d`. 
+
+To match the string `"\\"` we must use the pattern `"\\\\"`. To remember this, consider how R views four backslashes:
+
+```{r}
+"\\\\" %>% writeLines
+```
+
+
+
+<!-- `\d` is not a *string* escape sequence, but it is a *regex* (pattern-matching) escape sequence. For R to use `\d`, we need R to view a pattern string as `\d`. Since `\` is a metacharacter whose behaviour is to escape the behaviour of the next character, we can use `\` to escape itself. the behaviour of the `\` before the `d`. This prevents the error of a non-existent string escape sequence, `\\d` is essentially an escaped `\d` and R views `\\d` as `\d`: -->
+
+<!-- ```{r} -->
+<!-- pattern_string <- "\\d" -->
+
+<!-- pattern_string %>% writeLines -->
+
+<!-- "4" %>% str_detect(pattern_string) -->
+<!-- ``` -->
+
+<!-- Similarly with the reference group `\\1`, using `"\\1"` allows R's regex engine to see the escape sequence `\\1`. -->
+
+<!-- The pattern `\n` on the other hand, does not need two `\`. If we used two inside a pattern, R would see the escape sequence `\n`. -->
+
+<!-- R sees an escape sequence. With `\n`, R does not see an escape sequence. -->
+
+<!-- ```{r} -->
+<!-- "\n" %>% writeLines -->
+<!-- "\`" %>% writeLines -->
+<!-- "\\\n" %>% writeLines -->
+
+<!-- "\\ -->
+<!-- " -->
+<!-- "\\n" %>% writeLines -->
+
+<!-- "\\\n" %>% str_detect("\\\n") -->
+<!-- ``` -->
+
+<!-- This escape sequence represents a new line. Hence it will match a new line just like `\n`. -->
+
+<!-- With three slashes, R sees a slash and a new line. -->
+
+<!-- ```{r} -->
+<!-- "\\\n" %>% writeLines -->
+
+<!-- ``` -->
+
+
+
+
+
+
+
+
+
+
+<!-- From now on I will use these definitions: -->
+
+<!-- 1. `\` is the metacharacter slash -->
+<!-- 2. \\ is the literal slash -->
+
+<!-- If data contains a \\ like in the name "Adam \\Sadowski", R will represent it as `"Adam \\Sadowski"`. This is so that the \\ in "Adam \\Sadowski" is literal rather than symbolic. We can see what happens when we try to print a version with only one `\`: -->
+
+<!-- ```{r error = TRUE} -->
+<!-- "Adam \Sadowski" -->
+
+<!-- ``` -->
+
+<!-- This error occurs because  -->
+
+<!-- 1. We told R that we want `\S`, which is called an escape (specifically, an escaped S), rather than a literal \\ followed by a literal S.  -->
+
+<!-- 2. An escaped S is not recognized.  -->
+
+<!-- There are only a few escaped letters that will be recognized by R. The letters are n, r, t, v and f. For example -->
+
+<!-- ```{r} -->
+<!-- "Adam \nadowski" -->
+<!-- ``` -->
+
+<!-- prints just fine. Since `\n` represents a new line, the string here represents literally  -->
+
+<!-- "Adam \n adowski" -->
+
+<!-- These escaped letters can be found in the Special Metacharacters section of the cheatsheet. -->

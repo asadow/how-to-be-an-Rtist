@@ -1,0 +1,93 @@
+# Avoiding Repetition
+
+Let's say we need to read data in again, and we have named your files as per the chapter on File Naming. To summarize, the file names have phrases with words separated by -, and multiple phrases are separated by _.
+
+Instead of copy-pasting the same code we used the previous time, we can avoid this repetition with a function. We can create this function by assigning `function()` to an object, and entering the inputs inside the `()` like so:
+
+
+```{r}
+sum <- function(x, y) x + y
+sum(2, 2)
+```
+
+The inputs of a function should be the parts of the function that change over repeated use. Since we want to repeat the code to read in data, but without being repetitive, our function will only contain inputs that are not repetitive. What part of reading our data is not repetitive now that we want to repeat the task for a set of different files.
+
+For one, we can imagine that a new set of files might have a different number of phrases in the file names. So one input of our function can be `n_phrases`. Two, we can imagine that the phrases represent something different. Since we named them previously, let us call a second input of our function `names_phrases`. 
+
+Lastly, we need to name our function. The function name should reflect the main behaviour. If it is hard to identify the main behaviour, then it is probably best to split the function into multiple functions. Naming the functions appropriately is important for readability.
+
+Let us start by listing the behaviours of our function or functions:
+
+- Choose a file
+- Find the folder (directory) of this file
+- Find the names of the csv files in this folder
+- Get a matrix from splitting the phrases in each name
+- Name the columns and turn the matrix into a tibble
+- For each row representing a file, read its respective data into the tibble
+
+That is a lot for one name to represent. Hence it is more prudent to separate these behaviours into multiple functions.
+
+
+CONTINUE HERE
+
+
+
+
+
+
+
+
+
+
+
+Although we could place all the code needed to read in data inside our function and name the function `read_csv_in_df`, this is not a good idea. First, it is inconsistent with the popular function `read_csv`, which has more than two arguments, the first of which is a file path. 
+
+
+
+
+
+
+
+
+
+
+
+
+With only two arguments, our function has the form `function(n_phrases, names_phrases){code}`. The code it will execute is in curly brackets `{}`. Although curly brackets were not needed in `function(x, y) x + y`, it will be needed here as the code will have multiple lines.
+
+
+
+Although we could place all the code needed to read in data inside and name the function `read_csv_in_df`, then we would be acting without much care. 
+
+```{r}
+read_csv_in_df <- function(n_phrases, names_phrases){
+
+  one_file_path <- file.choose()
+  directory_path <- one_file_path %>% path_dir
+  file_names <- directory_path %>% list.files(pattern = "csv")
+  file_paths <- directory_path %>% dir_ls
+
+  split_matrix <- file_names %>% str_split_fixed("[._]", n_phrases)
+  colnames(split_matrix) <- names_phrases
+
+  df <- split_matrix %>%
+    as_tibble %>%
+    mutate(data = map(file_paths, read_csv))
+
+  df
+
+}
+```
+
+```{r}
+# read_csv_in_df
+```
+
+
+```{r}
+
+# read_csv_in_df(4, c("source", "country", "date" ,"file_type"))
+
+```
+
+

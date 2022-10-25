@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 File Naming | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</title>
+  <meta name="description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 File Naming | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/images/bob-ross.jpg" />
+  <meta property="og:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="github-repo" content="asadow/how-to-be-an-Rtist" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 File Naming | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  
+  <meta name="twitter:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="twitter:image" content="/images/bob-ross.jpg" />
+
+<meta name="author" content="Adam Sadowski" />
+
+
+<meta name="date" content="2022-10-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="writing-reports.html"/>
+<link rel="next" href="opening-the-data.html"/>
+<script src="libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html#preface" id="toc-preface"><span class="toc-section-number">1</span> Preface<span></span></a></li>
+<li><a href="writing-reports.html#writing-reports" id="toc-writing-reports"><span class="toc-section-number">2</span> Writing Reports<span></span></a>
+<ul>
+<li><a href="writing-reports.html#lines-and-lists" id="toc-lines-and-lists"><span class="toc-section-number">2.1</span> Lines and Lists<span></span></a></li>
+<li><a href="writing-reports.html#code" id="toc-code"><span class="toc-section-number">2.2</span> Code<span></span></a>
+<ul>
+<li><a href="writing-reports.html#declaring-with-single-back-ticks" id="toc-declaring-with-single-back-ticks"><span class="toc-section-number">2.2.1</span> Declaring With Single Back-Ticks<span></span></a></li>
+<li><a href="writing-reports.html#declaring-with-multiple-back-ticks" id="toc-declaring-with-multiple-back-ticks"><span class="toc-section-number">2.2.2</span> Declaring With Multiple Back-Ticks<span></span></a></li>
+<li><a href="writing-reports.html#summary" id="toc-summary"><span class="toc-section-number">2.2.3</span> Summary<span></span></a></li>
+</ul></li>
+<li><a href="writing-reports.html#errors" id="toc-errors"><span class="toc-section-number">2.3</span> Errors<span></span></a></li>
+<li><a href="writing-reports.html#links" id="toc-links"><span class="toc-section-number">2.4</span> Links<span></span></a></li>
+<li><a href="writing-reports.html#keyboard-shortcuts" id="toc-keyboard-shortcuts"><span class="toc-section-number">2.5</span> Keyboard Shortcuts<span></span></a></li>
+</ul></li>
+<li><a href="file-naming.html#file-naming" id="toc-file-naming"><span class="toc-section-number">3</span> File Naming<span></span></a>
+<ul>
+<li><a href="file-naming.html#consistency" id="toc-consistency"><span class="toc-section-number">3.1</span> Consistency<span></span></a></li>
+<li><a href="file-naming.html#why-consistency-matters" id="toc-why-consistency-matters"><span class="toc-section-number">3.2</span> Why Consistency Matters<span></span></a></li>
+<li><a href="file-naming.html#finding-and-organizing-our-files" id="toc-finding-and-organizing-our-files"><span class="toc-section-number">3.3</span> Finding and Organizing Our Files<span></span></a>
+<ul>
+<li><a href="file-naming.html#reading-in-data" id="toc-reading-in-data"><span class="toc-section-number">3.3.1</span> Reading in Data<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="opening-the-data.html#opening-the-data" id="toc-opening-the-data"><span class="toc-section-number">4</span> Opening the Data<span></span></a>
+<ul>
+<li><a href="opening-the-data.html#checking-data" id="toc-checking-data"><span class="toc-section-number">4.1</span> Checking Data<span></span></a></li>
+<li><a href="opening-the-data.html#finding-functions" id="toc-finding-functions"><span class="toc-section-number">4.2</span> Finding Functions<span></span></a>
+<ul>
+<li><a href="opening-the-data.html#google" id="toc-google"><span class="toc-section-number">4.2.1</span> Google<span></span></a></li>
+<li><a href="opening-the-data.html#stack-overflow" id="toc-stack-overflow"><span class="toc-section-number">4.2.2</span> Stack Overflow<span></span></a></li>
+</ul></li>
+<li><a href="opening-the-data.html#finding-function-documentation-for-understanding-functions" id="toc-finding-function-documentation-for-understanding-functions"><span class="toc-section-number">4.3</span> Finding Function Documentation for Understanding Functions<span></span></a>
+<ul>
+<li><a href="opening-the-data.html#google-1" id="toc-google-1"><span class="toc-section-number">4.3.1</span> Google<span></span></a></li>
+<li><a href="opening-the-data.html#stack-overflow-1" id="toc-stack-overflow-1"><span class="toc-section-number">4.3.2</span> Stack Overflow<span></span></a></li>
+<li><a href="opening-the-data.html#books" id="toc-books"><span class="toc-section-number">4.3.3</span> Books<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="understanding-tidyverse-functions.html#understanding-tidyverse-functions" id="toc-understanding-tidyverse-functions"><span class="toc-section-number">5</span> Understanding Tidyverse Functions<span></span></a>
+<ul>
+<li><a href="understanding-tidyverse-functions.html#mutate" id="toc-mutate"><span class="toc-section-number">5.1</span> <code>mutate</code><span></span></a></li>
+<li><a href="understanding-tidyverse-functions.html#pumping-with" id="toc-pumping-with"><span class="toc-section-number">5.2</span> Pumping with <code>%&gt;%</code><span></span></a></li>
+<li><a href="understanding-tidyverse-functions.html#grouping-with-group" id="toc-grouping-with-group"><span class="toc-section-number">5.3</span> Grouping with <code>group</code><span></span></a></li>
+</ul></li>
+<li><a href="strings.html#strings" id="toc-strings"><span class="toc-section-number">6</span> Strings<span></span></a>
+<ul>
+<li><a href="strings.html#patterns-and-regular-expressions-regexes" id="toc-patterns-and-regular-expressions-regexes"><span class="toc-section-number">6.1</span> Patterns and Regular Expressions (regexes)<span></span></a></li>
+<li><a href="strings.html#motivation" id="toc-motivation"><span class="toc-section-number">6.2</span> Motivation<span></span></a></li>
+<li><a href="strings.html#understanding-representations" id="toc-understanding-representations"><span class="toc-section-number">6.3</span> Understanding Representations<span></span></a></li>
+</ul></li>
+<li><a href="avoiding-repetition.html#avoiding-repetition" id="toc-avoiding-repetition"><span class="toc-section-number">7</span> Avoiding Repetition<span></span></a></li>
+<li><a href="next-steps-for-this-guide.html#next-steps-for-this-guide" id="toc-next-steps-for-this-guide"><span class="toc-section-number">8</span> Next Steps for This Guide<span></span></a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="file-naming" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> File Naming<a href="file-naming.html#file-naming" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Now that we have covered how to write lines, we can start writing lines about the data! Actually there is one more small subject to discuss before we do that. In the Preface I said,</p>
+<blockquote>
+<blockquote>
+<p>“Messy files require more messy code which then can lead to more errors.”</p>
+</blockquote>
+</blockquote>
+<p>Let’s do our best to make sure any files we have are not messy.</p>
+<p><sub><em>Please note that the below information is useful even if you only have one file of data. At some point, you will have multiple files, and you may want them all organized in the same folder. Data can always be updated, at which time you may have the original file as well as the new file with updated data.</em></sub></p>
+<p><strong>Definitions:</strong></p>
+<ol style="list-style-type: decimal">
+<li><code>_</code> is called underscore.</li>
+<li><code>-</code> is called dash.</li>
+</ol>
+<div id="consistency" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Consistency<a href="file-naming.html#consistency" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Use <code>_</code> as a separator, that is, to separate different characteristics of the file. Use <code>-</code> to separate parts within characteristics. For example,</p>
+<pre><code>lesson-1_on-rmd_2022-02-18.rmd</code></pre>
+<p>If you have related files that you want to systematically process, then be systematic with the order of characteristics. For example,</p>
+<pre><code>lesson-1_on-rmd_2022-02-18.rmd
+lesson-2_on-rmd_2022-02-19.rmd
+lesson-3_on-rmd_2022-02-20.rmd
+lesson-1_on-python_2022-02-20.rmd</code></pre>
+<p>Consider how these files will look when ordered alphabetically in your operating system’s file manager (File Explorer on Window’s or Finder on Mac) if that is important to you. The above files will be ordered like so:</p>
+<pre><code>lesson-1_on-rmd_2022-02-18.rmd
+lesson-1_on-ruby_2022-02-20.rmd
+lesson-2_on-rmd_2022-02-19.rmd
+lesson-3_on-rmd_2022-02-20.rmd</code></pre>
+<p>If the order of characteristics start with the most general, then the alphabetic ordering will be more appropriate:</p>
+<pre><code>on-rmd_lesson-1_2022-02-18.rmd
+on-rmd_lesson-2_2022-02-19.rmd
+on-rmd_lesson-3_2022-02-20.rmd
+on-ruby_lesson-1_2022-02-20.rmd</code></pre>
+</div>
+<div id="why-consistency-matters" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Why Consistency Matters<a href="file-naming.html#why-consistency-matters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consistency helps you visually process the files you see on your file explorer. It also helps when telling your computer how to process the files. We named the files using separators so that numeric information can be represented. That is, the phrase before the first <code>_</code> is the first characteristic, the phrase before the second <code>_</code> is the second characteristic and so on.</p>
+<p>To process the file names in a way that splits these characteristics, we can use a function <code>str_split</code> from an R package called stringr. File names are strings. Strings are character elements that cannot directly be treated numerically (they need to be converted into numeric elements first for that).</p>
+<p>To use a function from a package, we first install the package by running</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="file-naming.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span></code></pre></div>
+<p>Delete this line once you are done, as you will have no need to rerun (re-process) it.</p>
+<p>We use a colon (the symbol <code>:</code>) twice to use a function from a package. If you write</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="file-naming.html#cb23-1" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span></span></code></pre></div>
+<p>you will see a drop-down menu of all the functions from stringr. <code>str</code> stands for string. Many function names start with <code>str_</code>. The drop-down menu from writing <code>stringr::</code> adjusts when you add <code>str_</code>. For every function whose name starts with <code>str_</code>, the general purpose is the processing of strings. Similar to our file names above, the general part of the name comes first, then the <code>_</code>, and then the more specific purpose.</p>
+<p>There are a few exceptions; some functions in stringr do not start with <code>str_</code>. But most start with <code>str_</code> because <code>str_</code> makes it clear what the function will process. This is important as we can avoid the need to write out <code>stringr::</code>. We avoid this by <em>loading the package</em>: making the function names in the package available. To load the package, run the following</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="file-naming.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
+<p>Now when we only write <code>str_</code>, we still get a drop-down menu.</p>
+</div>
+<div id="finding-and-organizing-our-files" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Finding and Organizing Our Files<a href="file-naming.html#finding-and-organizing-our-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To use an <code>str_</code> function, we need some strings. Let’s get our consistent file names into R. We will use a function called <code>file.choose</code>. This function causes a pop-up that allows you to interactively search your computer files. If you are using Windows, this pop-up may unfortunately pop-up behind RStudio. You will need to Alt-Tab to find the pop-up. Once you see the pop-up, find the folder with your files and double click on (any) one of the files. The function will print the file path (the computer’s representation of where the file exists). Below we assign the file path to the object <code>file_path</code>.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="file-naming.html#cb25-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="fu">file.choose</span>()</span></code></pre></div>
+<p>We will now use a function <code>path_dir</code> from the package fs. <code>path_dir</code> will get the path of the directory from the file path. We will assign the result to the object <code>directory_path</code>.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="file-naming.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fs)</span>
+<span id="cb26-2"><a href="file-naming.html#cb26-2" aria-hidden="true" tabindex="-1"></a>directory_path <span class="ot">&lt;-</span> <span class="fu">path_dir</span>(file_path)</span></code></pre></div>
+<p>To get a list of .csv files in this directory, we will use a <code>list.files</code> function. This function has what are called two arguments. The first is the path to the folder that contains our files. The second is the pattern that is unique to the files we want.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="file-naming.html#cb27-1" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(directory_path, <span class="at">pattern =</span> <span class="st">&quot;csv&quot;</span>)</span>
+<span id="cb27-2"><a href="file-naming.html#cb27-2" aria-hidden="true" tabindex="-1"></a>files</span></code></pre></div>
+<pre><code>&gt;&gt; [1] &quot;gapminder_afganistan_2022-02-21.csv&quot; 
+&gt;&gt; [2] &quot;gapminder_afghanistan_2022-02-21.csv&quot;
+&gt;&gt; [3] &quot;gapminder_canada_2022-02-21.csv&quot;</code></pre>
+<p>Now we use <code>str_split</code> which will split our strings. For example,</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="file-naming.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(files, <span class="st">&quot;_&quot;</span>)</span></code></pre></div>
+<pre><code>&gt;&gt; [[1]]
+&gt;&gt; [1] &quot;gapminder&quot;      &quot;afganistan&quot;     &quot;2022-02-21.csv&quot;
+&gt;&gt; 
+&gt;&gt; [[2]]
+&gt;&gt; [1] &quot;gapminder&quot;      &quot;afghanistan&quot;    &quot;2022-02-21.csv&quot;
+&gt;&gt; 
+&gt;&gt; [[3]]
+&gt;&gt; [1] &quot;gapminder&quot;      &quot;canada&quot;         &quot;2022-02-21.csv&quot;</code></pre>
+<p>This result is what is called a list. A list can contain anything. The [[1]] and [[2]] represent the first and second element of the list. The [1] indicates that the element to its very right is the first element.</p>
+<p>To also separate the file type (.rmd) at the end, preceded by the period, we can adjust our function to separate by <code>_</code> as well as <code>.</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="file-naming.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(files, <span class="st">&quot;_.&quot;</span>)</span></code></pre></div>
+<pre><code>&gt;&gt; [[1]]
+&gt;&gt; [1] &quot;gapminder&quot;     &quot;fganistan&quot;     &quot;022-02-21.csv&quot;
+&gt;&gt; 
+&gt;&gt; [[2]]
+&gt;&gt; [1] &quot;gapminder&quot;     &quot;fghanistan&quot;    &quot;022-02-21.csv&quot;
+&gt;&gt; 
+&gt;&gt; [[3]]
+&gt;&gt; [1] &quot;gapminder&quot;     &quot;anada&quot;         &quot;022-02-21.csv&quot;</code></pre>
+<p>What happened? This is not what we want, and it is because <code>.</code> is a special (i.e. meta) character. Special characters mean more to R than the literal symbol itself. The special character <code>.</code> represents any character. Hence we told <code>str_split</code> to use <code>_.</code> as a separator which meant that <code>_A</code> was used as the first separator, and <code>_2</code> as the second separator. We need to use different special characters to overcome this challenge: <code>[</code> and <code>]</code>. These square brackets can be used to surround the distinct characters that <code>str_split</code> will use as separators: <code>[_.]</code> will tell <code>str_split</code> to use either a <code>_</code> or a literal <code>.</code> as the separator.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="file-naming.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(files, <span class="st">&quot;[_.]&quot;</span>)</span></code></pre></div>
+<pre><code>&gt;&gt; [[1]]
+&gt;&gt; [1] &quot;gapminder&quot;  &quot;afganistan&quot; &quot;2022-02-21&quot; &quot;csv&quot;       
+&gt;&gt; 
+&gt;&gt; [[2]]
+&gt;&gt; [1] &quot;gapminder&quot;   &quot;afghanistan&quot; &quot;2022-02-21&quot; 
+&gt;&gt; [4] &quot;csv&quot;        
+&gt;&gt; 
+&gt;&gt; [[3]]
+&gt;&gt; [1] &quot;gapminder&quot;  &quot;canada&quot;     &quot;2022-02-21&quot; &quot;csv&quot;</code></pre>
+<p>We can have a cleaner result using <code>str_split_fixed</code>. It is called “fixed” as we can fix the number of splits or pieces. We will split our strings into 4 pieces.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="file-naming.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split_fixed</span>(files, <span class="st">&quot;[_.]&quot;</span>, <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>&gt;&gt;      [,1]        [,2]          [,3]         [,4] 
+&gt;&gt; [1,] &quot;gapminder&quot; &quot;afganistan&quot;  &quot;2022-02-21&quot; &quot;csv&quot;
+&gt;&gt; [2,] &quot;gapminder&quot; &quot;afghanistan&quot; &quot;2022-02-21&quot; &quot;csv&quot;
+&gt;&gt; [3,] &quot;gapminder&quot; &quot;canada&quot;      &quot;2022-02-21&quot; &quot;csv&quot;</code></pre>
+<p>This result is what is called a matrix. Let’s assign it to the object m.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="file-naming.html#cb37-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">str_split_fixed</span>(files, <span class="st">&quot;[_.]&quot;</span>, <span class="dv">4</span>)</span></code></pre></div>
+<p>Now we can see the matrix just by processing</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="file-naming.html#cb38-1" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div>
+<pre><code>&gt;&gt;      [,1]        [,2]          [,3]         [,4] 
+&gt;&gt; [1,] &quot;gapminder&quot; &quot;afganistan&quot;  &quot;2022-02-21&quot; &quot;csv&quot;
+&gt;&gt; [2,] &quot;gapminder&quot; &quot;afghanistan&quot; &quot;2022-02-21&quot; &quot;csv&quot;
+&gt;&gt; [3,] &quot;gapminder&quot; &quot;canada&quot;      &quot;2022-02-21&quot; &quot;csv&quot;</code></pre>
+<p>Let’s add informative names to the columns of the matrix. To do this, we use a function called <code>colnames</code>. This function will be placed on the left of <code>&lt;-</code> as it is a replacement function. We replace the null (i.e. undefined) column names of our matrix with our list of characteristics.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="file-naming.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(m) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;source&quot;</span>, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;file_type&quot;</span>)</span>
+<span id="cb40-2"><a href="file-naming.html#cb40-2" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div>
+<pre><code>&gt;&gt;      source      country       date         file_type
+&gt;&gt; [1,] &quot;gapminder&quot; &quot;afganistan&quot;  &quot;2022-02-21&quot; &quot;csv&quot;    
+&gt;&gt; [2,] &quot;gapminder&quot; &quot;afghanistan&quot; &quot;2022-02-21&quot; &quot;csv&quot;    
+&gt;&gt; [3,] &quot;gapminder&quot; &quot;canada&quot;      &quot;2022-02-21&quot; &quot;csv&quot;</code></pre>
+<p>Let’s create an object named df with a function called <code>as_tibble</code> from the package <code>tibble</code>. What is a tibble? It is an R word for table. Remember to install tibble before running</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="file-naming.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb42-2"><a href="file-naming.html#cb42-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(m)</span>
+<span id="cb42-3"><a href="file-naming.html#cb42-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>&gt;&gt; # A tibble: 3 × 4
+&gt;&gt;   source    country     date       file_type
+&gt;&gt;   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;    
+&gt;&gt; 1 gapminder afganistan  2022-02-21 csv      
+&gt;&gt; 2 gapminder afghanistan 2022-02-21 csv      
+&gt;&gt; 3 gapminder canada      2022-02-21 csv</code></pre>
+<!-- Let's add a column called `file_path` that is a combination of our directory path, a forward slash (the symbol `\`), and the original strings (the object `files`). We create this combination using a function called `glue` from the package `glue`. Inside `glue`'s quotation marks, objects can be referenced when placed inside curly brackets like so `{object_name}`. -->
+<!-- ```{r glue} -->
+<!-- library(glue) -->
+<!-- file_paths <- glue("{directory_path}/{files}") -->
+<!-- file_paths -->
+<!-- ``` -->
+<p>We now need the file path for each of our files. To list the files in our directory, use the function <code>dir_ls</code>. Assign the result to object <code>file_path</code>.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="file-naming.html#cb44-1" aria-hidden="true" tabindex="-1"></a>file_paths <span class="ot">&lt;-</span> <span class="fu">dir_ls</span>(directory_path)</span></code></pre></div>
+<p>We will now change our tibble so that there is a new column called <code>file_path</code> that contains our <code>file_paths</code>. To do this, we will use a function from the package <code>dplyr</code> (pronounced “data plier”). The function we will use is named after another word for change: <code>mutate</code>. This function has two arguments. The first is the tibble. The second is the name of the new column, an equal sign, and the values we want in that column.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="file-naming.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb45-2"><a href="file-naming.html#cb45-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">file_path =</span> file_paths)</span></code></pre></div>
+<div id="reading-in-data" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Reading in Data<a href="file-naming.html#reading-in-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can read in the data related to each file with the help of the <code>file_path</code> column. Not only that, we can read in the data so that it is organized inside our tibble. In each row of our tibble, we will add each file’s data hidden in a little box or “nest”. These nests will go under a column called <code>data</code>.</p>
+<p>To change our tibble so that there is a new column, we will again use <code>mutate</code>. The first argument is the tibble, just like above. The second is the name of the new column (<code>data</code>), an equal sign, and the values we want in that column.</p>
+<p>Since the values in this column will be data sets, we need to put these data sets in containers. Where we see <code>"csv"</code> 3 times under <code>file_type</code> in our tibble, we will see <code>"&lt;S3: spec_tbl_df&gt;"</code> 3 times under <code>data</code>. The <code>&lt;</code> and <code>&gt;</code> mean container. The <code>S3: spec_tbl_df</code> means data frame (another word for data set).</p>
+<p>We need to use a special function inside <code>mutate</code> when creating our <code>data</code> column so that the values of the <code>data</code> column are containers. This special function is called <code>map</code> from the package <code>purrr</code>. <code>purrr</code> is pronounced like a cat’s purr (the low vibrating sound of happiness) and it refers to purposeful programming with R.</p>
+<p>The result of <code>map</code> will always be containers. The number of containers will always be the same as the length of the first argument to <code>map</code>. The second argument of <code>map</code> is the function that will be applied to the first argument. To create the <code>data</code> column, the first argument will be the <code>file_path</code>, and the second argument will be a custom read function.</p>
+<p>The read function below <code>read_csv_c</code> uses a function called <code>read_csv</code> from the package <code>readr</code>. <code>read_csv</code> reads .csv files and determines what kind of columns are in the data (e.g. numeric or character). We will decide the kind of columns ourselves, so we need to prevent the function from doing so. <code>col_types</code> is the argument inside of <code>read_csv</code> with a <code>.default</code>. We need to set the <code>.default</code> to be <code>"c"</code>. <code>"c"</code> stands for character. Character is a safe default as it is the original format of the .csv data.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="file-naming.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb46-2"><a href="file-naming.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="file-naming.html#cb46-3" aria-hidden="true" tabindex="-1"></a>read_csv_c <span class="ot">&lt;-</span> <span class="cf">function</span>(csv_file_path) <span class="fu">read_csv</span>(csv_file_path, <span class="at">col_types =</span> <span class="fu">c</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>))</span></code></pre></div>
+<p>Now we use our new function to read in our data.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="file-naming.html#cb47-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">data =</span> <span class="fu">map</span>(file_path, read_csv_c))</span>
+<span id="cb47-2"><a href="file-naming.html#cb47-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>&gt;&gt; # A tibble: 3 × 6
+&gt;&gt;   source country date  file_…¹ file_path  data         
+&gt;&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;fs::path&gt; &lt;named list&gt; 
+&gt;&gt; 1 gapmi… afgani… 2022… csv     …02-21.csv &lt;spec_tbl_df&gt;
+&gt;&gt; 2 gapmi… afghan… 2022… csv     …02-21.csv &lt;spec_tbl_df&gt;
+&gt;&gt; 3 gapmi… canada  2022… csv     …02-21.csv &lt;spec_tbl_df&gt;
+&gt;&gt; # … with abbreviated variable name ¹​file_type</code></pre>
+<p>We no longer need the <code>file_path</code> column so we will select it to be removed by using the <code>select</code> function.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="file-naming.html#cb49-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">select</span>(df, <span class="sc">-</span> file_path)</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="writing-reports.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="opening-the-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+# Opening the Data
+
+We can open our containers or "nests" in `data` using the function `unnest` from the package `tidyr`.
+
+```{r echo = FALSE}
+library(tidyverse)
+## CODE TO READ IN DF
+df <- read_rds(here::here("df.rds"))
+```
+
+```{r unnest-data}
+library(tidyr)
+df <- unnest(df, data)
+df
+```
+
+This data looks clean but looks can be deceiving. Remember that we set the `df` object to be `as_tibble`? A tibble is not only a table in R, but a cleaner kind of table. It shows only 10 rows, and as many columns that can comfortably be displayed. The sizing of the table surrounds the data, like the header (top line) `# A tibble: 24 x 9` tells you how many rows (24) and columns (9) there are. The footer (bottom line) `# ... with 14 more rows and 6 more variables` tells you what is missing from the display.
+
+Even though this data is small (24 rows by 9 columns can be evaluated using our eyes), it is always best to practice techniques that are generalizable to both small and large data.
+
+## Checking Data
+
+The simplest way to start evaluating data is to check that the values under each column meet expectations. Since we created the first 4 columns using our file names, we can be sure that these 4 columns are clean. 
+
+For the next column, `continent`, we expect values to be continents, capitalized, and spelled correctly. Instead of reading each line with our eyes, we can read each line with our computers. Or a combination of the two. That is exactly how we will start. We will check all unique (i.e. distinct) values under the continent column using `distinct`. It produces a tibble with only the distinct rows for the column(s) you choose.
+
+```{r}
+distinct(df, continent)
+```
+These unique values are perfect. Which means every value is perfect, as these unique values represent them. But what if they were not capitalized, for example? That is in fact the case with our country column: the values are not capitalized because the values came from our file-naming, and it is good practice not to capitalize when file-naming. To capitalize the values in a column, you can use a function called `str_to_title`.
+
+```{r}
+str_to_title(df$country)
+
+df
+```
+
+## Finding Functions
+
+How would you know which function to use if I did not tell you?
+
+### Google
+
+Google is a great search engine that most R programmers use when learning the R language. If we search "r capitalize first letter" we see, on `r Sys.Date()`, the following paragraph as the first result:
+
+>> Convert First letter of every word to Uppercase in R Programming – str_to_title() Function. str_to_title() Function in R Language is used to convert the first letter of every word of a string to Uppercase and the rest of the letters are converted to lower case.
+    
+The trick is to, within Google, always write `r` before a question or the desired command, like `how to capitalize first letter` or simply `capitalize first letter`.
+
+This is a simple example. Most of the time it can be difficult to write in English what you want. This will come with time and practice. At first you may find that the Google search results have nothing to do with what you need. That is a sign to re-word your search, or, if you've already re-worded your search, it may be a sign that there is no dedicated function for what you need, or that a different approach is needed. It's rare that there will be no dedicated function so long as your goal is simple. You may find that it is effective to break down what you're doing into simple steps, and then search for how to do *those* steps, as opposed to Googling something long and complicated, involving many steps.
+
+### Stack Overflow
+
+Speaking of breaking down something complicated so that a search engine like Google can understand it, this is also necessary for others to understand it. For learning R, allowing others to understand your challenge or need is valuable as the R community is not only willing, but also quickly able to help. R users mainly help each other through [Stack Overflow](stackoverflow.com). It is a website that easily allows users to ask or answer questions with code, have their code formatted (look nice), and receive feedback. 
+
+The main draw of Stack Overflow is that the person asking the question has one main responsibility, and that is to produce what is called a minimally reproducible example: an example that can be used (reproduced) by someone else seeing the question, and that does not have unnecessary detail irrelevant to the question (minimal).
+
+Describe example
+
+[EXAMPLE HERE](https://stackoverflow.com/questions/58996293/transforming-a-dataframe-by-multiplying-a-columns-elements-by-the-names-of-th)
+
+Knowing how to make an example is the majority of the work involved in asking a question on Stack Overflow. 
+
+#### Creating Minimally Reproducible Examples
+
+If your question involves data frames, you need to learn how to build a data frame before asking your question on Stack Overflow. To build a data frame, you can use the `tibble` function from package `tibble`.
+
+If you have 2 numeric columns, like in
+
+```{r echo = FALSE}
+select(df, year, lifeExp) %>% filter(year < 1980)
+```
+
+
+then the first part of your minimal example might look this:
+
+```{r}
+tibble(x = c(1, 2, 1, 2), y = c(3, 4, 2, 2))
+
+```
+ 
+ And if what you're trying to achieve is
+ 
+```{r echo = FALSE}
+
+select(df, year, lifeExp) %>%
+  filter(year < 1980) %>% 
+  group_by(year) %>% 
+  summarize(mean_lifeExp = mean(lifeExp))
+
+```
+
+then the second part of your minimal example might look like this:
+
+```{r}
+tibble(x = c(1, 2), mean_y = c(2.5, 2))
+
+```
+
+To summarize, your entire question on Stack Overflow could look like this:
+
+    How can I transform the first tibble into the second tibble with a function?
+    library(tibble)
+    tibble(x = c(1, 2, 1, 2), y = c(3, 4, 2, 2))
+    tibble(x = c(1, 2), mean_y = c(2.5, 2))
+    
+    
+To make your question even better, you can format your code by using the `reprex` function from the reprex package. The curly brackets are needed to tell reprex that you have multiple lines of code. 
+
+```{r}
+library(reprex)
+reprex(
+  {
+    library(tibble)
+    tibble(x = c(1, 2, 1, 2), y = c(3, 4, 2, 2))
+    tibble(x = c(1, 2), mean_y = c(2.5, 2))
+  }
+)
+```
+
+Finally your question looks friendly:
+
+    How can I transform the first tibble into the second tibble with a function?
+    
+```{r eval = FALSE}
+library(tibble)
+tibble(x = c(1, 2, 1, 2), y = c(3, 4, 2, 2))
+#> # A tibble: 4 × 2
+#>       x     y
+#>   <dbl> <dbl>
+#> 1     1     3
+#> 2     2     4
+#> 3     1     2
+#> 4     2     2
+tibble(x = c(1, 2), mean_y = c(2.5, 2))
+#> # A tibble: 2 × 2
+#>       x mean_y
+#>   <dbl>  <dbl>
+#> 1     1    2.5
+#> 2     2    2
+```
+  
+
+## Finding Function Documentation for Understanding Functions
+
+Once you've found a function (or usually, a set of functions) recommended to you by Google's search results, or by R users on Stack Overflow, it would be wise to understand how the function(s) work; specifically, the inputs and outputs.
+
+Both Google and Stack Overflow can be overwhelming. Google gives a variety of websites. Which do you choose? A question on Stack Overflow can receive multiple answers, with each using different approaches and functions. Again, which do you choose? 
+
+Let's start with Google then.
+
+### Google
+
+Remember, after searching "r capitalize first letter" we saw the following paragraph as the first result:
+
+>> Convert First letter of every word to Uppercase in R Programming – str_to_title() Function. str_to_title() Function in R Language is used to convert the first letter of every word of a string to Uppercase and the rest of the letters are converted to lower case. 
+
+This paragraph is from a website called [GeeksforGeeks](https://www.geeksforgeeks.org/convert-first-letter-of-every-word-to-uppercase-in-r-programming-str_to_title-function)
+
+I would not recommend to use this website. That is, after searching "r capitalize first letter" and seeing the the above paragraph, I would not recommend to visit the website to understand the function. And for multiple reasons.
+
+1. You are not familiar with the format of the website.
+2. You will find yourself on multiple websites when you need to discover and learn about multiple functions.
+3. You will then have to navigate the formats of these websites.
+4. Many things can get in the way of reading the instructions, like pop-ups to sign up for the website's email list, advertisements for completely unrelated products (everything you need to learn R is FREE), and recommended articles to distract you.
+
+It is more effective to use a single, standardized resource when learning about functions. Thankfully, R has a few.
+
+After reading the above paragraph and learning that the function we need may be `str_to_title()`, we can now Google search "r str_to_title" instead of "r capitalize first letter". Again, Google shows multiple websites, but we are looking for one that is standardized. [tidyverse.org](tidyverse.org) is one of those websites, so we click the result that has "tidyverse.org" in the website address This brings us to this page: [https://stringr.tidyverse.org/reference/case.html](https://stringr.tidyverse.org/reference/case.html)
+
+As standard, there are multiple sections to the webpage describing a function: *Usage*, *Arguments* and *Examples.* *Usage* shows the format of the inputs to the function. Any input with an `=` beside it has a default value. A default value usually indicates that most users will not need to change the value.
+
+The *Usage* `str_to_title(string, locale = "en")` tells us that 
+
+1. `string` should be an object containing some string(s) or a string itself. It has no default value; we must provide one.
+2. `locale` has the default value `"en"`.
+
+The *Arguments* tell us more about the inputs in case the *Usage* is not enough. When first learning R, *Arguments* can be overwhelming; you might quickly find yourself not understanding the words contained therein, and having to continuously look up definitions (or more function documentation) in order to understand.
+
+### Stack Overflow
+
+Another way of understanding functions is to be presented with answers from others on Stack Overflow. These answers don't need to be answers to the questions you have posted on Stack Overflow; they can be answers to questions posted by others.
+
+For example, here is a question dated from 2019: https://stackoverflow.com/questions/58996293/transforming-a-dataframe-by-multiplying-a-columns-elements-by-the-names-of-th
+
+There are three separate answers that have up votes (positive feedback represented by the digit on the top left of an answer): 1 using the `data.table` package; 1 using `base R` (R without packages); and 1 using `tidyr`.
+
+Notice how the answer using `tidyr` is far more simple; it is one line of code. This word `tidy` keeps popping up, and for good reason: the functions in this package and more broadly in the `tidyverse` (the tidy universe) are designed to make coding short and simple. 
+
+It is possible to add comments to the answers on Stack Overflow, with further questions about the functions if there is something you don't understand. Fortunately the tidyverse functions are well documented because of their standardized webpages, and because of multiple, free books on using them for specific tasks.
+
+### Books
+
+There are many books describing tidyverse functions. Finding a good book is a strong alternative to using Google or Stack Overflow toward understanding functions. A book can hold your hand throughout each step and provide a narrative. It can also be designed toward a specific task, just as this one is designed toward getting you started as quickly and comfortably as possible.
+
+<!-- ```{r} -->
+
+
+<!-- df %>% pull(year) %>% unique -->
+
+
+<!-- df$lifeExp[1] <- "blah" -->
+
+<!-- df %>% mutate(lifeExp = as.numeric(lifeExp)) -->
+
+<!-- # if the string contains letters, then as.numeric will turn these strings into missing values or in other words NAs -->
+
+<!-- df %>% filter(is.na(as.numeric(lifeExp))) -->
+<!-- ``` -->
+
+<!-- This code now looks a lot more complicated due to what are called special characters. Both [ and \\ are special characters: characters that mean something to your computer program more than the literal symbol itself. The square brackets surround the characters that str_split will use as separators. The \\\\ avoids the . from being treated as a special character; we want the literal . to be used as separator by str_split. (There are two \\ because a \\ is also a special character, and we want R to run \\.). -->
+
+
+
+
+
+

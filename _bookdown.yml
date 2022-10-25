@@ -1,0 +1,5 @@
+book_filename: "how-to-be-an-Rtist"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true

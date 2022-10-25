@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Writing Reports | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</title>
+  <meta name="description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Writing Reports | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/images/bob-ross.jpg" />
+  <meta property="og:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="github-repo" content="asadow/how-to-be-an-Rtist" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Writing Reports | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  
+  <meta name="twitter:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="twitter:image" content="/images/bob-ross.jpg" />
+
+<meta name="author" content="Adam Sadowski" />
+
+
+<meta name="date" content="2022-10-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="file-naming.html"/>
+<script src="libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html#preface" id="toc-preface"><span class="toc-section-number">1</span> Preface<span></span></a></li>
+<li><a href="writing-reports.html#writing-reports" id="toc-writing-reports"><span class="toc-section-number">2</span> Writing Reports<span></span></a>
+<ul>
+<li><a href="writing-reports.html#lines-and-lists" id="toc-lines-and-lists"><span class="toc-section-number">2.1</span> Lines and Lists<span></span></a></li>
+<li><a href="writing-reports.html#code" id="toc-code"><span class="toc-section-number">2.2</span> Code<span></span></a>
+<ul>
+<li><a href="writing-reports.html#declaring-with-single-back-ticks" id="toc-declaring-with-single-back-ticks"><span class="toc-section-number">2.2.1</span> Declaring With Single Back-Ticks<span></span></a></li>
+<li><a href="writing-reports.html#declaring-with-multiple-back-ticks" id="toc-declaring-with-multiple-back-ticks"><span class="toc-section-number">2.2.2</span> Declaring With Multiple Back-Ticks<span></span></a></li>
+<li><a href="writing-reports.html#summary" id="toc-summary"><span class="toc-section-number">2.2.3</span> Summary<span></span></a></li>
+</ul></li>
+<li><a href="writing-reports.html#errors" id="toc-errors"><span class="toc-section-number">2.3</span> Errors<span></span></a></li>
+<li><a href="writing-reports.html#links" id="toc-links"><span class="toc-section-number">2.4</span> Links<span></span></a></li>
+<li><a href="writing-reports.html#keyboard-shortcuts" id="toc-keyboard-shortcuts"><span class="toc-section-number">2.5</span> Keyboard Shortcuts<span></span></a></li>
+</ul></li>
+<li><a href="file-naming.html#file-naming" id="toc-file-naming"><span class="toc-section-number">3</span> File Naming<span></span></a>
+<ul>
+<li><a href="file-naming.html#consistency" id="toc-consistency"><span class="toc-section-number">3.1</span> Consistency<span></span></a></li>
+<li><a href="file-naming.html#why-consistency-matters" id="toc-why-consistency-matters"><span class="toc-section-number">3.2</span> Why Consistency Matters<span></span></a></li>
+<li><a href="file-naming.html#finding-and-organizing-our-files" id="toc-finding-and-organizing-our-files"><span class="toc-section-number">3.3</span> Finding and Organizing Our Files<span></span></a>
+<ul>
+<li><a href="file-naming.html#reading-in-data" id="toc-reading-in-data"><span class="toc-section-number">3.3.1</span> Reading in Data<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="opening-the-data.html#opening-the-data" id="toc-opening-the-data"><span class="toc-section-number">4</span> Opening the Data<span></span></a>
+<ul>
+<li><a href="opening-the-data.html#checking-data" id="toc-checking-data"><span class="toc-section-number">4.1</span> Checking Data<span></span></a></li>
+<li><a href="opening-the-data.html#finding-functions" id="toc-finding-functions"><span class="toc-section-number">4.2</span> Finding Functions<span></span></a>
+<ul>
+<li><a href="opening-the-data.html#google" id="toc-google"><span class="toc-section-number">4.2.1</span> Google<span></span></a></li>
+<li><a href="opening-the-data.html#stack-overflow" id="toc-stack-overflow"><span class="toc-section-number">4.2.2</span> Stack Overflow<span></span></a></li>
+</ul></li>
+<li><a href="opening-the-data.html#finding-function-documentation-for-understanding-functions" id="toc-finding-function-documentation-for-understanding-functions"><span class="toc-section-number">4.3</span> Finding Function Documentation for Understanding Functions<span></span></a>
+<ul>
+<li><a href="opening-the-data.html#google-1" id="toc-google-1"><span class="toc-section-number">4.3.1</span> Google<span></span></a></li>
+<li><a href="opening-the-data.html#stack-overflow-1" id="toc-stack-overflow-1"><span class="toc-section-number">4.3.2</span> Stack Overflow<span></span></a></li>
+<li><a href="opening-the-data.html#books" id="toc-books"><span class="toc-section-number">4.3.3</span> Books<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="understanding-tidyverse-functions.html#understanding-tidyverse-functions" id="toc-understanding-tidyverse-functions"><span class="toc-section-number">5</span> Understanding Tidyverse Functions<span></span></a>
+<ul>
+<li><a href="understanding-tidyverse-functions.html#mutate" id="toc-mutate"><span class="toc-section-number">5.1</span> <code>mutate</code><span></span></a></li>
+<li><a href="understanding-tidyverse-functions.html#pumping-with" id="toc-pumping-with"><span class="toc-section-number">5.2</span> Pumping with <code>%&gt;%</code><span></span></a></li>
+<li><a href="understanding-tidyverse-functions.html#grouping-with-group" id="toc-grouping-with-group"><span class="toc-section-number">5.3</span> Grouping with <code>group</code><span></span></a></li>
+</ul></li>
+<li><a href="strings.html#strings" id="toc-strings"><span class="toc-section-number">6</span> Strings<span></span></a>
+<ul>
+<li><a href="strings.html#patterns-and-regular-expressions-regexes" id="toc-patterns-and-regular-expressions-regexes"><span class="toc-section-number">6.1</span> Patterns and Regular Expressions (regexes)<span></span></a></li>
+<li><a href="strings.html#motivation" id="toc-motivation"><span class="toc-section-number">6.2</span> Motivation<span></span></a></li>
+<li><a href="strings.html#understanding-representations" id="toc-understanding-representations"><span class="toc-section-number">6.3</span> Understanding Representations<span></span></a></li>
+</ul></li>
+<li><a href="avoiding-repetition.html#avoiding-repetition" id="toc-avoiding-repetition"><span class="toc-section-number">7</span> Avoiding Repetition<span></span></a></li>
+<li><a href="next-steps-for-this-guide.html#next-steps-for-this-guide" id="toc-next-steps-for-this-guide"><span class="toc-section-number">8</span> Next Steps for This Guide<span></span></a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="writing-reports" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Writing Reports<a href="writing-reports.html#writing-reports" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Data work will involve the preparation of data and data reports. In fact, you may want to report on the preparation of data. Since the code that prepares a report can also prepare the data, you could work in a way that both gets the job done and reports on getting it done. That’s a win-win!</p>
+<p>Reports are great client-facing examples of your work (and how you work if you report on data preparation). Before employment, they can be presented to potential employers. After employment, they can be presented to your collaborators during data preparation; maybe there will be decisions that need to be made about the data, and the best way to show why decisions are needed will be through a report.</p>
+<p>For these reasons, this book starts with the fundamentals of writing reports. The files that make reports are called .Rmd files. To start a .Rmd file, open RStudio. In the top menu, click File then New File and finally “R Markdown…”. When you see the pop-up, name the file what you like. Then, in the file, select all (shortcut Cmd-A or Cntrl-A) and hit delete. Knit (i.e. prepare) the document by the shortcut Cmd-Shift-K (or Cntrl-Shift-K). You will see a document that is empty. That is because we have no lines. Let’s get started by writing lines then!</p>
+<div id="lines-and-lists" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Lines and Lists<a href="writing-reports.html#lines-and-lists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>On your left in Rstudio (what is called the code source), you have numbers like below that represent lines of text or code:</p>
+<pre><code>1   Some text
+2
+3
+4
+5</code></pre>
+<p>A list in text can be made by first skipping a line, and then starting the next line with numbers followed by a period (.) which is then followed by a space, or by using a hyphen (-) followed by a space:</p>
+<pre><code>1   Some text
+2
+3   1. Start of my list
+4
+5</code></pre>
+<p><sub><em>Lines 1 to 5 will show in your document as:</em></sub></p>
+<p>Some text</p>
+<ol style="list-style-type: decimal">
+<li>Start of my list</li>
+</ol>
+<p>–</p>
+<p>To create a list within a list, indent twice before using -. Hit tab to indent.</p>
+<pre><code>1   Some text
+2
+3   1. Start of my list
+4           - List within my list
+5</code></pre>
+<p><sub><em>Lines 1 to 5 will show in your document as:</em></sub></p>
+<p>Some text</p>
+<ol style="list-style-type: decimal">
+<li>Start of my list
+<ul>
+<li>List within my list</li>
+</ul></li>
+</ol>
+<p>–</p>
+<p>A list is broken if there is an empty line and a subsequent line that is not indented twice.</p>
+<pre><code>1   Some text
+2
+3   1. Start of my list
+4           - List within my list
+5
+6   This line breaks the list
+7           - Some line indented twice in my code source</code></pre>
+<p><sub><em>Lines 1 to 7 will show in your document as:</em></sub></p>
+<p>Some text</p>
+<ol style="list-style-type: decimal">
+<li>Start of my list
+<ul>
+<li>List within my list</li>
+</ul></li>
+</ol>
+<p>This line breaks the list
+- Some line indented twice in my code source</p>
+</div>
+<div id="code" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Code<a href="writing-reports.html#code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Code cannot be written on lines like text. For example</p>
+<pre><code>1   some_code
+2   
+3</code></pre>
+<p>will not work. Code has to be declared in one of two ways.</p>
+<div id="declaring-with-single-back-ticks" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Declaring With Single Back-Ticks<a href="writing-reports.html#declaring-with-single-back-ticks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can insert code into your document using a single back-tick (the ` symbol) before and after:</p>
+<pre><code>1   Some text and `some_code` to be processed.
+2   `some_more_code` and some more text.
+3   `some_lonely_code`</code></pre>
+<p>R code needs an <code>r</code> after the first back-tick:</p>
+<pre><code>1   Some text and `r some_code` to be processed.
+2   `r some_more_code` and some more text.
+3   `r some_lonely_code`</code></pre>
+<p>For example, the date can be added to a line of your document using</p>
+<pre><code>1   Some text. Did you know today&#39;s date is `r Sys.Date()`?
+2
+3</code></pre>
+<p><sub><em>Lines 1 to 3 will show in your document as:</em></sub></p>
+<p>Some text. Did you know today’s date is 2022-10-25?</p>
+<p>–</p>
+<!-- To see this document within R, go to R's menu: Tools - Global Options; select R Markdown from the left, find the line "Show output preview in: " and select Viewer -->
+<!-- Explain why this is not greyed out: ` -->
+</div>
+<div id="declaring-with-multiple-back-ticks" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Declaring With Multiple Back-Ticks<a href="writing-reports.html#declaring-with-multiple-back-ticks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can insert multiple lines of code into your document using multiple back-ticks before and after:</p>
+<pre><code>10    ```{r}
+11    some_code
+12    some_more_code
+14    ```</code></pre>
+<p>The <code>```{r}</code> starts the R code chunk and the <code>```</code> ends the chunk.</p>
+<p>The primary purpose of a code chunk is to contain multiple lines of code. We will get an error when preparing our document if we try to declare with single back-ticks like here:</p>
+<pre><code>10    `r  
+11  
+12    Sys.Date()
+13
+14    Sys.Date()
+15
+16    `</code></pre>
+<p>Instead we must write this as:</p>
+<pre><code>10    ```{r}
+11    Sys.Date()
+12    Sys.Date()
+13    ```</code></pre>
+<p>The following will be the result of the above chunk in our document:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="writing-reports.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.Date</span>()</span></code></pre></div>
+<pre><code>&gt;&gt; [1] &quot;2022-10-25&quot;</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="writing-reports.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.Date</span>()</span></code></pre></div>
+<pre><code>&gt;&gt; [1] &quot;2022-10-25&quot;</code></pre>
+<p>When declaring code with chunks (multiple back-ticks), the document will show both the code and the result of the code and this can be customized. When declaring code with single back-ticks, the document will show only the result of the code and this cannot be customized.</p>
+<p>Since the back-ticks take effort to write, there is a shortcut to writing an empty code chunk: command-Shift-I on Mac or ctrl-Shift-I on Windows.</p>
+</div>
+<div id="summary" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Summary<a href="writing-reports.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To summarize, compared to declaring code with single back-ticks,</p>
+<ul>
+<li>Chunks can contain multiple lines.</li>
+<li>Chunks can show both the code and the result of the code. This is great for showing your work or explaining your code to readers. This flexible property lets you decide whether the chunk shows the code and the result, only one of the two, or neither.</li>
+</ul>
+</div>
+</div>
+<div id="errors" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Errors<a href="writing-reports.html#errors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When code is not written correctly, errors and probably some frustration will follow. R errors are not known for being <em>friendly</em>; they are not kind enough to tell you what is wrong in a way that is easy to understand. When there is an error, you will see it in red text within the Console, which is a box on the bottom left quarter of RStudio (its default layout). The Console is where the code is processed and the result printed.</p>
+<p>There are symbols we need to know to understand the Console:</p>
+<pre><code>&gt; means the line of code processed
++ means a line of code continuing from the last line
+[1] means the first element of the result of the processed code
+[n] means the n&#39;th element of the result of the processed code
+[[1]]
+[1] means the first element in the first container of the result of the processed code</code></pre>
+<p>When first learning R, the best way to understand errors is usually not through R’s error message. The best way is by paying close attention to the code and every little detail: misspelling, capitalization, and punctuation.</p>
+<p>For this reason we want to practice good strategies of writing code. Writing involves naming our own objects and functions. But before that, we should also name our files using a good strategy. For a quick guide on naming files, <a href="https://style.tidyverse.org/files.html">click here</a>.</p>
+<!-- ## Explain to look at Render box for knit errors -->
+</div>
+<div id="links" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Links<a href="writing-reports.html#links" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To add a clickable link that sends the user to a website, place the website address within inequality symbols &lt; … &gt;. For example: <code>&lt;http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf</code>&gt; gives us
+<a href="http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf" class="uri">http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf</a></p>
+<p>To make this a hyperlink, that is, a shorter, clickable link, write the clickable text (the text you want to the reader to see) in square brackets and the website address in round brackets like so <code>[text-seen-by-reader](link)</code>. For example</p>
+<pre><code>1   [File Naming Presentation by Jenny Bryan](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
+2
+3</code></pre>
+<p><sub><em>Lines 1 to 3 will show as:</em></sub></p>
+<p><a href="http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf">File Naming Presentation by Jenny Bryan</a></p>
+</div>
+<div id="keyboard-shortcuts" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Keyboard Shortcuts<a href="writing-reports.html#keyboard-shortcuts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Remember, if you are using Windows, use</p>
+<ul>
+<li><code>ctrl</code> instead of <code>command</code></li>
+<li><code>alt</code> instead of <code>option</code></li>
+</ul>
+<p><strong>Shortcuts:</strong></p>
+<ul>
+<li><code>command-Z</code>: Undo (go back)</li>
+<li><code>command-shift-Z</code>: Redo (go forward)</li>
+<li><code>command-Enter</code>: Process line of code where <code>|</code> is blinking (consistently appearing and disappearing)</li>
+<li><code>command-option-C</code>: Process current chunk</li>
+<li><code>option-shift-arrow_key</code>: Highlight all to the direction of the arrow</li>
+<li>….</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="file-naming.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
