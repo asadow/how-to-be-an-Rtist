@@ -1,30 +1,29 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en" xml:lang="en">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</title>
-  <meta name="description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <title>How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects</title>
+  <meta name="description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the best way to get results? This book will show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. This book will show how to get unstuck. Finally, it explains how prevent yourself from getting stuck in the first place. All of this will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  <meta property="og:title" content="How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="/images/bob-ross.jpg" />
-  <meta property="og:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta property="og:image" content="https://bookdown.org/asadow/how-to-be-an-Rtist/images/bob-ross.jpg" />
+  <meta property="og:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the best way to get results? This book will show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. This book will show how to get unstuck. Finally, it explains how prevent yourself from getting stuck in the first place. All of this will keep you in the flow of writing beautiful, intentional R code." />
   <meta name="github-repo" content="asadow/how-to-be-an-Rtist" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  <meta name="twitter:title" content="How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects" />
   
-  <meta name="twitter:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
-  <meta name="twitter:image" content="/images/bob-ross.jpg" />
+  <meta name="twitter:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the best way to get results? This book will show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. This book will show how to get unstuck. Finally, it explains how prevent yourself from getting stuck in the first place. All of this will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="twitter:image" content="https://bookdown.org/asadow/how-to-be-an-Rtist/images/bob-ross.jpg" />
 
 <meta name="author" content="Adam Sadowski" />
 
 
-<meta name="date" content="2022-10-25" />
+<meta name="date" content="2025-01-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 
 <link rel="next" href="writing-reports.html"/>
-<script src="libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -54,6 +52,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
 
 
 <style type="text/css">
@@ -94,7 +96,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +109,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -121,6 +123,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -134,58 +140,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="index.html#preface" id="toc-preface"><span class="toc-section-number">1</span> Preface<span></span></a></li>
-<li><a href="writing-reports.html#writing-reports" id="toc-writing-reports"><span class="toc-section-number">2</span> Writing Reports<span></span></a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
 <ul>
-<li><a href="writing-reports.html#lines-and-lists" id="toc-lines-and-lists"><span class="toc-section-number">2.1</span> Lines and Lists<span></span></a></li>
-<li><a href="writing-reports.html#code" id="toc-code"><span class="toc-section-number">2.2</span> Code<span></span></a>
-<ul>
-<li><a href="writing-reports.html#declaring-with-single-back-ticks" id="toc-declaring-with-single-back-ticks"><span class="toc-section-number">2.2.1</span> Declaring With Single Back-Ticks<span></span></a></li>
-<li><a href="writing-reports.html#declaring-with-multiple-back-ticks" id="toc-declaring-with-multiple-back-ticks"><span class="toc-section-number">2.2.2</span> Declaring With Multiple Back-Ticks<span></span></a></li>
-<li><a href="writing-reports.html#summary" id="toc-summary"><span class="toc-section-number">2.2.3</span> Summary<span></span></a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#why-this-book"><i class="fa fa-check"></i><b>1.1</b> Why <em>This</em> Book?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#for-the-love-of-r"><i class="fa fa-check"></i><b>1.2</b> For the Love of R</a></li>
 </ul></li>
-<li><a href="writing-reports.html#errors" id="toc-errors"><span class="toc-section-number">2.3</span> Errors<span></span></a></li>
-<li><a href="writing-reports.html#links" id="toc-links"><span class="toc-section-number">2.4</span> Links<span></span></a></li>
-<li><a href="writing-reports.html#keyboard-shortcuts" id="toc-keyboard-shortcuts"><span class="toc-section-number">2.5</span> Keyboard Shortcuts<span></span></a></li>
+<li class="chapter" data-level="2" data-path="writing-reports.html"><a href="writing-reports.html"><i class="fa fa-check"></i><b>2</b> Writing Reports</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="writing-reports.html"><a href="writing-reports.html#lines-and-lists"><i class="fa fa-check"></i><b>2.1</b> Lines and Lists</a></li>
+<li class="chapter" data-level="2.2" data-path="writing-reports.html"><a href="writing-reports.html#code"><i class="fa fa-check"></i><b>2.2</b> Code</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="writing-reports.html"><a href="writing-reports.html#declaring-with-single-back-ticks"><i class="fa fa-check"></i><b>2.2.1</b> Declaring With Single Back-Ticks</a></li>
+<li class="chapter" data-level="2.2.2" data-path="writing-reports.html"><a href="writing-reports.html#declaring-with-multiple-back-ticks"><i class="fa fa-check"></i><b>2.2.2</b> Declaring With Multiple Back-Ticks</a></li>
+<li class="chapter" data-level="2.2.3" data-path="writing-reports.html"><a href="writing-reports.html#summary"><i class="fa fa-check"></i><b>2.2.3</b> Summary</a></li>
 </ul></li>
-<li><a href="file-naming.html#file-naming" id="toc-file-naming"><span class="toc-section-number">3</span> File Naming<span></span></a>
-<ul>
-<li><a href="file-naming.html#consistency" id="toc-consistency"><span class="toc-section-number">3.1</span> Consistency<span></span></a></li>
-<li><a href="file-naming.html#why-consistency-matters" id="toc-why-consistency-matters"><span class="toc-section-number">3.2</span> Why Consistency Matters<span></span></a></li>
-<li><a href="file-naming.html#finding-and-organizing-our-files" id="toc-finding-and-organizing-our-files"><span class="toc-section-number">3.3</span> Finding and Organizing Our Files<span></span></a>
-<ul>
-<li><a href="file-naming.html#reading-in-data" id="toc-reading-in-data"><span class="toc-section-number">3.3.1</span> Reading in Data<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="writing-reports.html"><a href="writing-reports.html#errors"><i class="fa fa-check"></i><b>2.3</b> Errors</a></li>
+<li class="chapter" data-level="2.4" data-path="writing-reports.html"><a href="writing-reports.html#links"><i class="fa fa-check"></i><b>2.4</b> Links</a></li>
+<li class="chapter" data-level="2.5" data-path="writing-reports.html"><a href="writing-reports.html#keyboard-shortcuts"><i class="fa fa-check"></i><b>2.5</b> Keyboard Shortcuts</a></li>
 </ul></li>
-</ul></li>
-<li><a href="opening-the-data.html#opening-the-data" id="toc-opening-the-data"><span class="toc-section-number">4</span> Opening the Data<span></span></a>
+<li class="chapter" data-level="3" data-path="file-naming.html"><a href="file-naming.html"><i class="fa fa-check"></i><b>3</b> File Naming</a>
 <ul>
-<li><a href="opening-the-data.html#checking-data" id="toc-checking-data"><span class="toc-section-number">4.1</span> Checking Data<span></span></a></li>
-<li><a href="opening-the-data.html#finding-functions" id="toc-finding-functions"><span class="toc-section-number">4.2</span> Finding Functions<span></span></a>
+<li class="chapter" data-level="3.1" data-path="file-naming.html"><a href="file-naming.html#consistency"><i class="fa fa-check"></i><b>3.1</b> Consistency</a></li>
+<li class="chapter" data-level="3.2" data-path="file-naming.html"><a href="file-naming.html#why-consistency-matters"><i class="fa fa-check"></i><b>3.2</b> Why Consistency Matters</a></li>
+<li class="chapter" data-level="3.3" data-path="file-naming.html"><a href="file-naming.html#finding-and-organizing-our-files"><i class="fa fa-check"></i><b>3.3</b> Finding and Organizing Our Files</a>
 <ul>
-<li><a href="opening-the-data.html#google" id="toc-google"><span class="toc-section-number">4.2.1</span> Google<span></span></a></li>
-<li><a href="opening-the-data.html#stack-overflow" id="toc-stack-overflow"><span class="toc-section-number">4.2.2</span> Stack Overflow<span></span></a></li>
-</ul></li>
-<li><a href="opening-the-data.html#finding-function-documentation-for-understanding-functions" id="toc-finding-function-documentation-for-understanding-functions"><span class="toc-section-number">4.3</span> Finding Function Documentation for Understanding Functions<span></span></a>
-<ul>
-<li><a href="opening-the-data.html#google-1" id="toc-google-1"><span class="toc-section-number">4.3.1</span> Google<span></span></a></li>
-<li><a href="opening-the-data.html#stack-overflow-1" id="toc-stack-overflow-1"><span class="toc-section-number">4.3.2</span> Stack Overflow<span></span></a></li>
-<li><a href="opening-the-data.html#books" id="toc-books"><span class="toc-section-number">4.3.3</span> Books<span></span></a></li>
+<li class="chapter" data-level="3.3.1" data-path="file-naming.html"><a href="file-naming.html#reading-in-data"><i class="fa fa-check"></i><b>3.3.1</b> Reading in Data</a></li>
 </ul></li>
 </ul></li>
-<li><a href="understanding-tidyverse-functions.html#understanding-tidyverse-functions" id="toc-understanding-tidyverse-functions"><span class="toc-section-number">5</span> Understanding Tidyverse Functions<span></span></a>
+<li class="chapter" data-level="4" data-path="opening-the-data.html"><a href="opening-the-data.html"><i class="fa fa-check"></i><b>4</b> Opening the Data</a>
 <ul>
-<li><a href="understanding-tidyverse-functions.html#mutate" id="toc-mutate"><span class="toc-section-number">5.1</span> <code>mutate</code><span></span></a></li>
-<li><a href="understanding-tidyverse-functions.html#pumping-with" id="toc-pumping-with"><span class="toc-section-number">5.2</span> Pumping with <code>%&gt;%</code><span></span></a></li>
-<li><a href="understanding-tidyverse-functions.html#grouping-with-group" id="toc-grouping-with-group"><span class="toc-section-number">5.3</span> Grouping with <code>group</code><span></span></a></li>
-</ul></li>
-<li><a href="strings.html#strings" id="toc-strings"><span class="toc-section-number">6</span> Strings<span></span></a>
+<li class="chapter" data-level="4.1" data-path="opening-the-data.html"><a href="opening-the-data.html#checking-data"><i class="fa fa-check"></i><b>4.1</b> Checking Data</a></li>
+<li class="chapter" data-level="4.2" data-path="opening-the-data.html"><a href="opening-the-data.html#finding-functions"><i class="fa fa-check"></i><b>4.2</b> Finding Functions</a>
 <ul>
-<li><a href="strings.html#patterns-and-regular-expressions-regexes" id="toc-patterns-and-regular-expressions-regexes"><span class="toc-section-number">6.1</span> Patterns and Regular Expressions (regexes)<span></span></a></li>
-<li><a href="strings.html#motivation" id="toc-motivation"><span class="toc-section-number">6.2</span> Motivation<span></span></a></li>
-<li><a href="strings.html#understanding-representations" id="toc-understanding-representations"><span class="toc-section-number">6.3</span> Understanding Representations<span></span></a></li>
+<li class="chapter" data-level="4.2.1" data-path="opening-the-data.html"><a href="opening-the-data.html#large-language-models"><i class="fa fa-check"></i><b>4.2.1</b> Large-Language-Models</a></li>
+<li class="chapter" data-level="4.2.2" data-path="opening-the-data.html"><a href="opening-the-data.html#google"><i class="fa fa-check"></i><b>4.2.2</b> Google</a></li>
+<li class="chapter" data-level="4.2.3" data-path="opening-the-data.html"><a href="opening-the-data.html#stack-overflow"><i class="fa fa-check"></i><b>4.2.3</b> Stack Overflow</a></li>
 </ul></li>
-<li><a href="avoiding-repetition.html#avoiding-repetition" id="toc-avoiding-repetition"><span class="toc-section-number">7</span> Avoiding Repetition<span></span></a></li>
-<li><a href="next-steps-for-this-guide.html#next-steps-for-this-guide" id="toc-next-steps-for-this-guide"><span class="toc-section-number">8</span> Next Steps for This Guide<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="opening-the-data.html"><a href="opening-the-data.html#finding-function-documentation-for-understanding-functions"><i class="fa fa-check"></i><b>4.3</b> Finding Function Documentation for Understanding Functions</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="opening-the-data.html"><a href="opening-the-data.html#google-1"><i class="fa fa-check"></i><b>4.3.1</b> Google</a></li>
+<li class="chapter" data-level="4.3.2" data-path="opening-the-data.html"><a href="opening-the-data.html#stack-overflow-1"><i class="fa fa-check"></i><b>4.3.2</b> Stack Overflow</a></li>
+<li class="chapter" data-level="4.3.3" data-path="opening-the-data.html"><a href="opening-the-data.html#books"><i class="fa fa-check"></i><b>4.3.3</b> Books</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html"><i class="fa fa-check"></i><b>5</b> Understanding Tidyverse Functions</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#mutate"><i class="fa fa-check"></i><b>5.1</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="5.2" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#pumping-with"><i class="fa fa-check"></i><b>5.2</b> Pumping with <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="5.3" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#grouping-with-group"><i class="fa fa-check"></i><b>5.3</b> Grouping with <code>group</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>6</b> Strings</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="strings.html"><a href="strings.html#patterns-and-regular-expressions-regexes"><i class="fa fa-check"></i><b>6.1</b> Patterns and Regular Expressions (regexes)</a></li>
+<li class="chapter" data-level="6.2" data-path="strings.html"><a href="strings.html#motivation"><i class="fa fa-check"></i><b>6.2</b> Motivation</a></li>
+<li class="chapter" data-level="6.3" data-path="strings.html"><a href="strings.html#understanding-representations"><i class="fa fa-check"></i><b>6.3</b> Understanding Representations</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="avoiding-repetition.html"><a href="avoiding-repetition.html"><i class="fa fa-check"></i><b>7</b> Avoiding Repetition</a></li>
+<li class="chapter" data-level="8" data-path="next-steps-for-this-guide.html"><a href="next-steps-for-this-guide.html"><i class="fa fa-check"></i><b>8</b> Next Steps for This Guide</a></li>
 </ul>
 
       </nav>
@@ -195,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects</a>
           </h1>
         </div>
 
@@ -204,16 +215,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</h1>
+<h1 class="title">How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects</h1>
 <p class="author"><em>Adam Sadowski</em></p>
-<p class="date"><em>2022-10-25</em></p>
+<p class="date"><em>2025-01-09</em></p>
 </div>
 <div id="preface" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is a <em>friendly</em> book on how to work with data from start to finish. It is intended to be easy reading for a beginner who is not aware of any R vocabulary, or Information Technology. I’m a Data Analyst. I got my job mostly because of a Master’s in Math and good references (people to speak about his qualities). In the first year of working, I made many mistakes and had many headaches. I constantly Google’d solutions for the problems I faced while working. This allowed me to get my work done but it did not teach me the best way to do my work to avoid future headaches.
-Mistakes and headaches can be great learning challenges, but in the case of data analysis (and especially for those who use R), it can be demotivating. Mistakes in code cause errors, mistakes in approach cause messy files, and messy files require messy code with more mistakes.</p>
-<p>Please remember that the R code taught in Statistics courses is almost always not focused on teaching us how to generally handle data; it is only focused on teaching us Statistics. Statistics has a reputation for being hard, especially on those who are learning the subject only because it is required in a not-so-mathematical university program. R has two completely different reputations. Among the students in Statistics courses, it is usually hated. For those who use the tool for work, it is usually loved. Of course, this may due to the fact that students pay to learn R, and workers are paid to learn R. But this is not the only reason for the two different reputations. The workers realize, once they use R day-to-day, that there is an amazing community of other workers who help each other. And not only do they help each other do the work that is currently needed to be done, but they help each other do the work in a smart and beautiful way that is nothing like the work needed in university Statistics courses. Note that the professor teaching university Statistics probably uses R for <strong>Statistics</strong>. The person learning R outside of university uses R for <strong>Data</strong>. Data is not Statistics! Statistics is specific to the mathematics used on the data; it is not about work-flow, project-management, and coding to get data and data reports ready. All the things that Statistics is not about, R does beautifully and more. Hence people who pick up R to work and who are not university professors, end up passionate about R and teaching others about R.</p>
+<div class="float">
+<img src="images/0-preface/cover_bob-ross.jpg" alt="Book cover: Read about the painter “Bob Ross”" />
+<div class="figcaption">Book cover: Read about the <a href="https://en.wikipedia.org/wiki/Bob_Ross">painter “Bob Ross”</a></div>
+</div>
+<div id="why-this-book" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Why <em>This</em> Book?<a href="index.html#why-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9bcb05c63807d73d7daa" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-9bcb05c63807d73d7daa">{"x":{"diagram":"\n  digraph {\n    // Global node style\n    node [style = filled, shape = box] \n\n    // Define colors for specific nodes\n    \"Unorganized approach\" [fillcolor = lightblue]\n    \"Messy files & code\" [fillcolor = yellow]\n    \"Invalid code\" [fillcolor = orange]\n    \"Invalid output\" [fillcolor = yellow]\n    Frustration [fillcolor = red]\n\n    // Define edges\n    \"Unorganized approach\" -> \"Messy files & code\"\n    \"Messy files & code\" -> \"Invalid code\"\n    \"Invalid code\" -> \"Invalid output\" -> Frustration -> \"Invalid code\"\n  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p>I taught my spouse how to program in R (she had no previous knowledge despite completing a degree in Statistics). She, like many of us, was often frustrated while learning. I emphasized the kindness and generosity of the R community who write free books and provide support on forums. But as I started recommending books alongside our personal lessons, I noticed there wasn’t a book meant for a specific audience: a complete beginner wishing not only to turn their analysis into a report, but to do it in a way that avoids future frustration.</p>
+<p>Simply put, this book is meant for beginners who wish to immediately apply best practices to their own projects.</p>
+</div>
+<div id="for-the-love-of-r" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> For the Love of R<a href="index.html#for-the-love-of-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Without a code- and project-oriented data science course, many beginner analysts know only mathematical or methodological knowledge and how to start a program. They are bound to write invalid code. The resulting invalid output is especially demotivating for analysts, as their task is to analyse the data. They may have been exposed to R in a Statistics courses, but these courses typically focus on methods and potentially mathematics; not work-flow, project-management, and coding. Furthermore, Statistics has a reputation for being hard, especially on those who are learning the subject only because it is required in a non-mathematical program.</p>
+<p>As a result, R has two completely different reputations. Among students in Statistics courses, it is often despised. Among those who use the tool for work, it is usually <em>loved</em>. The difference may be caused by students paying to learn R, and employees being paid. But employees also realize, once they use R day-to-day, that there is an amazing community of others who help each other. This book is also meant to play a small part in that community.</p>
 
+</div>
 </div>
             </section>
 

@@ -1,4 +1,6 @@
 preface
+why-this-book
+for-the-love-of-r
 writing-reports
 lines-and-lists
 code
@@ -16,6 +18,7 @@ reading-in-data
 opening-the-data
 checking-data
 finding-functions
+large-language-models
 google
 stack-overflow
 creating-minimally-reproducible-examples

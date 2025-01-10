@@ -1,30 +1,29 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en" xml:lang="en">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Understanding Tidyverse Functions | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</title>
-  <meta name="description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <title>Chapter 5 Understanding Tidyverse Functions | How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects</title>
+  <meta name="description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the best way to get results? This book will show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. This book will show how to get unstuck. Finally, it explains how prevent yourself from getting stuck in the first place. All of this will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Understanding Tidyverse Functions | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  <meta property="og:title" content="Chapter 5 Understanding Tidyverse Functions | How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="/images/bob-ross.jpg" />
-  <meta property="og:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta property="og:image" content="https://bookdown.org/asadow/how-to-be-an-Rtist/images/bob-ross.jpg" />
+  <meta property="og:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the best way to get results? This book will show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. This book will show how to get unstuck. Finally, it explains how prevent yourself from getting stuck in the first place. All of this will keep you in the flow of writing beautiful, intentional R code." />
   <meta name="github-repo" content="asadow/how-to-be-an-Rtist" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Understanding Tidyverse Functions | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  <meta name="twitter:title" content="Chapter 5 Understanding Tidyverse Functions | How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects" />
   
-  <meta name="twitter:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
-  <meta name="twitter:image" content="/images/bob-ross.jpg" />
+  <meta name="twitter:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the best way to get results? This book will show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. This book will show how to get unstuck. Finally, it explains how prevent yourself from getting stuck in the first place. All of this will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="twitter:image" content="https://bookdown.org/asadow/how-to-be-an-Rtist/images/bob-ross.jpg" />
 
 <meta name="author" content="Adam Sadowski" />
 
 
-<meta name="date" content="2022-10-25" />
+<meta name="date" content="2025-01-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="opening-the-data.html"/>
 <link rel="next" href="strings.html"/>
-<script src="libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -54,6 +52,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
 
 
 <style type="text/css">
@@ -94,7 +96,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +109,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -121,6 +123,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -134,58 +140,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="index.html#preface" id="toc-preface"><span class="toc-section-number">1</span> Preface<span></span></a></li>
-<li><a href="writing-reports.html#writing-reports" id="toc-writing-reports"><span class="toc-section-number">2</span> Writing Reports<span></span></a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
 <ul>
-<li><a href="writing-reports.html#lines-and-lists" id="toc-lines-and-lists"><span class="toc-section-number">2.1</span> Lines and Lists<span></span></a></li>
-<li><a href="writing-reports.html#code" id="toc-code"><span class="toc-section-number">2.2</span> Code<span></span></a>
-<ul>
-<li><a href="writing-reports.html#declaring-with-single-back-ticks" id="toc-declaring-with-single-back-ticks"><span class="toc-section-number">2.2.1</span> Declaring With Single Back-Ticks<span></span></a></li>
-<li><a href="writing-reports.html#declaring-with-multiple-back-ticks" id="toc-declaring-with-multiple-back-ticks"><span class="toc-section-number">2.2.2</span> Declaring With Multiple Back-Ticks<span></span></a></li>
-<li><a href="writing-reports.html#summary" id="toc-summary"><span class="toc-section-number">2.2.3</span> Summary<span></span></a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#why-this-book"><i class="fa fa-check"></i><b>1.1</b> Why <em>This</em> Book?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#for-the-love-of-r"><i class="fa fa-check"></i><b>1.2</b> For the Love of R</a></li>
 </ul></li>
-<li><a href="writing-reports.html#errors" id="toc-errors"><span class="toc-section-number">2.3</span> Errors<span></span></a></li>
-<li><a href="writing-reports.html#links" id="toc-links"><span class="toc-section-number">2.4</span> Links<span></span></a></li>
-<li><a href="writing-reports.html#keyboard-shortcuts" id="toc-keyboard-shortcuts"><span class="toc-section-number">2.5</span> Keyboard Shortcuts<span></span></a></li>
+<li class="chapter" data-level="2" data-path="writing-reports.html"><a href="writing-reports.html"><i class="fa fa-check"></i><b>2</b> Writing Reports</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="writing-reports.html"><a href="writing-reports.html#lines-and-lists"><i class="fa fa-check"></i><b>2.1</b> Lines and Lists</a></li>
+<li class="chapter" data-level="2.2" data-path="writing-reports.html"><a href="writing-reports.html#code"><i class="fa fa-check"></i><b>2.2</b> Code</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="writing-reports.html"><a href="writing-reports.html#declaring-with-single-back-ticks"><i class="fa fa-check"></i><b>2.2.1</b> Declaring With Single Back-Ticks</a></li>
+<li class="chapter" data-level="2.2.2" data-path="writing-reports.html"><a href="writing-reports.html#declaring-with-multiple-back-ticks"><i class="fa fa-check"></i><b>2.2.2</b> Declaring With Multiple Back-Ticks</a></li>
+<li class="chapter" data-level="2.2.3" data-path="writing-reports.html"><a href="writing-reports.html#summary"><i class="fa fa-check"></i><b>2.2.3</b> Summary</a></li>
 </ul></li>
-<li><a href="file-naming.html#file-naming" id="toc-file-naming"><span class="toc-section-number">3</span> File Naming<span></span></a>
-<ul>
-<li><a href="file-naming.html#consistency" id="toc-consistency"><span class="toc-section-number">3.1</span> Consistency<span></span></a></li>
-<li><a href="file-naming.html#why-consistency-matters" id="toc-why-consistency-matters"><span class="toc-section-number">3.2</span> Why Consistency Matters<span></span></a></li>
-<li><a href="file-naming.html#finding-and-organizing-our-files" id="toc-finding-and-organizing-our-files"><span class="toc-section-number">3.3</span> Finding and Organizing Our Files<span></span></a>
-<ul>
-<li><a href="file-naming.html#reading-in-data" id="toc-reading-in-data"><span class="toc-section-number">3.3.1</span> Reading in Data<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="writing-reports.html"><a href="writing-reports.html#errors"><i class="fa fa-check"></i><b>2.3</b> Errors</a></li>
+<li class="chapter" data-level="2.4" data-path="writing-reports.html"><a href="writing-reports.html#links"><i class="fa fa-check"></i><b>2.4</b> Links</a></li>
+<li class="chapter" data-level="2.5" data-path="writing-reports.html"><a href="writing-reports.html#keyboard-shortcuts"><i class="fa fa-check"></i><b>2.5</b> Keyboard Shortcuts</a></li>
 </ul></li>
-</ul></li>
-<li><a href="opening-the-data.html#opening-the-data" id="toc-opening-the-data"><span class="toc-section-number">4</span> Opening the Data<span></span></a>
+<li class="chapter" data-level="3" data-path="file-naming.html"><a href="file-naming.html"><i class="fa fa-check"></i><b>3</b> File Naming</a>
 <ul>
-<li><a href="opening-the-data.html#checking-data" id="toc-checking-data"><span class="toc-section-number">4.1</span> Checking Data<span></span></a></li>
-<li><a href="opening-the-data.html#finding-functions" id="toc-finding-functions"><span class="toc-section-number">4.2</span> Finding Functions<span></span></a>
+<li class="chapter" data-level="3.1" data-path="file-naming.html"><a href="file-naming.html#consistency"><i class="fa fa-check"></i><b>3.1</b> Consistency</a></li>
+<li class="chapter" data-level="3.2" data-path="file-naming.html"><a href="file-naming.html#why-consistency-matters"><i class="fa fa-check"></i><b>3.2</b> Why Consistency Matters</a></li>
+<li class="chapter" data-level="3.3" data-path="file-naming.html"><a href="file-naming.html#finding-and-organizing-our-files"><i class="fa fa-check"></i><b>3.3</b> Finding and Organizing Our Files</a>
 <ul>
-<li><a href="opening-the-data.html#google" id="toc-google"><span class="toc-section-number">4.2.1</span> Google<span></span></a></li>
-<li><a href="opening-the-data.html#stack-overflow" id="toc-stack-overflow"><span class="toc-section-number">4.2.2</span> Stack Overflow<span></span></a></li>
-</ul></li>
-<li><a href="opening-the-data.html#finding-function-documentation-for-understanding-functions" id="toc-finding-function-documentation-for-understanding-functions"><span class="toc-section-number">4.3</span> Finding Function Documentation for Understanding Functions<span></span></a>
-<ul>
-<li><a href="opening-the-data.html#google-1" id="toc-google-1"><span class="toc-section-number">4.3.1</span> Google<span></span></a></li>
-<li><a href="opening-the-data.html#stack-overflow-1" id="toc-stack-overflow-1"><span class="toc-section-number">4.3.2</span> Stack Overflow<span></span></a></li>
-<li><a href="opening-the-data.html#books" id="toc-books"><span class="toc-section-number">4.3.3</span> Books<span></span></a></li>
+<li class="chapter" data-level="3.3.1" data-path="file-naming.html"><a href="file-naming.html#reading-in-data"><i class="fa fa-check"></i><b>3.3.1</b> Reading in Data</a></li>
 </ul></li>
 </ul></li>
-<li><a href="understanding-tidyverse-functions.html#understanding-tidyverse-functions" id="toc-understanding-tidyverse-functions"><span class="toc-section-number">5</span> Understanding Tidyverse Functions<span></span></a>
+<li class="chapter" data-level="4" data-path="opening-the-data.html"><a href="opening-the-data.html"><i class="fa fa-check"></i><b>4</b> Opening the Data</a>
 <ul>
-<li><a href="understanding-tidyverse-functions.html#mutate" id="toc-mutate"><span class="toc-section-number">5.1</span> <code>mutate</code><span></span></a></li>
-<li><a href="understanding-tidyverse-functions.html#pumping-with" id="toc-pumping-with"><span class="toc-section-number">5.2</span> Pumping with <code>%&gt;%</code><span></span></a></li>
-<li><a href="understanding-tidyverse-functions.html#grouping-with-group" id="toc-grouping-with-group"><span class="toc-section-number">5.3</span> Grouping with <code>group</code><span></span></a></li>
-</ul></li>
-<li><a href="strings.html#strings" id="toc-strings"><span class="toc-section-number">6</span> Strings<span></span></a>
+<li class="chapter" data-level="4.1" data-path="opening-the-data.html"><a href="opening-the-data.html#checking-data"><i class="fa fa-check"></i><b>4.1</b> Checking Data</a></li>
+<li class="chapter" data-level="4.2" data-path="opening-the-data.html"><a href="opening-the-data.html#finding-functions"><i class="fa fa-check"></i><b>4.2</b> Finding Functions</a>
 <ul>
-<li><a href="strings.html#patterns-and-regular-expressions-regexes" id="toc-patterns-and-regular-expressions-regexes"><span class="toc-section-number">6.1</span> Patterns and Regular Expressions (regexes)<span></span></a></li>
-<li><a href="strings.html#motivation" id="toc-motivation"><span class="toc-section-number">6.2</span> Motivation<span></span></a></li>
-<li><a href="strings.html#understanding-representations" id="toc-understanding-representations"><span class="toc-section-number">6.3</span> Understanding Representations<span></span></a></li>
+<li class="chapter" data-level="4.2.1" data-path="opening-the-data.html"><a href="opening-the-data.html#large-language-models"><i class="fa fa-check"></i><b>4.2.1</b> Large-Language-Models</a></li>
+<li class="chapter" data-level="4.2.2" data-path="opening-the-data.html"><a href="opening-the-data.html#google"><i class="fa fa-check"></i><b>4.2.2</b> Google</a></li>
+<li class="chapter" data-level="4.2.3" data-path="opening-the-data.html"><a href="opening-the-data.html#stack-overflow"><i class="fa fa-check"></i><b>4.2.3</b> Stack Overflow</a></li>
 </ul></li>
-<li><a href="avoiding-repetition.html#avoiding-repetition" id="toc-avoiding-repetition"><span class="toc-section-number">7</span> Avoiding Repetition<span></span></a></li>
-<li><a href="next-steps-for-this-guide.html#next-steps-for-this-guide" id="toc-next-steps-for-this-guide"><span class="toc-section-number">8</span> Next Steps for This Guide<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="opening-the-data.html"><a href="opening-the-data.html#finding-function-documentation-for-understanding-functions"><i class="fa fa-check"></i><b>4.3</b> Finding Function Documentation for Understanding Functions</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="opening-the-data.html"><a href="opening-the-data.html#google-1"><i class="fa fa-check"></i><b>4.3.1</b> Google</a></li>
+<li class="chapter" data-level="4.3.2" data-path="opening-the-data.html"><a href="opening-the-data.html#stack-overflow-1"><i class="fa fa-check"></i><b>4.3.2</b> Stack Overflow</a></li>
+<li class="chapter" data-level="4.3.3" data-path="opening-the-data.html"><a href="opening-the-data.html#books"><i class="fa fa-check"></i><b>4.3.3</b> Books</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html"><i class="fa fa-check"></i><b>5</b> Understanding Tidyverse Functions</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#mutate"><i class="fa fa-check"></i><b>5.1</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="5.2" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#pumping-with"><i class="fa fa-check"></i><b>5.2</b> Pumping with <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="5.3" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#grouping-with-group"><i class="fa fa-check"></i><b>5.3</b> Grouping with <code>group</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>6</b> Strings</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="strings.html"><a href="strings.html#patterns-and-regular-expressions-regexes"><i class="fa fa-check"></i><b>6.1</b> Patterns and Regular Expressions (regexes)</a></li>
+<li class="chapter" data-level="6.2" data-path="strings.html"><a href="strings.html#motivation"><i class="fa fa-check"></i><b>6.2</b> Motivation</a></li>
+<li class="chapter" data-level="6.3" data-path="strings.html"><a href="strings.html#understanding-representations"><i class="fa fa-check"></i><b>6.3</b> Understanding Representations</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="avoiding-repetition.html"><a href="avoiding-repetition.html"><i class="fa fa-check"></i><b>7</b> Avoiding Repetition</a></li>
+<li class="chapter" data-level="8" data-path="next-steps-for-this-guide.html"><a href="next-steps-for-this-guide.html"><i class="fa fa-check"></i><b>8</b> Next Steps for This Guide</a></li>
 </ul>
 
       </nav>
@@ -195,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects</a>
           </h1>
         </div>
 
@@ -205,37 +216,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="understanding-tidyverse-functions" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Understanding Tidyverse Functions<a href="understanding-tidyverse-functions.html#understanding-tidyverse-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>So far we used <code>mutate</code> from <code>dplyr</code>, <code>unnest</code> from <code>tidyr</code>, <code>read_csv</code> from <code>readr</code>, <code>map</code> from <code>purrr</code>, <code>as_tibble</code> from <code>tibble</code>, and <code>str_to_title</code> from <code>stringr</code>. Since we are using so many tidyverse packages, we may as well load the tidyverse if possible. Fortunately it is possible by running <code>library(tidyverse)</code>. After doing so, all tidyverse functions are now available to us.</p>
+<p>So far we used <code>mutate</code> from <code>dplyr</code>, <code>unnest</code> from <code>tidyr</code>, <code>read_csv</code> from <code>readr</code>, <code>map</code> from <code>purrr</code>, <code>as_tibble</code> from <code>tibble</code>, and <code>str_to_title</code> from <code>stringr</code>. Since we are using so many <code>tidyverse</code> packages, we can simply load them all via <code>library(tidyverse)</code>.</p>
 <!-- Even by looking around the tidyverse.org website, we can easily find more  functions. [https://www.tidyverse.org/packages/](https://www.tidyverse.org/packages/) describes the most useful packages. Reading the descriptions tell us the purpose of the packages. It is not important to know the names of these packages, but it is useful to understand what they each provide.  -->
 <div id="mutate" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> <code>mutate</code><a href="understanding-tidyverse-functions.html#mutate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We already went over <code>mutate</code>. This function is used to both create new columns and overwrite existing columns.</p>
 <p>We can overwrite an existing column like so:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="understanding-tidyverse-functions.html#cb72-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">year =</span> <span class="fu">as.numeric</span>(year))</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="understanding-tidyverse-functions.html#cb68-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">year =</span> <span class="fu">as.numeric</span>(year))</span></code></pre></div>
 <p>Having a numeric year is useful if, for example, we want to filter the data by years between 1960 and 1980. This is done with <code>filter</code>.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="understanding-tidyverse-functions.html#cb73-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">filter</span>(df, <span class="dv">1960</span> <span class="sc">&lt;</span> year <span class="sc">&amp;</span> year <span class="sc">&lt;</span> <span class="dv">1980</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="understanding-tidyverse-functions.html#cb69-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">filter</span>(df, <span class="dv">1960</span> <span class="sc">&lt;</span> year <span class="sc">&amp;</span> year <span class="sc">&lt;</span> <span class="dv">1980</span>)</span></code></pre></div>
 </div>
 <div id="pumping-with" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Pumping with <code>%&gt;%</code><a href="understanding-tidyverse-functions.html#pumping-with" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Notice that the examples in the function documentation for <code>mutate</code> (<a href="https://dplyr.tidyverse.org/reference/mutate.html">https://dplyr.tidyverse.org/reference/mutate.html</a>) and <code>filter</code> use the symbol <code>%&gt;%</code>.</p>
 <p>The <code>%&gt;%</code> is very simple. It simply sends the left side to the right side. The other property to remember is that <code>%&gt;%</code> holds mathematical priority before brackets and exponents. So if you know BEDMASS, then you also know BE<code>%&gt;%</code>DMASS.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="understanding-tidyverse-functions.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">5</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="understanding-tidyverse-functions.html#cb70-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">5</span>) </span></code></pre></div>
 <pre><code>&gt;&gt; [1] 2.236068</code></pre>
 <p>is the same as</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="understanding-tidyverse-functions.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%&gt;%</span> sqrt</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="understanding-tidyverse-functions.html#cb72-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%&gt;%</span> sqrt</span></code></pre></div>
 <pre><code>&gt;&gt; [1] 2.236068</code></pre>
 <p>But</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="understanding-tidyverse-functions.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">%&gt;%</span> sqrt</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="understanding-tidyverse-functions.html#cb74-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">%&gt;%</span> sqrt</span></code></pre></div>
 <pre><code>&gt;&gt; [1] 11.18034</code></pre>
 <p>is not the same as</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="understanding-tidyverse-functions.html#cb80-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">5</span> <span class="sc">*</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> sqrt</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="understanding-tidyverse-functions.html#cb76-1" tabindex="-1"></a>(<span class="dv">5</span> <span class="sc">*</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> sqrt</span></code></pre></div>
 <pre><code>&gt;&gt; [1] 5</code></pre>
 <p>For a more relevant example,</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="understanding-tidyverse-functions.html#cb82-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">year =</span> <span class="fu">as.numeric</span>(year))</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="understanding-tidyverse-functions.html#cb78-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, <span class="at">year =</span> <span class="fu">as.numeric</span>(year))</span></code></pre></div>
 <p>is the same as</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="understanding-tidyverse-functions.html#cb83-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.numeric</span>(year))</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="understanding-tidyverse-functions.html#cb79-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.numeric</span>(year))</span></code></pre></div>
 <p>which is the same as</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="understanding-tidyverse-functions.html#cb84-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> year <span class="sc">%&gt;%</span> as.numeric)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="understanding-tidyverse-functions.html#cb80-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> year <span class="sc">%&gt;%</span> as.numeric)</span></code></pre></div>
 </div>
 <div id="grouping-with-group" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Grouping with <code>group</code><a href="understanding-tidyverse-functions.html#grouping-with-group" class="anchor-section" aria-label="Anchor link to header"></a></h2>

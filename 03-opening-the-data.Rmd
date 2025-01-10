@@ -39,6 +39,10 @@ df
 
 How would you know which function to use if I did not tell you?
 
+### Large-Language-Models
+
+No explanation needed.
+
 ### Google
 
 Google is a great search engine that most R programmers use when learning the R language. If we search "r capitalize first letter" we see, on `r Sys.Date()`, the following paragraph as the first result:
@@ -84,6 +88,7 @@ tibble(x = c(1, 2, 1, 2), y = c(3, 4, 2, 2))
 ```{r echo = FALSE}
 
 select(df, year, lifeExp) %>%
+  mutate(lifeExp = as.numeric(lifeExp)) %>%
   filter(year < 1980) %>% 
   group_by(year) %>% 
   summarize(mean_lifeExp = mean(lifeExp))
@@ -107,7 +112,7 @@ To summarize, your entire question on Stack Overflow could look like this:
     
 To make your question even better, you can format your code by using the `reprex` function from the reprex package. The curly brackets are needed to tell reprex that you have multiple lines of code. 
 
-```{r}
+```{r eval=FALSE}
 library(reprex)
 reprex(
   {
@@ -187,11 +192,11 @@ There are three separate answers that have up votes (positive feedback represent
 
 Notice how the answer using `tidyr` is far more simple; it is one line of code. This word `tidy` keeps popping up, and for good reason: the functions in this package and more broadly in the `tidyverse` (the tidy universe) are designed to make coding short and simple. 
 
-It is possible to add comments to the answers on Stack Overflow, with further questions about the functions if there is something you don't understand. Fortunately the tidyverse functions are well documented because of their standardized webpages, and because of multiple, free books on using them for specific tasks.
+It is possible to add comments to the answers on Stack Overflow, with further questions about the functions if there is something you don't understand. Fortunately the `tidyverse` functions are well documented because of their standardized webpages, and because of multiple, free books on using them for specific tasks.
 
 ### Books
 
-There are many books describing tidyverse functions. Finding a good book is a strong alternative to using Google or Stack Overflow toward understanding functions. A book can hold your hand throughout each step and provide a narrative. It can also be designed toward a specific task, just as this one is designed toward getting you started as quickly and comfortably as possible.
+There are many books describing `tidyverse` functions. Finding a good book is a strong alternative to using Google or Stack Overflow toward understanding functions. A book can hold your hand throughout each step and provide a narrative. It can also be designed toward a specific task, just as this one is designed toward getting you started as quickly and comfortably as possible.
 
 <!-- ```{r} -->
 

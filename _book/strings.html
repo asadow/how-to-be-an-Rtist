@@ -1,30 +1,29 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en" xml:lang="en">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Strings | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</title>
-  <meta name="description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <title>Chapter 6 Strings | How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects</title>
+  <meta name="description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the best way to get results? This book will show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. This book will show how to get unstuck. Finally, it explains how prevent yourself from getting stuck in the first place. All of this will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Strings | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  <meta property="og:title" content="Chapter 6 Strings | How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="/images/bob-ross.jpg" />
-  <meta property="og:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
+  <meta property="og:image" content="https://bookdown.org/asadow/how-to-be-an-Rtist/images/bob-ross.jpg" />
+  <meta property="og:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the best way to get results? This book will show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. This book will show how to get unstuck. Finally, it explains how prevent yourself from getting stuck in the first place. All of this will keep you in the flow of writing beautiful, intentional R code." />
   <meta name="github-repo" content="asadow/how-to-be-an-Rtist" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Strings | How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code" />
+  <meta name="twitter:title" content="Chapter 6 Strings | How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects" />
   
-  <meta name="twitter:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the quickest, smartest way to get results? I’ll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I’ll also show you how to get unstuck in mere minutes. Finally, I’ll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code." />
-  <meta name="twitter:image" content="/images/bob-ross.jpg" />
+  <meta name="twitter:description" content="How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You’ve just installed R and RStudio - what do you do now? What’s the best way to get results? This book will show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. This book will show how to get unstuck. Finally, it explains how prevent yourself from getting stuck in the first place. All of this will keep you in the flow of writing beautiful, intentional R code." />
+  <meta name="twitter:image" content="https://bookdown.org/asadow/how-to-be-an-Rtist/images/bob-ross.jpg" />
 
 <meta name="author" content="Adam Sadowski" />
 
 
-<meta name="date" content="2022-10-25" />
+<meta name="date" content="2025-01-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="understanding-tidyverse-functions.html"/>
 <link rel="next" href="avoiding-repetition.html"/>
-<script src="libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -54,6 +52,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
 
 
 <style type="text/css">
@@ -94,7 +96,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +109,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -121,6 +123,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -134,58 +140,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="index.html#preface" id="toc-preface"><span class="toc-section-number">1</span> Preface<span></span></a></li>
-<li><a href="writing-reports.html#writing-reports" id="toc-writing-reports"><span class="toc-section-number">2</span> Writing Reports<span></span></a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
 <ul>
-<li><a href="writing-reports.html#lines-and-lists" id="toc-lines-and-lists"><span class="toc-section-number">2.1</span> Lines and Lists<span></span></a></li>
-<li><a href="writing-reports.html#code" id="toc-code"><span class="toc-section-number">2.2</span> Code<span></span></a>
-<ul>
-<li><a href="writing-reports.html#declaring-with-single-back-ticks" id="toc-declaring-with-single-back-ticks"><span class="toc-section-number">2.2.1</span> Declaring With Single Back-Ticks<span></span></a></li>
-<li><a href="writing-reports.html#declaring-with-multiple-back-ticks" id="toc-declaring-with-multiple-back-ticks"><span class="toc-section-number">2.2.2</span> Declaring With Multiple Back-Ticks<span></span></a></li>
-<li><a href="writing-reports.html#summary" id="toc-summary"><span class="toc-section-number">2.2.3</span> Summary<span></span></a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#why-this-book"><i class="fa fa-check"></i><b>1.1</b> Why <em>This</em> Book?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#for-the-love-of-r"><i class="fa fa-check"></i><b>1.2</b> For the Love of R</a></li>
 </ul></li>
-<li><a href="writing-reports.html#errors" id="toc-errors"><span class="toc-section-number">2.3</span> Errors<span></span></a></li>
-<li><a href="writing-reports.html#links" id="toc-links"><span class="toc-section-number">2.4</span> Links<span></span></a></li>
-<li><a href="writing-reports.html#keyboard-shortcuts" id="toc-keyboard-shortcuts"><span class="toc-section-number">2.5</span> Keyboard Shortcuts<span></span></a></li>
+<li class="chapter" data-level="2" data-path="writing-reports.html"><a href="writing-reports.html"><i class="fa fa-check"></i><b>2</b> Writing Reports</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="writing-reports.html"><a href="writing-reports.html#lines-and-lists"><i class="fa fa-check"></i><b>2.1</b> Lines and Lists</a></li>
+<li class="chapter" data-level="2.2" data-path="writing-reports.html"><a href="writing-reports.html#code"><i class="fa fa-check"></i><b>2.2</b> Code</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="writing-reports.html"><a href="writing-reports.html#declaring-with-single-back-ticks"><i class="fa fa-check"></i><b>2.2.1</b> Declaring With Single Back-Ticks</a></li>
+<li class="chapter" data-level="2.2.2" data-path="writing-reports.html"><a href="writing-reports.html#declaring-with-multiple-back-ticks"><i class="fa fa-check"></i><b>2.2.2</b> Declaring With Multiple Back-Ticks</a></li>
+<li class="chapter" data-level="2.2.3" data-path="writing-reports.html"><a href="writing-reports.html#summary"><i class="fa fa-check"></i><b>2.2.3</b> Summary</a></li>
 </ul></li>
-<li><a href="file-naming.html#file-naming" id="toc-file-naming"><span class="toc-section-number">3</span> File Naming<span></span></a>
-<ul>
-<li><a href="file-naming.html#consistency" id="toc-consistency"><span class="toc-section-number">3.1</span> Consistency<span></span></a></li>
-<li><a href="file-naming.html#why-consistency-matters" id="toc-why-consistency-matters"><span class="toc-section-number">3.2</span> Why Consistency Matters<span></span></a></li>
-<li><a href="file-naming.html#finding-and-organizing-our-files" id="toc-finding-and-organizing-our-files"><span class="toc-section-number">3.3</span> Finding and Organizing Our Files<span></span></a>
-<ul>
-<li><a href="file-naming.html#reading-in-data" id="toc-reading-in-data"><span class="toc-section-number">3.3.1</span> Reading in Data<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="writing-reports.html"><a href="writing-reports.html#errors"><i class="fa fa-check"></i><b>2.3</b> Errors</a></li>
+<li class="chapter" data-level="2.4" data-path="writing-reports.html"><a href="writing-reports.html#links"><i class="fa fa-check"></i><b>2.4</b> Links</a></li>
+<li class="chapter" data-level="2.5" data-path="writing-reports.html"><a href="writing-reports.html#keyboard-shortcuts"><i class="fa fa-check"></i><b>2.5</b> Keyboard Shortcuts</a></li>
 </ul></li>
-</ul></li>
-<li><a href="opening-the-data.html#opening-the-data" id="toc-opening-the-data"><span class="toc-section-number">4</span> Opening the Data<span></span></a>
+<li class="chapter" data-level="3" data-path="file-naming.html"><a href="file-naming.html"><i class="fa fa-check"></i><b>3</b> File Naming</a>
 <ul>
-<li><a href="opening-the-data.html#checking-data" id="toc-checking-data"><span class="toc-section-number">4.1</span> Checking Data<span></span></a></li>
-<li><a href="opening-the-data.html#finding-functions" id="toc-finding-functions"><span class="toc-section-number">4.2</span> Finding Functions<span></span></a>
+<li class="chapter" data-level="3.1" data-path="file-naming.html"><a href="file-naming.html#consistency"><i class="fa fa-check"></i><b>3.1</b> Consistency</a></li>
+<li class="chapter" data-level="3.2" data-path="file-naming.html"><a href="file-naming.html#why-consistency-matters"><i class="fa fa-check"></i><b>3.2</b> Why Consistency Matters</a></li>
+<li class="chapter" data-level="3.3" data-path="file-naming.html"><a href="file-naming.html#finding-and-organizing-our-files"><i class="fa fa-check"></i><b>3.3</b> Finding and Organizing Our Files</a>
 <ul>
-<li><a href="opening-the-data.html#google" id="toc-google"><span class="toc-section-number">4.2.1</span> Google<span></span></a></li>
-<li><a href="opening-the-data.html#stack-overflow" id="toc-stack-overflow"><span class="toc-section-number">4.2.2</span> Stack Overflow<span></span></a></li>
-</ul></li>
-<li><a href="opening-the-data.html#finding-function-documentation-for-understanding-functions" id="toc-finding-function-documentation-for-understanding-functions"><span class="toc-section-number">4.3</span> Finding Function Documentation for Understanding Functions<span></span></a>
-<ul>
-<li><a href="opening-the-data.html#google-1" id="toc-google-1"><span class="toc-section-number">4.3.1</span> Google<span></span></a></li>
-<li><a href="opening-the-data.html#stack-overflow-1" id="toc-stack-overflow-1"><span class="toc-section-number">4.3.2</span> Stack Overflow<span></span></a></li>
-<li><a href="opening-the-data.html#books" id="toc-books"><span class="toc-section-number">4.3.3</span> Books<span></span></a></li>
+<li class="chapter" data-level="3.3.1" data-path="file-naming.html"><a href="file-naming.html#reading-in-data"><i class="fa fa-check"></i><b>3.3.1</b> Reading in Data</a></li>
 </ul></li>
 </ul></li>
-<li><a href="understanding-tidyverse-functions.html#understanding-tidyverse-functions" id="toc-understanding-tidyverse-functions"><span class="toc-section-number">5</span> Understanding Tidyverse Functions<span></span></a>
+<li class="chapter" data-level="4" data-path="opening-the-data.html"><a href="opening-the-data.html"><i class="fa fa-check"></i><b>4</b> Opening the Data</a>
 <ul>
-<li><a href="understanding-tidyverse-functions.html#mutate" id="toc-mutate"><span class="toc-section-number">5.1</span> <code>mutate</code><span></span></a></li>
-<li><a href="understanding-tidyverse-functions.html#pumping-with" id="toc-pumping-with"><span class="toc-section-number">5.2</span> Pumping with <code>%&gt;%</code><span></span></a></li>
-<li><a href="understanding-tidyverse-functions.html#grouping-with-group" id="toc-grouping-with-group"><span class="toc-section-number">5.3</span> Grouping with <code>group</code><span></span></a></li>
-</ul></li>
-<li><a href="strings.html#strings" id="toc-strings"><span class="toc-section-number">6</span> Strings<span></span></a>
+<li class="chapter" data-level="4.1" data-path="opening-the-data.html"><a href="opening-the-data.html#checking-data"><i class="fa fa-check"></i><b>4.1</b> Checking Data</a></li>
+<li class="chapter" data-level="4.2" data-path="opening-the-data.html"><a href="opening-the-data.html#finding-functions"><i class="fa fa-check"></i><b>4.2</b> Finding Functions</a>
 <ul>
-<li><a href="strings.html#patterns-and-regular-expressions-regexes" id="toc-patterns-and-regular-expressions-regexes"><span class="toc-section-number">6.1</span> Patterns and Regular Expressions (regexes)<span></span></a></li>
-<li><a href="strings.html#motivation" id="toc-motivation"><span class="toc-section-number">6.2</span> Motivation<span></span></a></li>
-<li><a href="strings.html#understanding-representations" id="toc-understanding-representations"><span class="toc-section-number">6.3</span> Understanding Representations<span></span></a></li>
+<li class="chapter" data-level="4.2.1" data-path="opening-the-data.html"><a href="opening-the-data.html#large-language-models"><i class="fa fa-check"></i><b>4.2.1</b> Large-Language-Models</a></li>
+<li class="chapter" data-level="4.2.2" data-path="opening-the-data.html"><a href="opening-the-data.html#google"><i class="fa fa-check"></i><b>4.2.2</b> Google</a></li>
+<li class="chapter" data-level="4.2.3" data-path="opening-the-data.html"><a href="opening-the-data.html#stack-overflow"><i class="fa fa-check"></i><b>4.2.3</b> Stack Overflow</a></li>
 </ul></li>
-<li><a href="avoiding-repetition.html#avoiding-repetition" id="toc-avoiding-repetition"><span class="toc-section-number">7</span> Avoiding Repetition<span></span></a></li>
-<li><a href="next-steps-for-this-guide.html#next-steps-for-this-guide" id="toc-next-steps-for-this-guide"><span class="toc-section-number">8</span> Next Steps for This Guide<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="opening-the-data.html"><a href="opening-the-data.html#finding-function-documentation-for-understanding-functions"><i class="fa fa-check"></i><b>4.3</b> Finding Function Documentation for Understanding Functions</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="opening-the-data.html"><a href="opening-the-data.html#google-1"><i class="fa fa-check"></i><b>4.3.1</b> Google</a></li>
+<li class="chapter" data-level="4.3.2" data-path="opening-the-data.html"><a href="opening-the-data.html#stack-overflow-1"><i class="fa fa-check"></i><b>4.3.2</b> Stack Overflow</a></li>
+<li class="chapter" data-level="4.3.3" data-path="opening-the-data.html"><a href="opening-the-data.html#books"><i class="fa fa-check"></i><b>4.3.3</b> Books</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html"><i class="fa fa-check"></i><b>5</b> Understanding Tidyverse Functions</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#mutate"><i class="fa fa-check"></i><b>5.1</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="5.2" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#pumping-with"><i class="fa fa-check"></i><b>5.2</b> Pumping with <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="5.3" data-path="understanding-tidyverse-functions.html"><a href="understanding-tidyverse-functions.html#grouping-with-group"><i class="fa fa-check"></i><b>5.3</b> Grouping with <code>group</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>6</b> Strings</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="strings.html"><a href="strings.html#patterns-and-regular-expressions-regexes"><i class="fa fa-check"></i><b>6.1</b> Patterns and Regular Expressions (regexes)</a></li>
+<li class="chapter" data-level="6.2" data-path="strings.html"><a href="strings.html#motivation"><i class="fa fa-check"></i><b>6.2</b> Motivation</a></li>
+<li class="chapter" data-level="6.3" data-path="strings.html"><a href="strings.html#understanding-representations"><i class="fa fa-check"></i><b>6.3</b> Understanding Representations</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="avoiding-repetition.html"><a href="avoiding-repetition.html"><i class="fa fa-check"></i><b>7</b> Avoiding Repetition</a></li>
+<li class="chapter" data-level="8" data-path="next-steps-for-this-guide.html"><a href="next-steps-for-this-guide.html"><i class="fa fa-check"></i><b>8</b> Next Steps for This Guide</a></li>
 </ul>
 
       </nav>
@@ -195,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects</a>
           </h1>
         </div>
 
@@ -224,69 +235,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Combining what we learned about digits, we now write a pattern for digits 8 times: <code>"\\d{8}"</code>.</p>
 <p>Before using this pattern, let us try to understand each symbol. The <code>\\</code> are needed to make sure that the pattern is not for the character “d” itself. Similarly, the <code>{</code> and <code>}</code> are needed to make sure that the pattern is not for the number “8” itself.</p>
 <p>If we try to use our pattern to filter for dates with 8 digits, we get the following</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="strings.html#cb87-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(date <span class="sc">%&gt;%</span> <span class="fu">str_detect</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{8}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="strings.html#cb83-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(date <span class="sc">%&gt;%</span> <span class="fu">str_detect</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{8}&quot;</span>))</span></code></pre></div>
 <pre><code>&gt;&gt; # A tibble: 0 × 5
-&gt;&gt; # … with 5 variables: source &lt;chr&gt;, country &lt;chr&gt;,
-&gt;&gt; #   date &lt;chr&gt;, file_type &lt;chr&gt;, data &lt;named list&gt;</code></pre>
+&gt;&gt; # ℹ 5 variables: source &lt;chr&gt;, country &lt;chr&gt;, date &lt;chr&gt;, file_type &lt;chr&gt;,
+&gt;&gt; #   data &lt;named list&gt;</code></pre>
 <p>0 rows in our date column have digits exactly 8 times. How can that be?</p>
 <p>Looking back at our date column, what do we see?</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="strings.html#cb89-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="strings.html#cb85-1" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>&gt;&gt; # A tibble: 3 × 5
-&gt;&gt;   source    country     date      file_…¹ data         
-&gt;&gt;   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;named list&gt; 
-&gt;&gt; 1 gapminder afganistan  2022-02-… csv     &lt;spec_tbl_df&gt;
-&gt;&gt; 2 gapminder afghanistan 2022-02-… csv     &lt;spec_tbl_df&gt;
-&gt;&gt; 3 gapminder canada      2022-02-… csv     &lt;spec_tbl_df&gt;
-&gt;&gt; # … with abbreviated variable name ¹​file_type</code></pre>
+&gt;&gt;   source    country     date       file_type data               
+&gt;&gt;   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;     &lt;named list&gt;       
+&gt;&gt; 1 gapminder afganistan  2022-02-21 csv       &lt;spc_tbl_ [0 × 5]&gt; 
+&gt;&gt; 2 gapminder afghanistan 2022-02-21 csv       &lt;spc_tbl_ [12 × 5]&gt;
+&gt;&gt; 3 gapminder canada      2022-02-21 csv       &lt;spc_tbl_ [12 × 5]&gt;</code></pre>
 <p><code>date</code> has 4 digits, followed by a <em>hyphen</em>, followed by 2 digits, followed by a <em>hyphen</em>, followed by 2 digits. Our pattern simply represents 8 digits, one after the other with nothing in between.</p>
 <p>If we alter our pattern to <code>"\\d{4}-\\d{2}-\\d{2}"</code>, we get the expected result:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="strings.html#cb91-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(date <span class="sc">%&gt;%</span> <span class="fu">str_detect</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-</span><span class="sc">\\</span><span class="st">d{2}-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="strings.html#cb87-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(date <span class="sc">%&gt;%</span> <span class="fu">str_detect</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-</span><span class="sc">\\</span><span class="st">d{2}-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>))</span></code></pre></div>
 <pre><code>&gt;&gt; # A tibble: 3 × 5
-&gt;&gt;   source    country     date      file_…¹ data         
-&gt;&gt;   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;named list&gt; 
-&gt;&gt; 1 gapminder afganistan  2022-02-… csv     &lt;spec_tbl_df&gt;
-&gt;&gt; 2 gapminder afghanistan 2022-02-… csv     &lt;spec_tbl_df&gt;
-&gt;&gt; 3 gapminder canada      2022-02-… csv     &lt;spec_tbl_df&gt;
-&gt;&gt; # … with abbreviated variable name ¹​file_type</code></pre>
+&gt;&gt;   source    country     date       file_type data               
+&gt;&gt;   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;     &lt;named list&gt;       
+&gt;&gt; 1 gapminder afganistan  2022-02-21 csv       &lt;spc_tbl_ [0 × 5]&gt; 
+&gt;&gt; 2 gapminder afghanistan 2022-02-21 csv       &lt;spc_tbl_ [12 × 5]&gt;
+&gt;&gt; 3 gapminder canada      2022-02-21 csv       &lt;spc_tbl_ [12 × 5]&gt;</code></pre>
 <p>Now we not only checked that each row in <code>date</code> has 8 digits, but that theses digits are separated by hyphens in a XXXX-XX-XX format.</p>
 <p>We still have not confirmed that the <code>date</code> column is in YYYY-MM-DD format (year-month-day format). This is unfortunately impossible for some cases. We cannot determine whether 02-04 is February 4nd or April 2nd unless we know whether the date was entered as MM-DD or DD-MM. Fortunately we can check cases where the day is greater than the 12th. We do so by checking whether the month in YYYY-MM-DD is between 01 and 12.</p>
 <p>To do so we will adjust our pattern slightly so that month becomes a reference. To make a reference in a pattern, we surround the part we want to reference with round brackets: <code>(</code> and <code>)</code>.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="strings.html#cb93-1" aria-hidden="true" tabindex="-1"></a>pattern <span class="ot">&lt;-</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-(</span><span class="sc">\\</span><span class="st">d{2})-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="strings.html#cb89-1" tabindex="-1"></a>pattern <span class="ot">&lt;-</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-(</span><span class="sc">\\</span><span class="st">d{2})-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span></span></code></pre></div>
 <p>To extract the reference, we must refer to it by number. We need to use a number, as it is possible to have more than one reference group. Again we use <code>\\</code> to make sure the pattern is not for the number “1” itself.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="strings.html#cb94-1" aria-hidden="true" tabindex="-1"></a>replacement <span class="ot">&lt;-</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="strings.html#cb90-1" tabindex="-1"></a>replacement <span class="ot">&lt;-</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span></span></code></pre></div>
 <p>We now use our pattern and replacement in the function <code>str_replace</code>:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="strings.html#cb95-1" aria-hidden="true" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="st">&quot;2022-13-01&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(pattern, replacement)</span>
-<span id="cb95-2"><a href="strings.html#cb95-2" aria-hidden="true" tabindex="-1"></a>month</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="strings.html#cb91-1" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="st">&quot;2022-13-01&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(pattern, replacement)</span>
+<span id="cb91-2"><a href="strings.html#cb91-2" tabindex="-1"></a>month</span></code></pre></div>
 <pre><code>&gt;&gt; [1] &quot;13&quot;</code></pre>
 <p>We can treat this as numeric.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="strings.html#cb97-1" aria-hidden="true" tabindex="-1"></a>month <span class="sc">%&gt;%</span> as.numeric</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="strings.html#cb93-1" tabindex="-1"></a>month <span class="sc">%&gt;%</span> as.numeric</span></code></pre></div>
 <pre><code>&gt;&gt; [1] 13</code></pre>
 <p>And then check whether it is above 12.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="strings.html#cb99-1" aria-hidden="true" tabindex="-1"></a>month <span class="sc">%&gt;%</span> as.numeric <span class="sc">&gt;</span> <span class="dv">12</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="strings.html#cb95-1" tabindex="-1"></a>month <span class="sc">%&gt;%</span> as.numeric <span class="sc">&gt;</span> <span class="dv">12</span></span></code></pre></div>
 <pre><code>&gt;&gt; [1] TRUE</code></pre>
 <p>To do this for every row of our data frame, we will create a month column, treat it as numeric, and filter by values greater than 12:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="strings.html#cb101-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb101-2"><a href="strings.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-(</span><span class="sc">\\</span><span class="st">d{2})-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>) <span class="sc">%&gt;%</span> as.numeric)</span>
-<span id="cb101-3"><a href="strings.html#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-4"><a href="strings.html#cb101-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(month <span class="sc">&gt;</span> <span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="strings.html#cb97-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb97-2"><a href="strings.html#cb97-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-(</span><span class="sc">\\</span><span class="st">d{2})-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>) <span class="sc">%&gt;%</span> as.numeric)</span>
+<span id="cb97-3"><a href="strings.html#cb97-3" tabindex="-1"></a></span>
+<span id="cb97-4"><a href="strings.html#cb97-4" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(month <span class="sc">&gt;</span> <span class="dv">12</span>)</span></code></pre></div>
 <pre><code>&gt;&gt; # A tibble: 0 × 6
-&gt;&gt; # … with 6 variables: source &lt;chr&gt;, country &lt;chr&gt;,
-&gt;&gt; #   date &lt;chr&gt;, file_type &lt;chr&gt;, data &lt;named list&gt;,
-&gt;&gt; #   month &lt;dbl&gt;</code></pre>
+&gt;&gt; # ℹ 6 variables: source &lt;chr&gt;, country &lt;chr&gt;, date &lt;chr&gt;, file_type &lt;chr&gt;,
+&gt;&gt; #   data &lt;named list&gt;, month &lt;dbl&gt;</code></pre>
 <p>There are no rows where month is greater than 12. Notice how the <code>mutate</code> is on a separate line after the pump <code>%&gt;%</code>. This is so that the <code>mutate</code> can fit on one line as opposed to the less easily readable version below.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="strings.html#cb103-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-(</span><span class="sc">\\</span><span class="st">d{2})-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>) <span class="sc">%&gt;%</span> as.numeric)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="strings.html#cb99-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">month =</span> date <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}-(</span><span class="sc">\\</span><span class="st">d{2})-</span><span class="sc">\\</span><span class="st">d{2}&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>) <span class="sc">%&gt;%</span> as.numeric)</span></code></pre></div>
 </div>
 <div id="understanding-representations" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Understanding Representations<a href="strings.html#understanding-representations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If data contains characters like quotes and backslashes, R cannot directly represent them in a string. We can try to write each of these directly in a string and see what happens.</p>
 <p><em>Quotes:</em></p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="strings.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="strings.html#cb100-1" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span></span></code></pre></div>
 <pre><code>&gt;&gt; Error: &lt;text&gt;:1:3: unexpected INCOMPLETE_STRING
 &gt;&gt; 1: &quot;&quot;&quot;
 &gt;&gt;       ^</code></pre>
 <p>R reads the first two set of quotes <code>""</code> as an empty string, and considers the third set to be starting a second, incomplete string.</p>
 <p><em>Backslash:</em></p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="strings.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="strings.html#cb102-1" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\&quot;</span></span></code></pre></div>
 <pre><code>&gt;&gt; Error: &lt;text&gt;:1:1: unexpected INCOMPLETE_STRING
 &gt;&gt; 1: &quot;\&quot;
 &gt;&gt;     ^</code></pre>
@@ -294,14 +302,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><em>Solution:</em></p>
 <p>Since R cannot represent quotes and backslash directly, it must instead represent them indirectly with special sequences of characters. For quotes, the representative sequence in R is <code>\"</code>. For a backslash, the sequence is <code>\\</code>.</p>
 <p>When we place these sequences in strings, the output is not an error.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="strings.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span> </span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="strings.html#cb104-1" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span> </span></code></pre></div>
 <pre><code>&gt;&gt; [1] &quot;\&quot;&quot;</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="strings.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="strings.html#cb106-1" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span></span></code></pre></div>
 <pre><code>&gt;&gt; [1] &quot;\\&quot;</code></pre>
 <p>Further, we can see what each sequence represents by using the function <code>writeLines</code>:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="strings.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span> <span class="sc">%&gt;%</span> writeLines</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="strings.html#cb108-1" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span> <span class="sc">%&gt;%</span> writeLines</span></code></pre></div>
 <pre><code>&gt;&gt; &quot;</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="strings.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span> <span class="sc">%&gt;%</span> writeLines</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="strings.html#cb110-1" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span> <span class="sc">%&gt;%</span> writeLines</span></code></pre></div>
 <pre><code>&gt;&gt; \</code></pre>
 <p>Sequences <code>\"</code> and <code>\\</code> start with a backslash because a backslash has a specific behaviour: it prevents the normal interpretation of the next character. The backslash in the string<code>"\""</code> prevents the second quotes from being interpreted as the end of the string. As for the string <code>"\\"</code>, because of the first backslash the second backslash is not normally interpreted as “preventing the normal interpretation of the next character”. Yes you will likely have to re-read that.</p>
 <p><code>\"</code> and <code>\\</code> are called special characters. Special characters are called special because they hold a special property: they each represent <em>one</em> thing (a unique character that cannot be represented directly). <code>\"</code> represents quotes, and <code>\\</code> represents backslash. Scan the following list of special characters and what they represent.</p>
@@ -361,12 +369,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Notice how each has <em>one</em> backslash except for the case of <code>\\</code>. Again these special characters represent <em>one</em> thing. Representations of <em>multiple</em> things, however, have <em>multiple</em> backslashes (two to be exact). As an example, <code>\\d</code> represents multiple things because it represents any of the multiple digits from 0 to 9.</p>
 <p><code>\\</code> is a strange case. It is the only special character representing <em>one</em> thing with <em>multiple</em> backslashes. It is an even stranger case when used inside a pattern. We get an error:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="strings.html#cb116-1" aria-hidden="true" tabindex="-1"></a>pattern <span class="ot">&lt;-</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span></span>
-<span id="cb116-2"><a href="strings.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">str_detect</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="strings.html#cb112-1" tabindex="-1"></a>pattern <span class="ot">&lt;-</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span></span>
+<span id="cb112-2"><a href="strings.html#cb112-2" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">str_detect</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>&gt;&gt; Error in stri_detect_regex(string, pattern, negate = negate, opts_regex = opts(pattern)): Unrecognized backslash escape sequence in pattern. (U_REGEX_BAD_ESCAPE_SEQUENCE, context=`\`)</code></pre>
 <p>An error does not happen with any of the other special characters used in this way. The reason is that <code>\\</code> is already used in patterns like <code>\\d</code>. If the pattern to match the string <code>"\\"</code> was simply <code>"\\"</code>, representations like <code>\\d</code> would lose their meaning. For example, instead of matching digits, <code>\\d</code> would just match <code>\\</code> followed by a <code>d</code>.</p>
 <p>To match the string <code>"\\"</code> we must use the pattern <code>"\\\\"</code>. To remember this, consider how R views four backslashes:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="strings.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">&quot;</span> <span class="sc">%&gt;%</span> writeLines</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="strings.html#cb114-1" tabindex="-1"></a><span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">&quot;</span> <span class="sc">%&gt;%</span> writeLines</span></code></pre></div>
 <pre><code>&gt;&gt; \\</code></pre>
 <!-- `\d` is not a *string* escape sequence, but it is a *regex* (pattern-matching) escape sequence. For R to use `\d`, we need R to view a pattern string as `\d`. Since `\` is a metacharacter whose behaviour is to escape the behaviour of the next character, we can use `\` to escape itself. the behaviour of the `\` before the `d`. This prevents the error of a non-existent string escape sequence, `\\d` is essentially an escaped `\d` and R views `\\d` as `\d`: -->
 <!-- ```{r} -->

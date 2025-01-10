@@ -1,28 +1,65 @@
 --- 
-title: "How to Be an Rtist: A Beginner’s Guide to Writing Beautiful, Intentional R Code"
+lang: "en"
+title: "How to Be an Rtist: A Beginner’s Guide to Beautiful, Intentional R Projects"
 author: "Adam Sadowski"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
+knit: "bookdown::render_book"
+url: https://bookdown.org/asadow/how-to-be-an-Rtist
 highlight: tango
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: "asadow/how-to-be-an-Rtist"
+description: "How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You've just installed R and RStudio - what do you do now? What's the best way to get results? This book will show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. This book will  show how to get unstuck. Finally, it explains how prevent yourself from getting stuck in the first place. All of this will keep you in the flow of writing beautiful, intentional R code."
 cover-image: "images/bob-ross.jpg"
-description: "How do you get inspired to write in R? Many books teach you what to write, but not how to find inspiration. This book starts from the ground up. You've just installed R and RStudio - what do you do now? What's the quickest, smartest way to get results? I'll show you how to get there, line-by-line, step-by-step. At some point, in trying to get your own work done, you will get stuck. But I'll also show you how to get unstuck in mere minutes. Finally, I'll show you how to write in a way that will prevent you from getting stuck in the first place! This will keep you in the flow of writing beautiful, intentional R code."
----
+---   
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment = ">>")
 library(tidyverse)
 library(glue)
+library(DiagrammeR)
 ```
 
 # Preface
 
-This is a _friendly_ book on how to work with data from start to finish. It is intended to be easy reading for a beginner who is not aware of any R vocabulary, or Information Technology. I'm a Data Analyst. I got my job mostly because of a Master's in Math and good references (people to speak about his qualities). In the first year of working, I made many mistakes and had many headaches. I constantly Google'd solutions for the problems I faced while working. This allowed me to get my work done but it did not teach me the best way to do my work to avoid future headaches. 
-Mistakes and headaches can be great learning challenges, but in the case of data analysis (and especially for those who use R), it can be demotivating. Mistakes in code cause errors, mistakes in approach cause messy files, and messy files require  messy code with more mistakes.
+![Book cover: Read about the [painter "Bob Ross"](https://en.wikipedia.org/wiki/Bob_Ross)](images/0-preface/cover_bob-ross.jpg)
 
-Please remember that the R code taught in Statistics courses is almost always not focused on teaching us how to generally handle data; it is only focused on teaching us Statistics. Statistics has a reputation for being hard, especially on those who are learning the subject only because it is required in a not-so-mathematical university program. R has two completely different reputations. Among the students in Statistics courses, it is usually hated. For those who use the tool for work, it is usually loved. Of course, this may due to the fact that students pay to learn R, and workers are paid to learn R. But this is not the only reason for the two different reputations. The workers realize, once they use R day-to-day, that there is an amazing community of other workers who help each other. And not only do they help each other do the work that is currently needed to be done, but they help each other do the work in a smart and beautiful way that is nothing like the work needed in university Statistics courses. Note that the professor teaching university Statistics probably uses R for **Statistics**. The person learning R outside of university uses R for **Data**. Data is not Statistics! Statistics is specific to the mathematics used on the data; it is not about work-flow, project-management, and coding to get data and data reports ready. All the things that Statistics is not about, R does beautifully and more. Hence people who pick up R to work and who are not university professors, end up passionate about R and teaching others about R.
+## Why *This* Book?
+
+```{r echo=FALSE}
+library(DiagrammeR)
+
+grViz("
+  digraph {
+    // Global node style
+    node [style = filled, shape = box] 
+
+    // Define colors for specific nodes
+    'Unorganized approach' [fillcolor = lightblue]
+    'Messy files & code' [fillcolor = yellow]
+    'Invalid code' [fillcolor = orange]
+    'Invalid output' [fillcolor = yellow]
+    Frustration [fillcolor = red]
+
+    // Define edges
+    'Unorganized approach' -> 'Messy files & code'
+    'Messy files & code' -> 'Invalid code'
+    'Invalid code' -> 'Invalid output' -> Frustration -> 'Invalid code'
+  }
+")
+
+```
+
+I taught my spouse how to program in R (she had no previous knowledge despite completing a degree in Statistics). She, like many of us, was often frustrated while learning. I emphasized the kindness and generosity of the R community who write free books and provide support on forums. But as I started recommending books alongside our personal lessons, I noticed there wasn't a book meant for a specific audience: a complete beginner wishing not only to turn their analysis into a report, but to do it in a way that avoids future frustration. 
+
+Simply put, this book is meant for beginners who wish to immediately apply best practices to their own projects.
+
+## For the Love of R
+
+Without a code- and project-oriented data science course, many beginner analysts know only mathematical or methodological knowledge and how to start a program. They are bound to write invalid code. The resulting invalid output is especially demotivating for analysts, as their task is to analyse the data. They may have been exposed to R in a Statistics courses, but these courses typically focus on methods and potentially mathematics; not work-flow, project-management, and coding. Furthermore, Statistics has a reputation for being hard, especially on those who are learning the subject only because it is required in a non-mathematical program.
+
+As a result, R has two completely different reputations. Among students in Statistics courses, it is often despised. Among those who use the tool for work, it is usually *loved*. The difference may be caused by students paying to learn R, and employees being paid. But employees also realize, once they use R day-to-day, that there is an amazing community of others who help each other. This book is also meant to play a small part in that community.

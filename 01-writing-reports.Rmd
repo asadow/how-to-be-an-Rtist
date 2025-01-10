@@ -83,25 +83,25 @@ will not work. Code has to be declared in one of two ways.
 
 You can insert code into your document using a single back-tick (the `r "\u0060"` symbol) before and after:
 
-    1   Some text and `r "\u0060some_code\u0060"` to be processed.
-    2   `r "\u0060some_more_code\u0060"` and some more text.
-    3   `r "\u0060some_lonely_code\u0060"`
+    1   Here's `r "\u0060some_code\u0060"` to be shown.
+    2   
+    3   
 
-R code needs an `r` after the first back-tick:
+To run, R code needs an `r` after the first back-tick:
 
-    1   Some text and `r "\u0060r some_code\u0060"` to be processed.
-    2   `r "\u0060r some_more_code\u0060"` and some more text.
-    3   `r "\u0060r some_lonely_code\u0060"`
+    1   Here's `r "\u0060r some_code\u0060"` to be processed.
+    2   
+    3   
 
 For example, the date can be added to a line of your document using
 
-    1   Some text. Did you know today's date is `r "\u0060r Sys.Date()\u0060"`?
+    1   This report was made on `r "\u0060r Sys.Date()\u0060"`.
     2
     3
 
 ~*Lines 1 to 3 will show in your document as:*~
 
-Some text. Did you know today's date is `r Sys.Date()`?
+This report was made on `r Sys.Date()`.
 
 
 -- 
@@ -146,7 +146,7 @@ Sys.Date()
 
 When declaring code with chunks (multiple back-ticks), the document will show both the code and the result of the code and this can be customized. When declaring code with single back-ticks, the document will show only the result of the code and this cannot be customized. 
 
-Since the back-ticks take effort to write, there is a shortcut to writing an empty code chunk: command-Shift-I on Mac or ctrl-Shift-I on Windows. 
+Since the back-ticks take effort to write, there is a shortcut to writing an empty code chunk: `command-Shift-I` on Mac or `ctrl-Shift-I` on Windows. 
 
 ### Summary 
 
@@ -168,7 +168,7 @@ There are symbols we need to know to understand the Console:
     [[1]]
     [1] means the first element in the first container of the result of the processed code
 
-When first learning R, the best way to understand errors is usually not through R's error message. The best way is by paying close attention to the code and every little detail: misspelling, capitalization, and punctuation.
+When first learning R, the best way to understand errors is usually not through R's error messages. The best way is by paying close attention to the code and every little detail: misspelling, capitalization, and punctuation.
 
 For this reason we want to practice good strategies of writing code. Writing involves naming our own objects and functions. But before that, we should also name our files using a good strategy. For a quick guide on naming files, [click here](https://style.tidyverse.org/files.html).
 
@@ -205,4 +205,3 @@ Remember, if you are using Windows, use
 - `command-Enter`: Process line of code where `|` is blinking (consistently appearing and disappearing)
 - `command-option-C`: Process current chunk
 - `option-shift-arrow_key`: Highlight all to the direction of the arrow
-- ....

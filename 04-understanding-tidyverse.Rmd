@@ -6,7 +6,7 @@ library(tidyverse)
 df <- read_rds(here::here("df.rds")) %>% unnest(data)
 ```
 
-So far we used `mutate` from `dplyr`, `unnest` from `tidyr`, `read_csv` from `readr`, `map` from `purrr`, `as_tibble` from `tibble`, and `str_to_title` from `stringr`. Since we are using so many tidyverse packages, we may as well load the tidyverse if possible. Fortunately it is possible by running `library(tidyverse)`. After doing so, all tidyverse functions are now available to us.
+So far we used `mutate` from `dplyr`, `unnest` from `tidyr`, `read_csv` from `readr`, `map` from `purrr`, `as_tibble` from `tibble`, and `str_to_title` from `stringr`. Since we are using so many `tidyverse` packages, we can simply load them all via `library(tidyverse)`.
 
 <!-- Even by looking around the tidyverse.org website, we can easily find more  functions. [https://www.tidyverse.org/packages/](https://www.tidyverse.org/packages/) describes the most useful packages. Reading the descriptions tell us the purpose of the packages. It is not important to know the names of these packages, but it is useful to understand what they each provide.  -->
 

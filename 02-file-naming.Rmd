@@ -1,12 +1,8 @@
 # File Naming
 
-Now that we have covered how to write lines, we can start writing lines about the data! Actually there is one more small subject to discuss before we do that. In the Preface I said, 
+Now that we have covered how to write lines, we can start writing lines about the data, right? Not yet. Let's make sure our files have the best names possible as that will help in later writing about the data.
 
->> "Messy files require more messy code which then can lead to more errors."
-
-Let's do our best to make sure any files we have are not messy.
-
-~*Please note that the below information is useful even if you only have one file of data. At some point, you will have multiple files, and you may want them all organized in the same folder. Data can always be updated, at which time you may have the original file as well as the new file with updated data.*~
+~*Please note that the below information is useful even if you only have one file of data. At some point, you will have multiple files, and you may want them all organized in the same folder. Data is often updated, at which time you may want both the original file as well as the new file with updated data.*~
 
 **Definitions:**
 
